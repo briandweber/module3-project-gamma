@@ -5,7 +5,13 @@ steps = [
         CREATE TABLE users (
             id SERIAL PRIMARY KEY NOT NULL,
             username VARCHAR(100) NOT NULL UNIQUE,
-            password VARCHAR(256) NOT NULL
+            password VARCHAR(256) NOT NULL,
+            user_type VARCHAR(100) NOT NULL,
+            first_name VARCHAR(100) NOT NULL,
+            last_name VARCHAR(100) NOT NULL,
+            photo_url VARCHAR(256) NOT NULL,
+            phone_number VARCHAR(100) NOT NULL,
+            address VARCHAR(100) NOT NULL
         );
         """,
         # "Down" SQL statement
