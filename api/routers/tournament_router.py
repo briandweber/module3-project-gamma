@@ -4,10 +4,10 @@ from queries.tournament_queries import TournamentRepository
 from models.tournaments import TournamentResponse, TournamentRequest
 
 
-router = APIRouter()
+router = APIRouter(prefix="/api")
 
 
-@router.post("/tournament_create", response_model=TournamentResponse)
+@router.post("/tournaments", response_model=TournamentResponse)
 def create_tournament(
     tournament: TournamentRequest,
     response: Response,
@@ -17,7 +17,7 @@ def create_tournament(
     return repo.create(tournament)
 
 
-@router.get("/tournament_list", response_model=List[TournamentResponse])
+@router.get("/tournaments", response_model=List[TournamentResponse])
 def get_all_tournaments(
     repo: TournamentRepository = Depends(),
 ):
