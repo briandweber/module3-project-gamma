@@ -32,9 +32,7 @@ def get_tournament_details(item_id: int):
     """
     Get details of a specific tournament by its ID.
     """
-    tournament = repo.get_by_id(
-        item_id
-    )
+    tournament = repo.get_by_id(item_id)
     if not tournament:
         raise HTTPException(status_code=404, detail="Tournament not found")
     return tournament
@@ -45,9 +43,7 @@ def delete_tournament(tournament_id: int):
     """
     Delete a tournament by its ID.
     """
-    deleted = repo.delete_by_id(
-        tournament_id
-    )
+    deleted = repo.delete_by_id(tournament_id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Tournament not found")
 
@@ -59,9 +55,7 @@ def update_tournament(
     """
     Update a tournament by its ID.
     """
-    existing_tournament = repo.get_by_id(
-        tournament_id
-    )
+    existing_tournament = repo.get_by_id(tournament_id)
     if not existing_tournament:
         raise HTTPException(status_code=404, detail="Tournament not found")
     existing_tournament.id = tournament_id

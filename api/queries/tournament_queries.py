@@ -1,6 +1,7 @@
 """
 Database Queries for Tournaments
 """
+
 import os
 from utils.exceptions import UserDatabaseException
 from psycopg_pool import ConnectionPool
@@ -57,10 +58,10 @@ class TournamentRepository:
         except Exception:
             return {"message": "Can't return"}
 
-# --------------------------------------------------------------------
-    def create(self, tournament: TournamentRequest) -> List[
-        TournamentResponse
-    ]:
+    # --------------------------------------------------------------------
+    def create(
+        self, tournament: TournamentRequest
+    ) -> List[TournamentResponse]:
         # connect the database
         with pool.connection() as conn:
             # get cursor
@@ -93,8 +94,8 @@ class TournamentRepository:
                         tournament.picture_url,
                         tournament.entry_fee,
                         tournament.prize,
-                        tournament.sponsors
-                            ]
+                        tournament.sponsors,
+                    ],
                 )
                 id = result.fetchone()[0]
                 old_data = tournament.dict()
@@ -199,5 +200,6 @@ class TournamentRepository:
             return True
         except Exception:
             return False
+
 
 # --------------------------------------------------------------------

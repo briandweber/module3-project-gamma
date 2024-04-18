@@ -1,6 +1,7 @@
 """
 User Authentication API Router
 """
+
 from fastapi import (
     Depends,
     Request,
@@ -15,11 +16,11 @@ from queries.user_queries import (
 
 from utils.exceptions import UserDatabaseException
 from models.users import (
-                        UserRequest,
-                        UserResponse,
-                        SignInRequest,
-                        SignInResponse
-                        )
+    UserRequest,
+    UserResponse,
+    SignInRequest,
+    SignInResponse,
+)
 
 from utils.authentication import (
     try_get_jwt_user_data,
@@ -49,15 +50,15 @@ async def signup(
     # Create the user in the database
     try:
         user = queries.create_user(
-                                    new_user.username,
-                                    hashed_password,
-                                    new_user.user_type,
-                                    new_user.first_name,
-                                    new_user.last_name,
-                                    new_user.photo_url,
-                                    new_user.phone_number,
-                                    new_user.address
-                                    )
+            new_user.username,
+            hashed_password,
+            new_user.user_type,
+            new_user.first_name,
+            new_user.last_name,
+            new_user.photo_url,
+            new_user.phone_number,
+            new_user.address,
+        )
     except UserDatabaseException as e:
         print(e)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)

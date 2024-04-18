@@ -1,6 +1,7 @@
 """
 Pydantic Models for Applications.
 """
+
 from pydantic import BaseModel
 
 
