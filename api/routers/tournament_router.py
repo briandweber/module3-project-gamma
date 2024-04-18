@@ -76,7 +76,5 @@ def update_tournament(
     existing_tournament.entry_fee = updated_tournament.entry_fee
     existing_tournament.prize = updated_tournament.prize
     existing_tournament.sponsors = updated_tournament.sponsors
-
     repo.save(existing_tournament)
-
     return existing_tournament
