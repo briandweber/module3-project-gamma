@@ -4,7 +4,7 @@ from queries.tournament_queries import TournamentRepository
 from models.tournaments import TournamentResponse, TournamentRequest
 
 
-router = APIRouter(prefix="/api")
+router = APIRouter(tags=["Tournaments"], prefix="/api")
 
 
 @router.post("/tournaments", response_model=TournamentResponse)
