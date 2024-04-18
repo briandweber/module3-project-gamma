@@ -16,3 +16,7 @@ class ApplicationResponse(BaseModel):
     tournament_id: int
     user_id: int
     status: str
+
+
+class ApplicationsOut(BaseModel):
+    applications: list[ApplicationResponse]

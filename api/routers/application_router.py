@@ -1,7 +1,10 @@
 from fastapi import APIRouter, Depends, Response, HTTPException
-from typing import List
 from queries.applications_queries import ApplicationRepository
-from models.applications import ApplicationResponse, ApplicationRequest
+from models.applications import (
+    ApplicationResponse,
+    ApplicationRequest,
+    ApplicationsOut,
+)
 
 
 router = APIRouter(tags=["Applications"], prefix="/api")
@@ -17,7 +20,7 @@ def create_application(
     return repo.create_application(application)
 
 
-@router.get("/applications", response_model=List[ApplicationResponse])
+@router.get("/applications", response_model=ApplicationsOut)
 def get_all_applications(
     repo: ApplicationRepository = Depends(),
 ):
@@ -53,7 +56,7 @@ def update_application(
 
 
 @router.delete("/applications/{id}", status_code=204)
-def delete_application(id: int, repo: ApplicationRepository):
+def delete_application(id: int, repo: ApplicationRepository = Depends()):
     deleted = repo.delete_application(id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Application not found")

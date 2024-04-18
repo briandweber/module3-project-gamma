@@ -4,8 +4,12 @@ Database Queries for Applications
 
 import os
 from psycopg_pool import ConnectionPool
-from typing import List, Optional
-from models.applications import ApplicationRequest, ApplicationResponse
+from typing import Optional
+from models.applications import (
+    ApplicationRequest,
+    ApplicationResponse,
+    ApplicationsOut,
+)
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if not DATABASE_URL:
@@ -15,7 +19,7 @@ pool = ConnectionPool(DATABASE_URL)
 
 
 class ApplicationRepository:
-    def get_all_applications(self) -> List[ApplicationResponse]:
+    def get_all_applications(self) -> ApplicationsOut:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -47,14 +51,14 @@ class ApplicationRepository:
                 )
                 applications.append(application)
 
-            return applications
+            return {"applications": applications}
 
         except Exception:
             return {"message": "Can't return"}
 
     def create_application(
         self, application: ApplicationRequest
-    ) -> List[ApplicationResponse]:
+    ) -> ApplicationsOut:
         # connect the database
         with pool.connection() as conn:
             # get cursor
