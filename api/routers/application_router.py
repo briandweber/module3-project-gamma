@@ -60,3 +60,39 @@ def delete_application(id: int, repo: ApplicationRepository = Depends()):
     deleted = repo.delete_application(id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Application not found")
+
+
+@router.get(
+    "/applications/by_tournament/{tournament_id}",
+    response_model=list[ApplicationResponse],
+)
+def get_applications_by_tournament_id(
+    tournament_id: int, repo: ApplicationRepository = Depends()
+):
+    try:
+        applications = repo.get_applications_by_tournament_id(tournament_id)
+        if not applications:
+            raise HTTPException(
+                status_code=404,
+                detail="Applications not found for this tournament",
+            )
+        return applications
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=str(error))
+
+
+@router.get(
+    "/applications/by_user/{user_id}", response_model=list[ApplicationResponse]
+)
+def get_applications_by_user_id(
+    user_id: int, repo: ApplicationRepository = Depends()
+):
+    try:
+        applications = repo.get_applications_by_user_id(user_id)
+        if not applications:
+            raise HTTPException(
+                status_code=404, detail="Applications not found for this user"
+            )
+        return applications
+    except Exception as error:
+        raise HTTPException(status_code=500, detail=str(error))

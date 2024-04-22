@@ -183,3 +183,85 @@ class ApplicationRepository:
                     return bool(deleted_record)
         except Exception as e:
             raise Exception(f"Database error: {e}")
+
+    def get_applications_by_tournament_id(
+        self, tournament_id
+    ) -> list[ApplicationResponse]:
+        try:
+            # connect the database
+            with pool.connection() as conn:
+                # get cursor
+                with conn.cursor() as db:
+                    # run our insert statement
+                    db.execute(
+                        """
+                        SELECT
+
+                        id, tournament_id, user_id, status
+
+                        FROM applications
+                        WHERE tournament_id = %s
+                        ORDER BY id
+                        """,
+                        (tournament_id,),
+                    )
+                    # for record in db:
+                    #     print(record)
+                    records = db.fetchall()
+
+            # Create a list of ApplicationResponse objects
+            applications = []
+            for record in records:
+                application = ApplicationResponse(
+                    id=record[0],
+                    tournament_id=record[1],
+                    user_id=record[2],
+                    status=record[3],
+                )
+                applications.append(application)
+            return applications
+
+        except Exception:
+            return {
+                "message": "Can't return applications for tournament selected"
+            }
+
+    def get_applications_by_user_id(
+        self, user_id
+    ) -> list[ApplicationResponse]:
+        try:
+            # connect the database
+            with pool.connection() as conn:
+                # get cursor
+                with conn.cursor() as db:
+                    # run our insert statement
+                    db.execute(
+                        """
+                        SELECT
+
+                        id, tournament_id, user_id, status
+
+                        FROM applications
+                        WHERE user_id = %s
+                        ORDER BY id
+                        """,
+                        (user_id,),
+                    )
+                    # for record in db:
+                    #     print(record)
+                    records = db.fetchall()
+
+            # Create a list of ApplicationResponse objects
+            applications = []
+            for record in records:
+                application = ApplicationResponse(
+                    id=record[0],
+                    tournament_id=record[1],
+                    user_id=record[2],
+                    status=record[3],
+                )
+                applications.append(application)
+            return applications
+
+        except Exception:
+            return {"message": "Can't return applications for user selected"}
