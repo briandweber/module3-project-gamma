@@ -65,8 +65,7 @@ class UserQueries:
                         ],
                     )
                     old_data = user.dict()
-                    if 1 == 2:
-                        print("right before the exception")
+                    if old_data:
                         return UserResponse(id=user_id, **old_data)
                     else:
                         raise HTTPException(
