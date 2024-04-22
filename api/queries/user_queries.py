@@ -6,15 +6,21 @@ import os
 import psycopg
 from psycopg_pool import ConnectionPool
 from psycopg.rows import class_row
-from typing import Optional
-from models.users import UserWithPw
+from typing import Optional, Union
+from pydantic import BaseModel
+from models.users import UserWithPw, UserRequest, UserResponse
 from utils.exceptions import UserDatabaseException
+from fastapi import HTTPException
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL environment variable is not set")
 
 pool = ConnectionPool(DATABASE_URL)
+
+
+class Error(BaseModel):
+    message: str
 
 
 class UserQueries:
@@ -26,6 +32,52 @@ class UserQueries:
     def my_route(userQueries: UserQueries = Depends()):
         # Here you can call any of the functions to query the DB
     """
+
+    def update_user(
+        self, user_id: int, user: UserRequest
+    ) -> Union[UserResponse, Error]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        """
+                        UPDATE users
+                        SET username = %s
+                            , password = %s
+                            , user_type = %s
+                            , first_name = %s
+                            , last_name = %s
+                            , photo_url = %s
+                            , phone_number = %s
+                            , address = %s
+                        WHERE id = %s
+                        """,
+                        [
+                            user.username,
+                            user.password,
+                            user.user_type,
+                            user.first_name,
+                            user.last_name,
+                            user.photo_url,
+                            user.phone_number,
+                            user.address,
+                            user_id,
+                        ],
+                    )
+                    old_data = user.dict()
+                    if 1 == 2:
+                        print("right before the exception")
+                        return UserResponse(id=user_id, **old_data)
+                    else:
+                        raise HTTPException(
+                            status_code=404, detail="Could not update user"
+                        )
+
+        except Exception as e:
+            print(e)
+            raise HTTPException(
+                status_code=404, detail="Could not update user"
+            )
 
     def delete_user(self, user_id: int) -> bool:
         try:

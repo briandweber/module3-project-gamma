@@ -10,11 +10,11 @@ from fastapi import (
     status,
     APIRouter,
 )
-from queries.user_queries import (
-    UserQueries,
-)
+from queries.user_queries import UserQueries, Error
+from typing import Union
 
 from utils.exceptions import UserDatabaseException
+
 from models.users import (
     UserRequest,
     UserResponse,
@@ -61,6 +61,7 @@ async def signup(
             new_user.phone_number,
             new_user.address,
         )
+
     except UserDatabaseException as e:
         print(e)
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
@@ -172,6 +173,15 @@ async def signout(
     # All that has to happen is the cookie header must come back
     # Which causes the browser to delete the cookie
     return
+
+
+@router.put("/users/{user_id}", response_model=Union[UserResponse, Error])
+def update_user(
+    user_id: int,
+    user: UserRequest,
+    queries: UserQueries = Depends(),
+) -> Union[Error, UserResponse]:
+    return queries.update_user(user_id, user)
 
 
 @router.get("/users/{user_id}", response_model=Optional[UserResponse])
