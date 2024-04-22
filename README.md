@@ -145,6 +145,6 @@ If this is your project URL
 
 https://gitlab.com/GROUP_NAME/PROJECT_NAME
 
-then your GitLab pages URL will be
+then your GitLab pages URL will be:
 
 https://GROUP_NAME.gitlab.io/PROJECT_NAME

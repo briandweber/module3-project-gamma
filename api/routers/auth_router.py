@@ -22,6 +22,8 @@ from models.users import (
     SignInResponse,
 )
 
+from typing import Optional
+
 from utils.authentication import (
     try_get_jwt_user_data,
     hash_password,
@@ -170,3 +172,14 @@ async def signout(
     # All that has to happen is the cookie header must come back
     # Which causes the browser to delete the cookie
     return
+
+
+@router.get("/users/{user_id}", response_model=Optional[UserResponse])
+async def get_user_details(
+    user_id: int,
+    repo: UserQueries = Depends(),
+) -> UserResponse:
+    user = repo.get_by_id(user_id)
+    if user is None:
+        raise HTTPException(status_code=404, detail="Could not get user")
+    return user
