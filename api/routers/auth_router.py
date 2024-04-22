@@ -183,3 +183,11 @@ async def get_user_details(
     if user is None:
         raise HTTPException(status_code=404, detail="Could not get user")
     return user
+
+
+@router.delete("/users/{user_id}", response_model=bool)
+def delete_user(
+    user_id: int,
+    repo: UserQueries = Depends(),
+) -> bool:
+    return repo.delete_user(user_id)

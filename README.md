@@ -141,7 +141,7 @@ VSCode status bar
 You can't find this in GitLab until after you've done a deploy
 but you can figure it out yourself from your GitLab project URL.
 
-If this is your project URL
+If this is your project URL:
 
 https://gitlab.com/GROUP_NAME/PROJECT_NAME
 

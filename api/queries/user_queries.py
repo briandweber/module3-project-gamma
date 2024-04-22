@@ -27,6 +27,22 @@ class UserQueries:
         # Here you can call any of the functions to query the DB
     """
 
+    def delete_user(self, user_id: int) -> bool:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM users
+                        WHERE id = %s
+                        """,
+                        [user_id],
+                    )
+                    return True
+        except psycopg.Error as e:
+            print(e)
+            return False
+
     def get_by_username(self, username: str) -> Optional[UserWithPw]:
         """
         Gets a user from the database by username
