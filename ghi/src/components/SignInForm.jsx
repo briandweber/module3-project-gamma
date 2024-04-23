@@ -18,8 +18,11 @@ export default function SignInForm() {
     }
 
     if (user) {
-        console.log('user', user)
-        return <Navigate to="/" />
+        if (user.user_type === 'competitor') {
+            return <Navigate to="/testpage" />
+        } else if (user.user_type === 'tournament_manager') {
+            return <Navigate to="/testpage" />
+        }
     }
 
     return (
