@@ -134,6 +134,7 @@ async def signin(
                         user_type=user.user_type
                         )
 
+
 @router.get("/authenticate")
 async def authenticate(
     user: UserResponse = Depends(try_get_jwt_user_data),
