@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 
 import useAuthService from '../hooks/useAuthService'
 
-export default function SignUnForm() {
+export default function SignUpForm() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [user_type, setUserType] = useState('')
