@@ -19,10 +19,21 @@ export {}
  * @typedef {Object} SignUpRequest
  * @property {string} username
  * @property {string} password
+ * @property {string} user_type
+ * @property {string} first_name
+ * @property {string} last_name
+ * @property {string} photo_url
+ * @property {string} phone_number
+ * @property {string} address
  */
 /**
  * @typedef {Object} UserDataResponse
  * @property {number} id
  * @property {string} username
- * @property {string} email
+ * @property {string} user_type
+ * @property {string} first_name
+ * @property {string} last_name
+ * @property {string} photo_url
+ * @property {string} phone_number
+ * @property {string} address
  */
