@@ -43,6 +43,7 @@ class SignInRequest(BaseModel):
 class SignInResponse(BaseModel):
     id: int
     username: str
+    user_type: str
 
 
 class UserWithPw(BaseModel):
