@@ -20,11 +20,24 @@ export default function SignUpForm() {
      */
     async function handleFormSubmit(e) {
         e.preventDefault()
-        await signup({ username, password, user_type, first_name, last_name, photo_url, phone_number, address })
+        const user = await signup({
+            username,
+            password,
+            user_type,
+            first_name,
+            last_name,
+            photo_url,
+            phone_number,
+            address,
+        })
     }
 
     if (user) {
-        return <Navigate to="/" />
+        if (user.user_type === 'competitor') {
+            return <Navigate to="/testpage" />
+        } else if (user.user_type === 'tournament_manager') {
+            return <Navigate to="/testpage" />
+        }
     }
 
     return (
@@ -44,6 +57,41 @@ export default function SignUpForm() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter Password"
+            />
+            <input
+                type="text"
+                name="first_name"
+                value={first_name}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="Enter first_name"
+            />
+            <input
+                type="text"
+                name="last_name"
+                value={last_name}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Enter last_name"
+            />
+            <input
+                type="text"
+                name="photo_url"
+                value={photo_url}
+                onChange={(e) => setPhotoUrl(e.target.value)}
+                placeholder="Enter photo_url"
+            />
+            <input
+                type="text"
+                name="phone_number"
+                value={phone_number}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+                placeholder="Enter phone_number"
+            />
+            <input
+                type="text"
+                name="address"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+                placeholder="Enter address"
             />
             <select
                 value={user_type}

@@ -128,7 +128,7 @@ async def signin(
     )
 
     # Convert the UserWithPW to a UserOut
-    return SignInResponse(id=user.id, username=user.username)
+    return SignInResponse(id=user.id, username=user.username,)
 
 
 @router.get("/authenticate")
