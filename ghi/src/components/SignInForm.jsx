@@ -52,6 +52,5 @@ export default function SignInForm() {
                 Login
             </button>
         </form>
-    </>
-)
-    }
+    )
+}
