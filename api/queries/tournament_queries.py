@@ -27,7 +27,7 @@ class TournamentRepository:
                         """
                         SELECT
 
-                        id, event_name, roster_size , event_start,
+                        id, user_id, event_name, roster_size , event_start,
                         duration, event_description, picture_url, entry_fee,
                         prize, sponsors
 
@@ -41,15 +41,16 @@ class TournamentRepository:
             for record in records:
                 tournament = TournamentResponse(
                     id=record[0],
-                    event_name=record[1],
-                    roster_size=record[2],
-                    event_start=record[3],
-                    duration=record[4],
-                    event_description=record[5],
-                    picture_url=record[6],
-                    entry_fee=record[7],
-                    prize=record[8],
-                    sponsors=record[9],
+                    user_id=record[1],
+                    event_name=record[2],
+                    roster_size=record[3],
+                    event_start=record[4],
+                    duration=record[5],
+                    event_description=record[6],
+                    picture_url=record[7],
+                    entry_fee=record[8],
+                    prize=record[9],
+                    sponsors=record[10],
                 )
                 tournaments.append(tournament)
 
@@ -71,6 +72,7 @@ class TournamentRepository:
                     """
                     INSERT INTO tournaments
                         (
+                            user_id,
                             event_name,
                             roster_size,
                             event_start,
@@ -82,10 +84,11 @@ class TournamentRepository:
                             sponsors
                                         )
                     VALUES
-                        (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
                     [
+                        tournament.user_id,
                         tournament.event_name,
                         tournament.roster_size,
                         tournament.event_start,
@@ -110,8 +113,11 @@ class TournamentRepository:
                 with conn.cursor() as db:
                     db.execute(
                         """
-                        SELECT id, event_name, roster_size, event_start,
-                        duration, event_description, picture_url, entry_fee,
+                        SELECT
+                        id, user_id, event_name,
+                        roster_size, event_start,
+                        duration, event_description,
+                        picture_url, entry_fee,
                         prize, sponsors
                         FROM tournaments
                         WHERE id = %s
@@ -123,19 +129,66 @@ class TournamentRepository:
             if record:
                 tournament = TournamentResponse(
                     id=record[0],
-                    event_name=record[1],
-                    roster_size=record[2],
-                    event_start=record[3],
-                    duration=record[4],
-                    event_description=record[5],
-                    picture_url=record[6],
-                    entry_fee=record[7],
-                    prize=record[8],
-                    sponsors=record[9],
+                    user_id=record[1],
+                    event_name=record[2],
+                    roster_size=record[3],
+                    event_start=record[4],
+                    duration=record[5],
+                    event_description=record[6],
+                    picture_url=record[7],
+                    entry_fee=record[8],
+                    prize=record[9],
+                    sponsors=record[10],
                 )
                 return tournament
             else:
                 return None  # Tournament not found
+
+        except Exception:
+            raise UserDatabaseException("Error fetching tournament data")
+
+    # --------------------------------------------------------------------
+
+    def get_tournaments_by_user(self, user_id: int
+                                ) -> List[TournamentResponse]:
+        try:
+            # Connect to the database
+            with pool.connection() as conn:
+                # Get cursor
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        SELECT
+                        id, user_id, event_name,
+                        roster_size, event_start,
+                        duration, event_description,
+                        picture_url, entry_fee,
+                        prize, sponsors
+                        FROM tournaments
+                        WHERE user_id = %s
+                        """,
+                        (user_id,),
+                    )
+                    records = db.fetchall()
+
+            tournaments = []
+            for record in records:
+                tournament = TournamentResponse(
+                    id=record[0],
+                    user_id=record[1],
+                    event_name=record[2],
+                    roster_size=record[3],
+                    event_start=record[4],
+                    duration=record[5],
+                    event_description=record[6],
+                    picture_url=record[7],
+                    entry_fee=record[8],
+                    prize=record[9],
+                    sponsors=record[10],
+                )
+                tournaments.append(tournament)
+
+            return tournaments
 
         except Exception:
             raise UserDatabaseException("Error fetching tournament data")

@@ -1,10 +1,14 @@
 from fastapi import APIRouter, Depends, Response, HTTPException
 from typing import List
 from queries.tournament_queries import TournamentRepository
-from models.tournaments import TournamentResponse, TournamentRequest
+from models.tournaments import (
+    TournamentResponse,
+    TournamentRequest,
+    TournamentUpdate,
+)
 
 
-router = APIRouter(prefix="/api")
+router = APIRouter(tags=["Tournaments"], prefix="/api")
 
 
 @router.post("/tournaments", response_model=TournamentResponse)
@@ -13,6 +17,9 @@ def create_tournament(
     response: Response,
     repo: TournamentRepository = Depends(),
 ):
+    """
+    Create a Tournament.
+    """
     # response.status_code = 400
     return repo.create(tournament)
 
@@ -21,6 +28,9 @@ def create_tournament(
 def get_all_tournaments(
     repo: TournamentRepository = Depends(),
 ):
+    """
+    Get list of all Tournaments.
+    """
     return repo.get_all()
 
 
@@ -38,6 +48,19 @@ def get_tournament_details(item_id: int):
     return tournament
 
 
+@router.get("/tournaments/user/{user_id}")
+def get_tournaments_by_user(user_id: int):
+    """
+    Get tournaments associated with a specific user.
+    """
+    tournaments = repo.get_tournaments_by_user(
+        user_id
+    )
+    if not tournaments:
+        raise HTTPException(status_code=404, detail="User has no tournaments")
+    return tournaments
+
+
 @router.delete("/tournaments/{tournament_id}", status_code=204)
 def delete_tournament(tournament_id: int):
     """
@@ -50,7 +73,7 @@ def delete_tournament(tournament_id: int):
 
 @router.put("/tournaments/{tournament_id}", response_model=TournamentResponse)
 def update_tournament(
-    tournament_id: int, updated_tournament: TournamentRequest
+    tournament_id: int, updated_tournament: TournamentUpdate
 ):
     """
     Update a tournament by its ID.
@@ -59,6 +82,7 @@ def update_tournament(
     if not existing_tournament:
         raise HTTPException(status_code=404, detail="Tournament not found")
     existing_tournament.id = tournament_id
+    existing_tournament.user_id = existing_tournament.user_id
     existing_tournament.event_name = updated_tournament.event_name
     existing_tournament.event_start = updated_tournament.event_start
     existing_tournament.roster_size = updated_tournament.roster_size

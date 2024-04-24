@@ -45,6 +45,7 @@ export default function SignUpForm() {
             {error && <div className="error">{error.message}</div>}
 
             <input
+                className="form-control"
                 type="text"
                 // name="username"
                 value={username}
@@ -52,6 +53,7 @@ export default function SignUpForm() {
                 placeholder="Enter Username"
             />
             <input
+                className="form-control"
                 type="text"
                 name="password"
                 value={password}
@@ -59,6 +61,7 @@ export default function SignUpForm() {
                 placeholder="Enter Password"
             />
             <input
+                className="form-control"
                 type="text"
                 name="first_name"
                 value={first_name}
@@ -66,6 +69,7 @@ export default function SignUpForm() {
                 placeholder="Enter first_name"
             />
             <input
+                className="form-control"
                 type="text"
                 name="last_name"
                 value={last_name}
@@ -73,6 +77,7 @@ export default function SignUpForm() {
                 placeholder="Enter last_name"
             />
             <input
+                className="form-control"
                 type="text"
                 name="photo_url"
                 value={photo_url}
@@ -80,6 +85,7 @@ export default function SignUpForm() {
                 placeholder="Enter photo_url"
             />
             <input
+                className="form-control"
                 type="text"
                 name="phone_number"
                 value={phone_number}
@@ -87,6 +93,7 @@ export default function SignUpForm() {
                 placeholder="Enter phone_number"
             />
             <input
+                className="form-control"
                 type="text"
                 name="address"
                 value={address}
@@ -94,6 +101,7 @@ export default function SignUpForm() {
                 placeholder="Enter address"
             />
             <select
+                className="form-control"
                 value={user_type}
                 onChange={(e) => setUserType(e.target.value)}
             >
@@ -101,7 +109,9 @@ export default function SignUpForm() {
                 <option value="competitor">Competitor</option>
                 <option value="tournament_manager">Tournament Manager</option>
             </select>
-            <button type="submit">Sign Up</button>
+            <button className="btn btn-primary" type="submit">
+                Sign Up
+            </button>
         </form>
     )
 }
