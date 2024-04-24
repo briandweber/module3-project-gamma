@@ -26,31 +26,33 @@ export default function SignInForm() {
     }
 
     return (
-        <form onSubmit={handleFormSubmit}>
-            {error && <div className="error">{error.message}</div>}
-            <label htmlFor="username">Username</label>
-            <input
-                className="form-control"
-                id="username"
-                type="text"
-                name="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter Username"
-            />
-            <label htmlFor="password">Password</label>
-            <input
-                className="form-control"
-                id="password"
-                type="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter Password"
-            />
-            <button className="btn btn-primary" type="submit">
-                Login
-            </button>
-        </form>
+        <div className="sign-in col-auto">
+            <form onSubmit={handleFormSubmit}>
+                {error && <div className="error">{error.message}</div>}
+                <label htmlFor="username">Username</label>
+                <input
+                    className="form-control col-sm-7"
+                    id="username"
+                    type="text"
+                    name="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Enter Username"
+                />
+                <label htmlFor="password">Password</label>
+                <input
+                    className="form-control"
+                    id="password"
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Enter Password"
+                />
+                <button className="btn btn-primary" type="submit">
+                    Login
+                </button>
+            </form>
+        </div>
     )
 }
