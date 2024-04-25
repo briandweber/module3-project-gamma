@@ -1,6 +1,10 @@
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
-import RandomNumberPage from '/src/testpage'
+// import CompetitorHome from './CompetitorHome'
+import UpcomingTournaments from './UpcomingTournaments'
+// import ApplicationsList from './ApplicationsList'
+// import RandomNumberPage from '/src/testpage'
+import TournamentList from './Tournament'
 import SignOut from './SignOut'
 
 import useAuthService from '../hooks/useAuthService'
@@ -20,6 +24,7 @@ function Construct(props) {
         return <p>Loading...</p>
     }
 
+    console.log('user-data:', user)
     return (
         <>
             <div className="homepage-background">
@@ -34,10 +39,17 @@ function Construct(props) {
                     <div className="form-container">
                         {!user && <SignUpForm />}
                     </div>
-                    <div className="form-container">
-                        {user && <RandomNumberPage />}
-                    </div>
                     <div className="form-container">{user && <SignOut />}</div>
+                    <div className="form-container">
+                        {user && user.user_type == 'competitor' && (
+                            <UpcomingTournaments />
+                        )}
+                    </div>
+                    <div className="form-container">
+                        {user && user.user_type == 'tournament_manager' && (
+                            <TournamentList />
+                        )}
+                    </div>
                 </div>
             </div>
         </>

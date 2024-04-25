@@ -1,13 +1,13 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import SignInForm from './SignInForm';
-import SignUpForm from './SignUpForm';
-import RandomNumberPage from '/src/testpage';
-import UserDetails from './CompetitorDetails';
-import useAuthService from '../hooks/useAuthService';
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import SignInForm from './SignInForm'
+import SignUpForm from './SignUpForm'
+import RandomNumberPage from '/src/testpage'
+import UserDetails from './CompetitorDetails'
+import useAuthService from '../hooks/useAuthService'
 
 function ProfileConstruct() {
-    const { user } = useAuthService();
+    const { user } = useAuthService()
     console.log(user)
 
     return (
@@ -31,13 +31,12 @@ function ProfileConstruct() {
                                 <h2>My Tournaments</h2>
                                 {/* Assuming Tournaments are handled elsewhere or not needed */}
                             </div>
-
                         </>
                     )}
                 </div>
             </div>
         </>
-    );
+    )
 }
 
-export default ProfileConstruct;
+export default ProfileConstruct
