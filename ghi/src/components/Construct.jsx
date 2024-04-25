@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom'
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
 import RandomNumberPage from '/src/testpage'
+import SignOut from './SignOut'
 
 import useAuthService from '../hooks/useAuthService'
 
@@ -34,6 +34,10 @@ function Construct(props) {
                     <div className="form-container">
                         {!user && <SignUpForm />}
                     </div>
+                    <div className="form-container">
+                        {user && <RandomNumberPage />}
+                    </div>
+                    <div className="form-container">{user && <SignOut />}</div>
                 </div>
             </div>
         </>

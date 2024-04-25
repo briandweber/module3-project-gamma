@@ -65,3 +65,14 @@ code {
     font-style: garamond;
     font-size: 50px;
 }
+
+.sign-in {
+    display: flex;
+    justify-content: center;
+}
+
+.sign-up {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
