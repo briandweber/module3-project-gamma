@@ -53,9 +53,7 @@ def get_tournaments_by_user(user_id: int):
     """
     Get tournaments associated with a specific user.
     """
-    tournaments = repo.get_tournaments_by_user(
-        user_id
-    )
+    tournaments = repo.get_tournaments_by_user(user_id)
     if not tournaments:
         raise HTTPException(status_code=404, detail="User has no tournaments")
     return tournaments

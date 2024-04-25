@@ -149,8 +149,9 @@ class TournamentRepository:
 
     # --------------------------------------------------------------------
 
-    def get_tournaments_by_user(self, user_id: int
-                                ) -> List[TournamentResponse]:
+    def get_tournaments_by_user(
+        self, user_id: int
+    ) -> List[TournamentResponse]:
         try:
             # Connect to the database
             with pool.connection() as conn:

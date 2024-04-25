@@ -104,15 +104,15 @@ def generate_jwt(user: UserWithPw) -> str:
         exp=exp,
         sub=user.username,
         user=JWTUserData(
-                        username=user.username,
-                        id=user.id,
-                        user_type=user.user_type,
-                        first_name=user.first_name,
-                        last_name=user.last_name,
-                        photo_url=user.photo_url,
-                        phone_number=user.phone_number,
-                        address=user.address
-                        ),
+            username=user.username,
+            id=user.id,
+            user_type=user.user_type,
+            first_name=user.first_name,
+            last_name=user.last_name,
+            photo_url=user.photo_url,
+            phone_number=user.phone_number,
+            address=user.address,
+        ),
     )
     encoded_jwt = jwt.encode(
         jwt_data.model_dump(), SIGNING_KEY, algorithm=ALGORITHMS.HS256
