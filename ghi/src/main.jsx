@@ -1,7 +1,7 @@
 //@ts-check
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import SignInForm from './components/SignInForm'
 import SignUpForm from './components/SignUpForm'
@@ -10,11 +10,11 @@ import AuthProvider from './components/AuthProvider'
 import RandomNumberPage from './testpage'
 import ProfileConstruct from './components/ProfileConstruct'
 
-import './index.css'
+import './index.css';
 
-const BASE_URL = import.meta.env.BASE_URL
+const BASE_URL = import.meta.env.BASE_URL;
 if (!BASE_URL) {
-    throw new Error('BASE_URL is not defined')
+    throw new Error('BASE_URL is not defined');
 }
 
 const router = createBrowserRouter(
@@ -29,30 +29,27 @@ const router = createBrowserRouter(
             ],
         },
         {
-            path: '/profile/',
-            element: <App />,
-            children: [{ path: 'competitor', element: <ProfileConstruct /> }],
+            path: '/profile',
+            element: <ProfileConstruct />,
         },
     ],
     {
         basename: BASE_URL,
     }
-)
+);
 
-const rootElement = document.getElementById('root')
+const rootElement = document.getElementById('root');
 if (!rootElement) {
-    throw new Error('root element was not found!')
+    throw new Error('root element was not found!');
 }
 
-// Log out the environment variables while you are developing and deploying
-// This will help debug things
-console.table(import.meta.env)
+console.table(import.meta.env);
 
-const root = ReactDOM.createRoot(rootElement)
+const root = ReactDOM.createRoot(rootElement);
 root.render(
     <React.StrictMode>
         <AuthProvider>
             <RouterProvider router={router} />
         </AuthProvider>
     </React.StrictMode>
-)
+);
