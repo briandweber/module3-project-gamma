@@ -29,15 +29,14 @@ const router = createBrowserRouter(
             ],
         },
         {
-            path: '/profile/',
-            element: <App />,
-            children: [{ path: 'competitor', element: <ProfileConstruct /> }],
+            path: '/profile',
+            element: <ProfileConstruct />,
         },
     ],
     {
         basename: BASE_URL,
     }
-)
+);
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
