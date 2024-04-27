@@ -7,6 +7,14 @@ body {
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #1f2633;
+    color: aliceblue;
+}
+
+.gamester-image {
+    height: 300px;
+    width: 300px;
+    margin: 50px;
 }
 
 .homepage-background {
@@ -27,8 +35,7 @@ body {
     height: 80vh;
     width: 80vw;
 }
-
-code {
+*/ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
 }

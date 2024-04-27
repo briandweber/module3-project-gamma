@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 function ApplicationStatusDropdown({ applicationId }) {
     const [selectedStatus, setSelectedStatus] = useState('')
 
@@ -17,10 +17,10 @@ function ApplicationStatusDropdown({ applicationId }) {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                                        tournament_id: data.tournament_id,
-                                        user_id: data.user_id,
-                                        status: selectedStatus
-                                    }),
+                    tournament_id: data.tournament_id,
+                    user_id: data.user_id,
+                    status: selectedStatus,
+                }),
             }
             fetch(url, response)
         } catch (error) {

@@ -1,6 +1,6 @@
 // @ts-check
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 
 import useAuthService from '../hooks/useAuthService'
 
@@ -130,6 +130,10 @@ export default function SignUpForm() {
                 <button className="btn btn-primary" type="submit">
                     Sign Up
                 </button>
+            </div>
+            <div>
+                <h3>Already have an account?</h3>
+                <Link to="signin">Log In</Link>
             </div>
         </form>
     )

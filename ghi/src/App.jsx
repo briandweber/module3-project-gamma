@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
-import ErrorNotification from './components/ErrorNotification'
-import Construct from './components/Construct'
+// import ErrorNotification from './components/ErrorNotification'
+// import Construct from './components/Construct'
 
 import './App.css'
 
@@ -23,43 +23,68 @@ if (!API_HOST) {
  *
  * @returns {React.ReactNode}
  */
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// import ApplicationConstruct from 'components/ApplicationsConstruct'
+// import useAuthService from 'hooks/useAuthService'
+// import CompetitorDetails from 'components/CompetitorDetails'
+// import ErrorNotification from './components/ErrorNotification'
+// import MyCompetitorTournaments from './components/MyCompetitorTournaments'
+// import ProfileConstruct from 'components/ProfileConstruct'
+import SignInForm from './components/SignInForm'
+import SignUpForm from './components/SignUpForm'
+import SignOut from './components/SignOut'
+import TournamentApplicationList from './components/TournamentApplications'
+import gamesterImage from './images/gamesterImage.png'
+// import ApplicationStatusDropdown from 'components/TournamentApplicationUpdate'
+// import TournamentDetails from 'components/TournamentDetails'
+// import TournamentManagerDetails from 'components/TournamentManagerDetails'
+import TournamentList from './components/Tournaments'
+import UpcomingTournaments from './components/UpcomingTournaments'
+
 function App() {
-    // Replace this App component with your own.
-    /** @type {[LaunchInfo | undefined, (info: LaunchInfo) => void]} */
-    const [launchInfo, setLaunchInfo] = useState()
-    const [error, setError] = useState(null)
-
-    useEffect(() => {
-        async function getData() {
-            let url = `${API_HOST}/api/launch-details`
-            console.log('fastapi url: ', url)
-            let response = await fetch(url)
-            /** @type {LaunchData} */
-            let data = await response.json()
-
-            if (response.ok) {
-                if (!data.launch_details) {
-                    console.log('drat! no launch data')
-                    setError('No launch data')
-                    return
-                }
-                console.log('got launch data!')
-                setLaunchInfo(data.launch_details)
-            } else {
-                console.log('drat! something happened')
-                setError(data.message)
-            }
-        }
-        getData()
-    }, [])
-
     return (
-        <div className="App">
-            <header className="App-header">{/* <Nav /> */}</header>
-            <Outlet />
-            <ErrorNotification error={error} />
-            <Construct info={launchInfo} />
-        </div>
+        <BrowserRouter>
+            {/* <ErrorNotification /> */}
+            {/* <Nav /> */}
+            <div className="container">
+                <div>
+                    <h1>Gamester</h1>
+                    <img
+                        className="gamester-image"
+                        src={gamesterImage}
+                        alt="gamester image"
+                    />
+                </div>
+                <Routes>
+                    <Route
+                        path="applications"
+                        element={<TournamentApplicationList />}
+                    />
+                    {/* <Route path='applications/edit' element={<ApplicationStatusDropdown />} /> */}
+                    <Route path="tournaments" element={<TournamentList />} />
+                    <Route
+                        path="upcomingtournaments"
+                        element={<UpcomingTournaments />}
+                    />
+                    <Route path="signin" element={<SignInForm />} />
+                    <Route path="signout" element={<SignOut />} />
+                    <Route path="signup" element={<SignUpForm />} />
+                    {/* <Route
+                        path="mycompetitortournaments"
+                        element={<MyCompetitorTournaments />}
+                    /> */}
+                    <Route
+                        path="applications"
+                        element={<TournamentApplicationList />}
+                    />
+                    <Route
+                        path="applications"
+                        element={<TournamentApplicationList />}
+                    />
+                </Routes>
+            </div>
+        </BrowserRouter>
     )
 }
 
