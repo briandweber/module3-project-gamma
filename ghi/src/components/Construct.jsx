@@ -1,10 +1,7 @@
 import SignInForm from './SignInForm'
 import SignUpForm from './SignUpForm'
-// import CompetitorHome from './CompetitorHome'
 import UpcomingTournaments from './UpcomingTournaments'
-// import ApplicationsList from './ApplicationsList'
-// import RandomNumberPage from '/src/testpage'
-import TournamentList from './Tournament'
+import TournamentList from './Tournaments'
 import SignOut from './SignOut'
 
 import useAuthService from '../hooks/useAuthService'
@@ -19,12 +16,11 @@ import useAuthService from '../hooks/useAuthService'
  */
 function Construct(props) {
     const { user } = useAuthService()
-
     if (!props.info) {
         return <p>Loading...</p>
     }
 
-    console.log('user-data:', user)
+
     return (
         <>
             <div className="homepage-background">

@@ -19,9 +19,9 @@ export default function SignInForm() {
 
     if (user) {
         if (user.user_type === 'competitor') {
-            return <Navigate to="/testpage" />
+            return <Navigate to="/tournaments" />
         } else if (user.user_type === 'tournament_manager') {
-            return <Navigate to="/testpage" />
+            return <Navigate to="/tournaments" />
         }
     }
 
