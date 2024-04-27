@@ -13,17 +13,20 @@ function TournamentsColumn(props) {
                             alt="Picture of Tournament"
                         />
                         <div className="card-body">
-                            <h5 className="card-title mb-2 text-muted">
-                                Tournament #{tournament.id}
-                            </h5>
-                            <h4 className="card-subtitle">
-                                Name: {tournament.event_name} - Event Start:{' '}
-                                {tournament.event_start} - Duration:{' '}
-                                {tournament.duration}
-                            </h4>
-                            <h5 className="card-title text-muted">
-                                Description: {tournament.event_description}
-                            </h5>
+                            <h2 className="card-title mb-2 text-muted">
+                                Tournament #{tournament.id}:{' '}
+                                {tournament.event_name}
+                            </h2>
+                            <h4>Starts on: {tournament.event_start}</h4>
+                            <h4>Duration: {tournament.duration}</h4>
+                        </div>
+                        <div className="text-center">
+                            <Link
+                                to={`/tournaments/${tournament.id}`}
+                                className="btn btn-danger mb-3"
+                            >
+                                See Details
+                            </Link>
                         </div>
                     </div>
                 )
@@ -70,7 +73,6 @@ function UpcomingTournaments(props) {
                 </div>
             </div>
             <div className="container">
-                <h2>Upcoming Touraments</h2>
                 <div className="row">
                     {tournamentColumns.map((tournamentList, index) => {
                         return (

@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-
+import TournamentDetails from './components/TournamentDetails'
 import TournamentList from './components/Tournaments'
 import SignInForm from './components/SignInForm';
 import SignUpForm from './components/SignUpForm';
@@ -31,6 +31,9 @@ const router = createBrowserRouter(
                 { path: 'signin', element: <SignInForm /> },
                 { path: 'testpage', element: <RandomNumberPage /> },
                 { path: 'tournaments', element: <TournamentList /> },
+                { path: 'tournaments/:id', element: <TournamentDetails /> },
+                { path: 'tournaments/:id/edit', element: <RandomNumberPage /> },
+                { path: 'testpage', element: <RandomNumberPage /> },
             ],
         },
         {
