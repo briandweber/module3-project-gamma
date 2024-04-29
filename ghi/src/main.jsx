@@ -31,25 +31,27 @@ const router = createBrowserRouter(
                 { path: 'signin', element: <SignInForm /> },
                 { path: 'testpage', element: <RandomNumberPage /> },
                 { path: 'tournaments', element: <TournamentList /> },
-                { path: 'tournaments/:id', element: <TournamentDetails /> },
                 { path: 'tournaments/:id/edit', element: <RandomNumberPage /> },
                 { path: 'testpage', element: <RandomNumberPage /> },
             ],
         },
         {
+            path:'/tournaments/:id',
+            element: <TournamentDetails />
+        },
+        {
             path: '/profile',
-            element: <ProfileConstruct />,
+            element: <ProfileConstruct />
         },
         {
             path: '/applications/',
-            element: <App />,
-            children: [{ path: 'tournament', element: <ApplicationConstruct /> }],
+            element: <ApplicationConstruct />
         },
     ],
     {
         basename: BASE_URL,
     }
-);
+)
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

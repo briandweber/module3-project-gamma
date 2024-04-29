@@ -83,21 +83,22 @@ return (
                         <td>{tournament.event_start}</td>
                         <td>
                             <Link
-                                to={`http://localhost:5173/applications/tournament?id=${tournament.id}`}
+                                to={`http://localhost:5173/applications/?id=${tournament.id}`}
                                 className="btn btn-danger mb-3"
                             >
                                 Applications
                             </Link>
                         </td>
                         <td>
-                            <button
-                                onClick={() => onDetailsClick(tournament.id)}
+                            <Link
+                                to={`http://localhost:5173/tournaments/${tournament.id}`}
+                                className="btn btn-danger mb-3"
                             >
                                 Details
-                            </button>
+                            </Link>
                         </td>
                         <td>
-                            <button
+                            <button className="btn btn-danger mb-3"
                                 onClick={() => onDeleteClick(tournament.id)}
                             >
                                 Delete

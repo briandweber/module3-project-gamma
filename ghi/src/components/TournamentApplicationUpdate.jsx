@@ -26,6 +26,7 @@ function ApplicationStatusDropdown({ applicationId }) {
         } catch (error) {
             console.error('Error updating status:', error)
         }
+        window.location.reload()
     }
 
     return (
@@ -35,7 +36,12 @@ function ApplicationStatusDropdown({ applicationId }) {
                 <option value="approved">Approve</option>
                 <option value="denied">Deny</option>
             </select>
-            <button onClick={handleUpdateStatus}>Update Status</button>
+            <button
+                className="btn btn-danger mb-3"
+                onClick={handleUpdateStatus}
+            >
+                Update Status
+            </button>
         </div>
     )
 }
