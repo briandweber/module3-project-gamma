@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useAuthService from '../hooks/useAuthService'; // Ensure the path matches where your hook is located
+import useAuthService from '../hooks/useAuthService';
 
 const NavBar = () => {
     const { user, isLoggedIn } = useAuthService();
