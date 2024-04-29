@@ -1,15 +1,15 @@
-// This makes VSCode check types as if you are using TypeScript
+// App.jsx
 //@ts-check
 import { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import ErrorNotification from './components/ErrorNotification'
 import Construct from './components/Construct'
+import NavBar from './components/NavBar'; // Ensure NavBar is imported
+import Footer from './components/Footer'; // Import Footer component
 
 import './App.css'
 
-// When using environment variables, you should do a check to see if
-// they are defined or not and throw an appropriate error message
 const API_HOST = import.meta.env.VITE_API_HOST
 
 if (!API_HOST) {
@@ -24,7 +24,6 @@ if (!API_HOST) {
  * @returns {React.ReactNode}
  */
 function App() {
-    // Replace this App component with your own.
     /** @type {[LaunchInfo | undefined, (info: LaunchInfo) => void]} */
     const [launchInfo, setLaunchInfo] = useState()
     const [error, setError] = useState(null)
@@ -55,12 +54,15 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">{/* <Nav /> */}</header>
+            <header className="App-header">
+                <NavBar />  {/* NavBar included here */}
+            </header>
             <Outlet />
             <ErrorNotification error={error} />
             <Construct info={launchInfo} />
+            <Footer />  {/* Footer included at the bottom */}
         </div>
     )
 }
 
-export default App
+export default App;
