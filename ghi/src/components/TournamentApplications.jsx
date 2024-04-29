@@ -52,26 +52,25 @@ function TournamentApplicationList() {
         fetchUser()
     }, [tournamentId])
 
-    return (
-        <div>
-            <h2>Application List</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>User Id</th>
-                        <th>Username</th>
-                        <th>Phone Number</th>
-                        <th>Application Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {applications.map((application) => {
+return (
+    <div>
+        <h2>Applicant</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {applications
+                    .filter((application) => application.status !== 'denied')
+                    .map((application) => {
                         const user = users.find(
                             (u) => u.id === application.user_id
                         )
                         return (
                             <tr key={application.id}>
-                                <td>{application.user_id}</td>
                                 <td>{user?.username || 'N/A'}</td>
                                 <td>{user?.phone_number || 'N/A'}</td>
                                 <td>
@@ -82,10 +81,10 @@ function TournamentApplicationList() {
                             </tr>
                         )
                     })}
-                </tbody>
-            </table>
-        </div>
-    )
+            </tbody>
+        </table>
+    </div>
+)
 }
 
 export default TournamentApplicationList
