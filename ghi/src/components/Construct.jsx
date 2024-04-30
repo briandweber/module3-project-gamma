@@ -35,7 +35,7 @@ function Construct(props) {
                     <div className="form-container">
                         {!user && <SignUpForm />}
                     </div>
-                    <div className="form-container">{user && <SignOut />}</div>
+                    {/* <div className="form-container">{user && <SignOut />}</div> */}
                     <div className="form-container">
                         {user && user.user_type == 'competitor' && (
                             <UpcomingTournaments />

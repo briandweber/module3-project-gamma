@@ -5,6 +5,8 @@ import { Outlet } from 'react-router-dom'
 
 import ErrorNotification from './components/ErrorNotification'
 import Construct from './components/Construct'
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 import './App.css'
 
@@ -55,12 +57,15 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">{/* <Nav /> */}</header>
+            <header className="App-header">
+                <NavBar />  {/* NavBar included here */}
+            </header>
             <Outlet />
             <ErrorNotification error={error} />
             <Construct info={launchInfo} />
+            <Footer />  {/* Footer included at the bottom */}
         </div>
     )
 }
 
-export default App
+export default App;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuthService from '../hooks/useAuthService';
 
+
 function CompetitorDetails() {
     const { user } = useAuthService();
     const navigate = useNavigate();
