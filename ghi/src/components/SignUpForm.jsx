@@ -133,7 +133,7 @@ export default function SignUpForm() {
             </div>
             <div>
                 <h3>Already have an account?</h3>
-                <Link to="signin">Log In</Link>
+                <Link to="/signin">Sign In</Link>
             </div>
         </form>
     )
