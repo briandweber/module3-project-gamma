@@ -1,6 +1,6 @@
 // @ts-check
 import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 
 import useAuthService from '../hooks/useAuthService'
 
@@ -34,9 +34,9 @@ export default function SignUpForm() {
 
     if (user) {
         if (user.user_type === 'competitor') {
-            return <Navigate to="/testpage" />
+            return <Navigate to="/upcomingtournaments" />
         } else if (user.user_type === 'tournament_manager') {
-            return <Navigate to="/testpage" />
+            return <Navigate to="/tournaments" />
         }
     }
 
@@ -130,6 +130,10 @@ export default function SignUpForm() {
                 <button className="btn btn-primary" type="submit">
                     Sign Up
                 </button>
+            </div>
+            <div>
+                <h3>Already have an account?</h3>
+                <Link to="/signin">Sign In</Link>
             </div>
         </form>
     )
