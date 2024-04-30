@@ -23,7 +23,7 @@ function Construct(props) {
 
     return (
         <>
-            <div className="homepage-background">
+            <div className="homepage-background-extra">
                 <div className="container-lg">
                     <div className="image-container"></div>
                     <div className="name-container">

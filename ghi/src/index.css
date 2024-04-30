@@ -13,7 +13,16 @@ body {
     min-height: 100vh;
     background-image: url(images/homepageBackground.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
+    background-position: center;
+    min-width: 100%;
+}
+
+.homepage-background-extra {
+    min-height: 150vh;
+    background-image: url(images/homepageBackground.jpg);
+    background-size: cover;
+    background-repeat: repeat-y;
     background-position: center;
     min-width: 100%;
 }
