@@ -3,45 +3,84 @@ import useAuthService from '../hooks/useAuthService'
 
 export default function MyCompetitorTournaments() {
     const { user } = useAuthService()
-    const user_id = user.id
     const [tournaments, setTournaments] = useState([])
+    const [applications, setApplications] = useState([])
+
     const getData = async () => {
-        const url = `http://localhost:8000/api/tournaments/user/${user_id}`
+        const applicationsUrl = `http://localhost:8000/api/applications/by_user/${user.id}`
         try {
-            const response = fetch(url)
+            const response = await fetch(applicationsUrl)
             if (response.ok) {
                 const data = await response.json()
-                setTournaments(data)
+                setApplications(data)
             }
         } catch (e) {
             console.log(e)
         }
     }
-    useEffect(() => {
-        getData()
-    }, [])
 
+    const getTournamentsData = async () => {
+        const tournamentsUrl = `http://localhost:8000/api/applications/by_user/${user.id}`
+        try {
+            const responses = await fetch(tournamentsUrl)
+            if (responses.ok) {
+                const data = await responses.json()
+                const requests = []
+                for (let tournament of data) {
+                    const tourneyUrl = `http://localhost:8000/api/tournaments/${tournament.tournament_id}`
+                    requests.push(await fetch(tourneyUrl))
+                }
+                const response = await Promise.all(requests)
+                const details = []
+                for (const tournamentResponse of response) {
+                    details.push(await tournamentResponse.json())
+                }
+                setTournaments(details)
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    console.log('tournaments')
+    console.log(tournaments)
+    console.log('applications')
+    console.log(applications)
+    useEffect(() => {
+        getData(), getTournamentsData()
+    }, [])
+    if (!user) {
+        return <div>user does not exist!</div>
+    }
     return (
         <div>
             <h2>My Tournaments</h2>
-            <table>
+            <table className="table table-striped table-hover">
                 <thead>
-                    <th>Event Name</th>
-                    <th>Event Start Time</th>
-                    <th>Roster Size Limit</th>
-                    <th>Entry Fee</th>
-                    <th>Prize</th>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Event Start Time</th>
+                        <th>Roster Size Limit</th>
+                        <th>Entry Fee</th>
+                        <th>Prize</th>
+                        <th>Status</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    {tournaments.map((tournament) => (
-                        <tr key={tournament.id}>
-                            <td>{tournament.event_name}</td>
-                            <td>{tournament.event_start}</td>
-                            <td>{tournament.event_roster_size}</td>
-                            <td>{tournament.event_entry_fee}</td>
-                            <td>{tournament.event_prize}</td>
-                        </tr>
-                    ))}
+                    {applications.map((application) => {
+                        const user = tournaments.find(
+                            (u) => u.id === application.tournament_id
+                        )
+                        return (
+                            <tr key={application.id}>
+                                <td>{user?.event_name || 'N/A'}</td>
+                                <td>{user?.event_start || 'N/A'}</td>
+                                <td>{user?.roster_size}</td>
+                                <td>{user?.entry_fee}</td>
+                                <td>{user?.prize}</td>
+                                <td>{application.status || 'N/A'}</td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>

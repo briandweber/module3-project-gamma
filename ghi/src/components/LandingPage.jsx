@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom'
-import SignInForm from './SignInForm'
-import SignUpForm from './SignUpForm'
 import UpcomingTournaments from './UpcomingTournaments'
 import TournamentList from './Tournaments'
-import SignOut from './SignOut'
 
 import useAuthService from '../hooks/useAuthService'
 
