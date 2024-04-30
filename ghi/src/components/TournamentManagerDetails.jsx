@@ -6,10 +6,6 @@ function TournamentManagerDetails() {
     const { user } = useAuthService();
     const navigate = useNavigate();
 
-    // Commented out the entire function and usage:
-    // const handleNavigate = () => {
-    //     navigate('/manage-tournaments'); // Assume this is the route to manage tournaments
-    // };
 
     return (
         <div className="user-details-container">

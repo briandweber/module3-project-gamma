@@ -24,6 +24,7 @@ import TournamentList from './components/Tournaments'
 import TournamentManagerDetails from './components/TournamentManagerDetails'
 import UpcomingTournaments from './components/UpcomingTournaments'
 import ProfileConstruct from './components/ProfileConstruct'
+import TournamentCreateForm from './components/TournamentCreateForm';
 import TournamentDetailsEdit from './components/TournamentDetailsEdit'
 
 function App() {
@@ -77,6 +78,10 @@ function App() {
                     <Route
                         path="upcomingtournaments"
                         element={<UpcomingTournaments />}
+                    />
+                    <Route
+                        path="tournament/create"
+                        element={<TournamentCreateForm />}
                     />
                 </Routes>
             </div>
