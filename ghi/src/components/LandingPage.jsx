@@ -52,7 +52,6 @@ export default function LandingPage() {
                     </Link>
                 )}
             </div>
-            <div className="form-container">{user && <SignOut />}</div>
             <div className="form-container">
                 {user && user.user_type == 'competitor' && (
                     <UpcomingTournaments />

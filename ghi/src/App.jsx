@@ -24,6 +24,7 @@ import TournamentList from './components/Tournaments'
 import TournamentManagerDetails from './components/TournamentManagerDetails'
 import UpcomingTournaments from './components/UpcomingTournaments'
 import ProfileConstruct from './components/ProfileConstruct'
+import TournamentDetailsEdit from './components/TournamentDetailsEdit'
 
 function App() {
     const { user } = useAuthService()
@@ -68,6 +69,7 @@ function App() {
                         element={<TournamentDetails />}
                     />
                     <Route path="tournaments" element={<TournamentList />} />
+                    <Route path="tournaments/:id/edit" element = {< TournamentDetailsEdit />} />
                     <Route
                         path="tournamentmanagerdetails"
                         element={<TournamentManagerDetails />}
