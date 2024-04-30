@@ -11,7 +11,6 @@ import TournamentManagerDetails from './TournamentManagerDetails';
 function ProfileConstruct() {
     const { user } = useAuthService();
 
-
     const getUserDetailsComponent = () => {
         if (!user) {
             return (

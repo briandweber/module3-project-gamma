@@ -7,7 +7,7 @@ function CompetitorDetails() {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate('/testpage');
+        navigate('/mycompetitortournaments')
     };
 
     return (

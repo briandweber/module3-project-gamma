@@ -1,65 +1,85 @@
-// This makes VSCode check types as if you are using TypeScript
-//@ts-check
-import { useState, useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
-
-import ErrorNotification from './components/ErrorNotification'
-import Construct from './components/Construct'
-
 import './App.css'
+import './index.css'
 
-// When using environment variables, you should do a check to see if
-// they are defined or not and throw an appropriate error message
 const API_HOST = import.meta.env.VITE_API_HOST
 
 if (!API_HOST) {
     throw new Error('VITE_API_HOST is not defined')
 }
 
-/**
- * This is an example of using JSDOC to define types for your component
- * @typedef {{module: number, week: number, day: number, min: number, hour: number}} LaunchInfo
- * @typedef {{launch_details: LaunchInfo, message?: string}} LaunchData
- *
- * @returns {React.ReactNode}
- */
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import useAuthService from './hooks/useAuthService'
+import gamesterImage from './images/gamesterImage.png'
+
+import ApplicationStatusDropdown from './components/TournamentApplicationUpdate'
+import CompetitorDetails from './components/CompetitorDetails'
+import LandingPage from './components/LandingPage'
+import MyCompetitorTournaments from './components/MyCompetitorTournaments'
+import SignInForm from './components/SignInForm'
+import SignOut from './components/SignOut'
+import SignUpForm from './components/SignUpForm'
+import TournamentApplicationList from './components/TournamentApplications'
+import TournamentDetails from './components/TournamentDetails'
+import TournamentList from './components/Tournaments'
+import TournamentManagerDetails from './components/TournamentManagerDetails'
+import UpcomingTournaments from './components/UpcomingTournaments'
+import ProfileConstruct from './components/ProfileConstruct'
+
 function App() {
-    // Replace this App component with your own.
-    /** @type {[LaunchInfo | undefined, (info: LaunchInfo) => void]} */
-    const [launchInfo, setLaunchInfo] = useState()
-    const [error, setError] = useState(null)
-
-    useEffect(() => {
-        async function getData() {
-            let url = `${API_HOST}/api/launch-details`
-            console.log('fastapi url: ', url)
-            let response = await fetch(url)
-            /** @type {LaunchData} */
-            let data = await response.json()
-
-            if (response.ok) {
-                if (!data.launch_details) {
-                    console.log('drat! no launch data')
-                    setError('No launch data')
-                    return
-                }
-                console.log('got launch data!')
-                setLaunchInfo(data.launch_details)
-            } else {
-                console.log('drat! something happened')
-                setError(data.message)
-            }
-        }
-        getData()
-    }, [])
-
+    const { user } = useAuthService()
     return (
-        <div className="App">
-            <header className="App-header">{/* <Nav /> */}</header>
-            <Outlet />
-            <ErrorNotification error={error} />
-            <Construct info={launchInfo} />
-        </div>
+        <BrowserRouter>
+            <div className="homepage-background">
+                <div className="container-lg">
+                    <div className="image-container"></div>
+                    <div className="name-container">
+                        <h1>Gamester</h1>
+                    </div>
+                    <div>
+                        {user && (
+                            <Link to="signout" className="btn btn-primary">
+                                Sign Out
+                            </Link>
+                        )}
+                    </div>
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route
+                        path="applications"
+                        element={<TournamentApplicationList />}
+                    />
+                    <Route
+                        path="applications/edit"
+                        element={<ApplicationStatusDropdown />}
+                    />
+                    <Route
+                        path="competitordetails"
+                        element={<CompetitorDetails />}
+                    />
+                    <Route
+                        path="mycompetitortournaments"
+                        element={<MyCompetitorTournaments />}
+                    />
+                    <Route path="signin" element={<SignInForm />} />
+                    <Route path="signout" element={<SignOut />} />
+                    <Route path="signup" element={<SignUpForm />} />
+                    <Route
+                        path="tournaments/:id"
+                        element={<TournamentDetails />}
+                    />
+                    <Route path="tournaments" element={<TournamentList />} />
+                    <Route
+                        path="tournamentmanagerdetails"
+                        element={<TournamentManagerDetails />}
+                    />
+                    <Route
+                        path="upcomingtournaments"
+                        element={<UpcomingTournaments />}
+                    />
+                </Routes>
+            </div>
+            </div>
+        </BrowserRouter>
     )
 }
 
