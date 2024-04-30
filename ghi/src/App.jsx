@@ -25,6 +25,7 @@ import TournamentManagerDetails from './components/TournamentManagerDetails'
 import UpcomingTournaments from './components/UpcomingTournaments'
 import ProfileConstruct from './components/ProfileConstruct'
 import TournamentCreateForm from './components/TournamentCreateForm';
+import TournamentDetailsEdit from './components/TournamentDetailsEdit'
 
 function App() {
     const { user } = useAuthService()
