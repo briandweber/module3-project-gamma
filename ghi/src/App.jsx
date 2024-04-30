@@ -69,6 +69,7 @@ function App() {
                         element={<TournamentDetails />}
                     />
                     <Route path="tournaments" element={<TournamentList />} />
+                    <Route path="tournaments/:id/edit" element = {< TournamentDetailsEdit />} />
                     <Route
                         path="tournamentmanagerdetails"
                         element={<TournamentManagerDetails />}
