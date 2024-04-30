@@ -33,11 +33,7 @@ export default function SignUpForm() {
     }
 
     if (user) {
-        if (user.user_type === 'competitor') {
-            return <Navigate to="/upcomingtournaments" />
-        } else if (user.user_type === 'tournament_manager') {
-            return <Navigate to="/tournaments" />
-        }
+        return <Navigate to="/" />
     }
 
     return (

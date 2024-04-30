@@ -24,7 +24,7 @@ import TournamentList from './components/Tournaments'
 import TournamentManagerDetails from './components/TournamentManagerDetails'
 import UpcomingTournaments from './components/UpcomingTournaments'
 import ProfileConstruct from './components/ProfileConstruct'
-import TournamentCreateForm from './components/TournamentCreateForm';
+import TournamentCreateForm from './components/TournamentCreateForm'
 import TournamentDetailsEdit from './components/TournamentDetailsEdit'
 
 function App() {
@@ -44,47 +44,53 @@ function App() {
                             </Link>
                         )}
                     </div>
-                <Routes>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route
-                        path="applications"
-                        element={<TournamentApplicationList />}
-                    />
-                    <Route
-                        path="applications/edit"
-                        element={<ApplicationStatusDropdown />}
-                    />
-                    <Route
-                        path="competitordetails"
-                        element={<CompetitorDetails />}
-                    />
-                    <Route
-                        path="mycompetitortournaments"
-                        element={<MyCompetitorTournaments />}
-                    />
-                    <Route path="signin" element={<SignInForm />} />
-                    <Route path="signout" element={<SignOut />} />
-                    <Route path="signup" element={<SignUpForm />} />
-                    <Route
-                        path="tournaments/:id"
-                        element={<TournamentDetails />}
-                    />
-                    <Route path="tournaments" element={<TournamentList />} />
-                    <Route path="tournaments/:id/edit" element = {< TournamentDetailsEdit />} />
-                    <Route
-                        path="tournamentmanagerdetails"
-                        element={<TournamentManagerDetails />}
-                    />
-                    <Route
-                        path="upcomingtournaments"
-                        element={<UpcomingTournaments />}
-                    />
-                    <Route
-                        path="tournament/create"
-                        element={<TournamentCreateForm />}
-                    />
-                </Routes>
-            </div>
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route
+                            path="applications"
+                            element={<TournamentApplicationList />}
+                        />
+                        <Route
+                            path="applications/edit"
+                            element={<ApplicationStatusDropdown />}
+                        />
+                        <Route
+                            path="competitordetails"
+                            element={<CompetitorDetails />}
+                        />
+                        <Route
+                            path="mycompetitortournaments"
+                            element={<MyCompetitorTournaments />}
+                        />
+                        <Route path="signin" element={<SignInForm />} />
+                        <Route path="signout" element={<SignOut />} />
+                        <Route path="signup" element={<SignUpForm />} />
+                        <Route
+                            path="tournaments/:id"
+                            element={<TournamentDetails />}
+                        />
+                        <Route
+                            path="tournaments"
+                            element={<TournamentList />}
+                        />
+                        <Route
+                            path="tournaments/:id/edit"
+                            element={<TournamentDetailsEdit />}
+                        />
+                        <Route
+                            path="tournamentmanagerdetails"
+                            element={<TournamentManagerDetails />}
+                        />
+                        <Route
+                            path="upcomingtournaments"
+                            element={<UpcomingTournaments />}
+                        />
+                        <Route
+                            path="tournament/create"
+                            element={<TournamentCreateForm />}
+                        />
+                    </Routes>
+                </div>
             </div>
         </BrowserRouter>
     )
