@@ -13,6 +13,7 @@ import RandomNumberPage from './testpage';
 import ProfileConstruct from './components/ProfileConstruct';
 import TournamentApplicationList from './components/TournamentApplications';
 import ApplicationConstruct from './components/ApplicationsConstruct'
+import TournamentDetailsEdit from './components/TournamentDetailsEdit';
 
 import './index.css';
 
@@ -31,21 +32,24 @@ const router = createBrowserRouter(
                 { path: 'signin', element: <SignInForm /> },
                 { path: 'testpage', element: <RandomNumberPage /> },
                 { path: 'tournaments', element: <TournamentList /> },
-                { path: 'tournaments/:id/edit', element: <RandomNumberPage /> },
+                {
+                    path: 'tournaments/:id/edit',
+                    element: <TournamentDetailsEdit />,
+                },
                 { path: 'testpage', element: <RandomNumberPage /> },
             ],
         },
         {
-            path:'/tournaments/:id',
-            element: <TournamentDetails />
+            path: '/tournaments/:id',
+            element: <TournamentDetails />,
         },
         {
             path: '/profile',
-            element: <ProfileConstruct />
+            element: <ProfileConstruct />,
         },
         {
             path: '/applications/',
-            element: <ApplicationConstruct />
+            element: <ApplicationConstruct />,
         },
     ],
     {
