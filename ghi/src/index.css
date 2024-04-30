@@ -85,3 +85,12 @@ body {
     justify-content: space-evenly;
     padding: 5px;
 }
+
+.card-translucent-grey {
+    background-color: rgba(128, 128, 128, 0.5);
+    color: whitesmoke;
+}
+
+.bg-purple {
+    background-color: rgba(94, 0, 134, 0.5);
+}

@@ -59,7 +59,7 @@ function App() {
                             element={<CompetitorDetails />}
                         />
                         <Route
-                            path="mycompetitortournaments"
+                            path="mytournaments"
                             element={<MyCompetitorTournaments />}
                         />
                         <Route path="signin" element={<SignInForm />} />
