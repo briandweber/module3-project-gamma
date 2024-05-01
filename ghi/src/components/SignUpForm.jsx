@@ -56,7 +56,7 @@ export default function SignUpForm() {
             <div className="col-md-6 sign-up">
                 <input
                     className="form-control"
-                    type="text"
+                    type="password"
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}

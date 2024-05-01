@@ -1,17 +1,14 @@
-// Footer.jsx
 import React from 'react';
 
-
 const Footer = () => {
-   return (
-       <footer style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 20px', backgroundColor: '#003366', color: 'white' }}>
-           <p>Copyright © 2024 Gamester</p>
-           <p>
-               <a href="mailto:gamesteranswers@gmail.com" style={{ color: 'white', textDecoration: 'none' }}>Contact Us</a>
-           </p>
-       </footer>
-   );
+    return (
+        <footer className="footer">
+            <div className="footer-links">
+                <a href="mailto:gamesteranswers@gmail.com">Contact Us</a>
+            </div>
+            <p className="footer-text">© 2024 Gamester</p>
+        </footer>
+    );
 };
-
 
 export default Footer;
