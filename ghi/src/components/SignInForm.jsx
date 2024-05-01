@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
 
 import useAuthService from '../hooks/useAuthService'
+import UpcomingTournaments from './UpcomingTournaments'
 
 export default function SignInForm() {
     const [username, setUsername] = useState('')
@@ -18,11 +19,7 @@ export default function SignInForm() {
     }
 
     if (user) {
-        if (user.user_type === 'competitor') {
-            return <Navigate to="/upcomingtournaments" />
-        } else if (user.user_type === 'tournament_manager') {
-            return <Navigate to="/tournaments" />
-        }
+        return <Navigate to="/" />
     }
 
     return (

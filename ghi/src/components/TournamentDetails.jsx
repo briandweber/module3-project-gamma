@@ -11,7 +11,6 @@ function TournamentDetails() {
         : 'alert alert-success mb-0'
 
     const { id } = useParams()
-    console.log('User data', user)
 
     const handleDelete = async () => {
         const url = `http://localhost:8000/api/tournaments/${id}`
@@ -35,6 +34,11 @@ function TournamentDetails() {
     }
 
     const handleApply = async () => {
+        if (hasApplied) {
+            alert("Oops! You've already applied for this tournament")
+            return
+        }
+
         const url = `http://localhost:8000/api/applications`
         const fetchConfig = {
             method: 'post',
@@ -86,55 +90,55 @@ function TournamentDetails() {
     }
 
     return (
-        <div className="card mb-3 shadow">
+        <div className="card mb-3 shadow card-translucent-grey">
             <img
                 src={tournament.picture_url}
                 className="card-img-top"
                 alt="Tournament"
             />
-            <div className="card-body">
+            <div className="card-body text-center">
                 <h1 className="card-subtitle"> {tournament.event_name}</h1>
                 <h4> Roster Size: {tournament.roster_size}</h4>
                 <h4> Event Starts on: {tournament.event_start}</h4>
                 <h4> Duration: {tournament.duration} minutes</h4>
-                <h5 className="card-title text-muted">
-                    {tournament.event_description}
-                </h5>
-                <h5 className="card-title text-muted">
+                <h5 className="card-title">{tournament.event_description}</h5>
+                <h5 className="card-title">
                     Entry Fee: ${tournament.entry_fee}
                 </h5>
-                <h5 className="card-title text-muted">
-                    Prize: ${tournament.prize}
-                </h5>
-                <h5 className="card-title text-muted">
+                <h5 className="card-title">Prize: ${tournament.prize}</h5>
+                <h5 className="card-title">
                     Roster Size: {tournament.roster_size}
                 </h5>
-                <h5 className="card-title text-muted">
-                    Sponsors: {tournament.sponsors}
-                </h5>
+                <h5 className="card-title">Sponsors: {tournament.sponsors}</h5>
                 <div className="text-center">
-                    <button
-                        onClick={() => handleDelete(tournament.id)}
-                        className="btn btn-danger mb-3"
-                    >
-                        Delete
-                    </button>
+                    {user.user_type === 'tournament_manager' && (
+                        <button
+                            onClick={() => handleDelete(tournament.id)}
+                            className="btn btn-danger mb-3"
+                        >
+                            Delete
+                        </button>
+                    )}
                 </div>
                 <div className="text-center">
-                    <Link
-                        to={`/tournaments/${tournament.id}/edit`}
-                        className="btn btn-danger mb-3"
-                    >
-                        Edit
-                    </Link>
+                    {user.user_type === 'tournament_manager' && (
+                        <Link
+                            to={`/tournaments/${tournament.id}/edit`}
+                            className="btn btn-danger mb-3"
+                        >
+                            Edit
+                        </Link>
+                    )}
                 </div>
                 <div className="text-center">
-                    <button
-                        onClick={() => handleApply(tournament.id)}
-                        className="btn btn-danger mb-3"
-                    >
-                        Apply
-                    </button>
+                    {user.user_type === 'competitor' && (
+                        <button
+                            onClick={() => handleApply(tournament.id)}
+                            className="btn btn-danger mb-3"
+                        >
+                            Apply
+                        </button>
+                    )}
                 </div>
                 <div className="text-center">
                     <div className={messageClasses} id="success-message">
@@ -145,7 +149,7 @@ function TournamentDetails() {
                         </h5>
                         <div className="text-center">
                             <Link
-                                to={`/testpage`}
+                                to={`/mytournaments`}
                                 className="btn btn-danger mb-3"
                             >
                                 My Tournaments
