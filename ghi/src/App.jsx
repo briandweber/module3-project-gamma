@@ -47,7 +47,7 @@ function App() {
                             </Link>
                         )}
                     </div>
-                </div>
+
                 <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route
@@ -88,6 +88,7 @@ function App() {
                         element={<TournamentCreateForm />}
                     />
                 </Routes>
+                </div>
             </div>
             <Footer />
         </BrowserRouter>
