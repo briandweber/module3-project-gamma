@@ -23,6 +23,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     min-width: 100%;
+    background-attachment: fixed;
 }
 
 .container-lg {
@@ -31,8 +32,8 @@ body {
     backdrop-filter: blur(20px);
     border-radius: 5px;
     padding-top: 5vh;
-    height: 80vh;
     width: 80vw;
+    margin: auto;
 }
 
 code {
@@ -51,7 +52,7 @@ code {
 .btn {
     width: 150px;
     background-color: #4c2ecf;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 .image-container {
@@ -100,7 +101,7 @@ code {
     display: flex;
     align-items: center;
     padding: 10px 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     z-index: 1;
     position: sticky;
     top: 0;
@@ -133,17 +134,17 @@ code {
 .logo {
     display: flex;
     align-items: center;
-    margin-right: auto;  /* ensures no overlap with the nav items */
+    margin-right: auto; /* ensures no overlap with the nav items */
 }
 
 .logo h1 {
-    margin-left: 10px;  /* spacing between logo image and text */
+    margin-left: 10px; /* spacing between logo image and text */
     font-size: 24px;
 }
 
 .logo img {
     height: 50px;
-    width: auto;  /* maintain aspect ratio */
+    width: auto; /* maintain aspect ratio */
 }
 
 .hamburger .line {
@@ -158,8 +159,9 @@ code {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: relative;
+    position: static;
     bottom: 0;
+    left: 0;
     width: 100%;
 }
 
@@ -174,4 +176,9 @@ code {
 
 .footer-text {
     margin: 5px 0;
+}
+
+.page-wrapper {
+    position: relative;
+    min-height: 100vh;
 }
