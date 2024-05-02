@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import useAuthService from '../hooks/useAuthService';
 
 function CompetitorDetails() {
@@ -49,18 +49,33 @@ function CompetitorDetails() {
         <div className="user-details-container">
             {userData.photo_url && (
                 <div className="user-image-container">
-                    <img src={userData.photo_url} alt={`${userData.first_name} ${userData.last_name}`} style={{ width: '100px', height: '100px', borderRadius: '50%' }} />
+                    <img
+                        src={userData.photo_url}
+                        alt={`${userData.first_name} ${userData.last_name}`}
+                        style={{
+                            width: '100px',
+                            height: '100px',
+                            borderRadius: '50%',
+                        }}
+                    />
                 </div>
             )}
             <div className="user-info-container">
-                <h2>{userData.first_name} {userData.last_name}</h2>
+                <h2>
+                    {userData.first_name} {userData.last_name}
+                </h2>
                 <p>Username: {userData.username}</p>
                 <p>Phone: {userData.phone_number}</p>
                 <p>Address: {userData.address}</p>
-                <button onClick={handleNavigate} className="my-tournaments-button">My Tournaments</button>
+                <Link to="/profile/edit" className="btn btn-primary">
+                    Edit Profile
+                </Link>
+                <button onClick={handleNavigate} className="btn btn-primary">
+                    My Tournaments
+                </button>
             </div>
         </div>
-    );
+    )
 }
 
 export default CompetitorDetails;

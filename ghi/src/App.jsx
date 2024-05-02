@@ -26,6 +26,7 @@ import UpcomingTournaments from './components/UpcomingTournaments'
 import ProfileConstruct from './components/ProfileConstruct'
 import TournamentCreateForm from './components/TournamentCreateForm'
 import TournamentDetailsEdit from './components/TournamentDetailsEdit'
+import ProfileEdit from './components/ProfileEdit'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 
@@ -47,7 +48,6 @@ function App() {
                                     Sign Out
                                 </Link>
                             )}
-
                             <Routes>
                                 <Route path="/" element={<LandingPage />} />
                                 <Route
@@ -61,6 +61,10 @@ function App() {
                                 <Route
                                     path="competitordetails"
                                     element={<CompetitorDetails />}
+                                />
+                                <Route
+                                    path="profile/edit"
+                                    element={<ProfileEdit />}
                                 />
                                 <Route
                                     path="mycompetitortournaments"
