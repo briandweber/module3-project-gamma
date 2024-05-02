@@ -149,7 +149,7 @@ function TournamentDetails() {
                         </h5>
                         <div className="text-center">
                             <Link
-                                to={`/mytournaments`}
+                                to={`/mycompetitortournaments`}
                                 className="btn btn-danger mb-3"
                             >
                                 My Tournaments
