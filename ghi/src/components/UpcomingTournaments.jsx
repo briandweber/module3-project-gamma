@@ -14,6 +14,7 @@ function TournamentsColumn(props) {
                             src={tournament.picture_url}
                             className="card-img-top"
                             alt="Picture of Tournament"
+                            style={{ width: '200px', height: '200px' }}
                         />
                         <div className="card-body">
                             <h2 className="card-title mb-2">

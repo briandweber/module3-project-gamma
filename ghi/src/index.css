@@ -183,3 +183,16 @@ code {
     position: relative;
     min-height: 100vh;
 }
+
+.card-img-top {
+    width: 45%;
+    height: 45%;
+    object-fit: cover;
+    padding-top: 3vh;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
