@@ -1,18 +1,6 @@
-import './App.css'
-import './index.css'
-
-const API_HOST = import.meta.env.VITE_API_HOST
-
-if (!API_HOST) {
-    throw new Error('VITE_API_HOST is not defined')
-}
-
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import useAuthService from './hooks/useAuthService'
-import gamesterImage from './images/gamesterImage.png'
-
 import ApplicationStatusDropdown from './components/TournamentApplicationUpdate'
-import Carousel from './components/Carousel'
 import CompetitorDetails from './components/CompetitorDetails'
 import LandingPage from './components/LandingPage'
 import MyCompetitorTournaments from './components/MyCompetitorTournaments'
@@ -24,12 +12,19 @@ import TournamentDetails from './components/TournamentDetails'
 import TournamentList from './components/Tournaments'
 import TournamentManagerDetails from './components/TournamentManagerDetails'
 import UpcomingTournaments from './components/UpcomingTournaments'
-import ProfileConstruct from './components/ProfileConstruct'
 import TournamentCreateForm from './components/TournamentCreateForm'
 import TournamentDetailsEdit from './components/TournamentDetailsEdit'
 import ProfileEdit from './components/ProfileEdit'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+import './App.css'
+import './index.css'
+
+const API_HOST = import.meta.env.VITE_API_HOST
+
+if (!API_HOST) {
+    throw new Error('VITE_API_HOST is not defined')
+}
 
 function App() {
     const { user } = useAuthService()
@@ -39,10 +34,6 @@ function App() {
                 <BrowserRouter>
                     <NavBar />
                     <div className="container-lg">
-                        {/* <div className="image-container"></div>
-                        <div className="name-container">
-                            <h1>Gamester</h1>
-                        </div> */}
                         <div>
                             {user && (
                                 <Link to="signout" className="btn btn-primary">

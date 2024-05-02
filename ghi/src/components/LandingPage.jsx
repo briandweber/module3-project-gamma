@@ -18,8 +18,8 @@ export default function LandingPage() {
     const { user } = useAuthService()
     return (
         <>
-            <div className="carousel-container">
-                <Carousel />
+            <div className="carousel-container container-fluid">
+                {!user && <Carousel />}
             </div>
             <div className="form-container sign-up">
                 {!user && (

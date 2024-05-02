@@ -1,4 +1,6 @@
-import gamesterImage from '../images/gamesterImage.png'
+import carousel1 from '../images/carousel1.png'
+import carousel2 from '../images/carousel2.png'
+import carousel3 from '../images/carousel3.png'
 
 export default function Carousel() {
     return (
@@ -8,20 +10,20 @@ export default function Carousel() {
                     <div className="carousel-item active">
                         <img
                             className="d-block w-100 gamester-carousel-image"
-                            src={gamesterImage}
+                            src={carousel3}
                             alt="Gamester Image"
                         />
                     </div>
                     <div className="carousel-item">
                         <img
-                            src={gamesterImage}
+                            src={carousel1}
                             className="d-block w-100 gamester-carousel-image"
                             alt="Gamester Image"
                         />
                     </div>
                     <div className="carousel-item">
                         <img
-                            src={gamesterImage}
+                            src={carousel2}
                             className="d-block w-100 gamester-carousel-image"
                             alt="Gamester Image"
                         />
