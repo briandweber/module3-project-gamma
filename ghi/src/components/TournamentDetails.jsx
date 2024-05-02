@@ -90,7 +90,7 @@ function TournamentDetails() {
     }
 
     return (
-        <div className="card mb-3 mt-3 shadow card-translucent-grey">
+        <div className="card mb-1 mt-5 shadow card-translucent-grey">
             <img
                 src={tournament.picture_url}
                 className="card-img-top"
@@ -114,7 +114,7 @@ function TournamentDetails() {
                     {user.user_type === 'tournament_manager' && (
                         <button
                             onClick={() => handleDelete(tournament.id)}
-                            className="btn btn-danger mb-3"
+                            className="btn btn-danger mb-3 mt-3"
                         >
                             Delete
                         </button>
@@ -124,7 +124,7 @@ function TournamentDetails() {
                     {user.user_type === 'tournament_manager' && (
                         <Link
                             to={`/tournaments/${tournament.id}/edit`}
-                            className="btn btn-danger mb-3"
+                            className="btn btn-danger mb-3 mt-3"
                         >
                             Edit
                         </Link>
@@ -134,7 +134,7 @@ function TournamentDetails() {
                     {user.user_type === 'competitor' && (
                         <button
                             onClick={() => handleApply(tournament.id)}
-                            className="btn btn-danger mb-3"
+                            className="btn btn-danger mb-3 mt-3"
                         >
                             Apply
                         </button>
@@ -142,15 +142,12 @@ function TournamentDetails() {
                 </div>
                 <div className="text-center">
                     <div className={messageClasses} id="success-message">
-                        <h2 className="mb-1"> Application successful! </h2>
-                        <h5 className="mb-1">
-                            {' '}
-                            Check My Tournaments for status{' '}
-                        </h5>
+                        <h2 className="mb-4"> Application successful! </h2>
+                        <h5 className="mb-2"> Check status here: </h5>
                         <div className="text-center">
                             <Link
                                 to={`/mytournaments`}
-                                className="btn btn-danger mb-3"
+                                className="btn btn-danger mb-3 mt3"
                             >
                                 My Tournaments
                             </Link>
