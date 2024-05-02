@@ -35,6 +35,20 @@ class UserResponse(BaseModel):
     address: str
 
 
+class UserResponseOut(BaseModel):
+    """
+    Represents a user, with the password not included
+    """
+
+    username: str
+    user_type: str
+    first_name: str
+    last_name: str
+    photo_url: str
+    phone_number: str
+    address: str
+
+
 class SignInRequest(BaseModel):
     username: str
     password: str

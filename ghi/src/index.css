@@ -17,7 +17,7 @@ body {
 }
 
 .homepage-background {
-    min-height: 100vh;
+    padding-bottom: 10vh;
     background-image: url(images/homepageBackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -32,6 +32,7 @@ body {
     backdrop-filter: blur(20px);
     border-radius: 5px;
     padding-top: 5vh;
+    padding-bottom: 5vh;
     width: 80vw;
     margin: auto;
 }
@@ -181,4 +182,17 @@ code {
 .page-wrapper {
     position: relative;
     min-height: 100vh;
+}
+
+.card-img-top {
+    width: 45%;
+    height: 45%;
+    object-fit: cover;
+    padding-top: 3vh;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

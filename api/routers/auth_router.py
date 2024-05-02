@@ -20,6 +20,7 @@ from models.users import (
     UserResponse,
     SignInRequest,
     SignInResponse,
+    UserWithPw,
 )
 
 from typing import Optional
@@ -186,11 +187,11 @@ def update_user(
     return queries.update_user(user_id, user)
 
 
-@router.get("/users/{user_id}", response_model=Optional[UserResponse])
+@router.get("/users/{user_id}", response_model=Optional[UserWithPw])
 async def get_user_details(
     user_id: int,
     repo: UserQueries = Depends(),
-) -> UserResponse:
+) -> UserWithPw:
     user = repo.get_by_id(user_id)
     if user is None:
         raise HTTPException(status_code=404, detail="Could not get user")
