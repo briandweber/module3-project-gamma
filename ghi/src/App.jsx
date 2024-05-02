@@ -28,8 +28,6 @@ import TournamentCreateForm from './components/TournamentCreateForm'
 import TournamentDetailsEdit from './components/TournamentDetailsEdit'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
-import NavBar from './components/NavBar'
-import Footer from './components/Footer'
 
 function App() {
     const { user } = useAuthService()
