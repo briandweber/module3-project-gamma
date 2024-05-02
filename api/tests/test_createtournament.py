@@ -1,9 +1,9 @@
 from fastapi.testclient import TestClient
 from main import app
 from queries.tournament_queries import TournamentRepository
-from datetime import date
 
 client = TestClient(app)
+
 
 class MockTournamentRepository:
     def create(self, tournament):
@@ -21,10 +21,9 @@ class MockTournamentRepository:
             "sponsors": "Sample Sponsors"
         }
 
+
 def test_create_tournament():
-
     app.dependency_overrides[TournamentRepository] = MockTournamentRepository
-
     tournament_data = {
         "user_id": 1,
         "event_name": "New Tournament",
