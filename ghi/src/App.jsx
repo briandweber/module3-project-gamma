@@ -12,6 +12,7 @@ import useAuthService from './hooks/useAuthService'
 import gamesterImage from './images/gamesterImage.png'
 
 import ApplicationStatusDropdown from './components/TournamentApplicationUpdate'
+import Carousel from './components/Carousel'
 import CompetitorDetails from './components/CompetitorDetails'
 import LandingPage from './components/LandingPage'
 import MyCompetitorTournaments from './components/MyCompetitorTournaments'
@@ -38,10 +39,10 @@ function App() {
                 <BrowserRouter>
                     <NavBar />
                     <div className="container-lg">
-                        <div className="image-container"></div>
+                        {/* <div className="image-container"></div>
                         <div className="name-container">
                             <h1>Gamester</h1>
-                        </div>
+                        </div> */}
                         <div>
                             {user && (
                                 <Link to="signout" className="btn btn-primary">

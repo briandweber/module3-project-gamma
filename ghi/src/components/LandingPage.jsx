@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import UpcomingTournaments from './UpcomingTournaments'
 import TournamentList from './Tournaments'
+import Carousel from './Carousel'
 
 import useAuthService from '../hooks/useAuthService'
 
@@ -15,28 +16,11 @@ import useAuthService from '../hooks/useAuthService'
 
 export default function LandingPage() {
     const { user } = useAuthService()
-    // console.log(user)
-    // return (
-    //     <>
-    //         <div className="landing-page">
-    //             <Link className="btn btn-primary" to="signup">
-    //                 Sign Up
-    //             </Link>
-    //             <Link className="btn btn-primary" to="signin">
-    //                 Sign In
-    //             </Link>
-    //         </div>
-    //     </>
-    // )
     return (
         <>
-            {/* <div className="form-container">
-                {!user && (
-                    <Link className="btn btn-primary" to="signin">
-                        Sign In
-                    </Link>
-                )}
-            </div> */}
+            <div className="carousel-container">
+                <Carousel />
+            </div>
             <div className="form-container sign-up">
                 {!user && (
                     <Link className="btn btn-primary" to="signup">
