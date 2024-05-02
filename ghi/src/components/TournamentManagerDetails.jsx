@@ -1,48 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import useAuthService from '../hooks/useAuthService';
+import React, { useEffect, useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import useAuthService from '../hooks/useAuthService'
 
 function TournamentManagerDetails() {
-    const { user } = useAuthService();
-    const [userData, setUserData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const navigate = useNavigate();
+    const { user } = useAuthService()
+    const [userData, setUserData] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+    const navigate = useNavigate()
 
     const getData = async () => {
         if (!user || !user.id) {
-            setIsLoading(false);
-            return;
+            setIsLoading(false)
+            return
         }
 
-        const userDetailsUrl = `http://localhost:8000/api/auth/users/${user.id}`;
+        const userDetailsUrl = `http://localhost:8000/api/auth/users/${user.id}`
         try {
-            const response = await fetch(userDetailsUrl);
+            const response = await fetch(userDetailsUrl)
             if (response.ok) {
-                const data = await response.json();
-                setUserData(data);
-                setIsLoading(false);
+                const data = await response.json()
+                setUserData(data)
+                setIsLoading(false)
             } else {
-                throw new Error(`Failed to fetch data: ${response.status}`);
+                throw new Error(`Failed to fetch data: ${response.status}`)
             }
         } catch (e) {
-            setIsLoading(false);
+            setIsLoading(false)
         }
-    };
+    }
 
     useEffect(() => {
-        getData();
-    }, [user.id]);
+        getData()
+    }, [user.id])
 
     if (isLoading) {
-        return <div>Loading user details...</div>;
+        return <div>Loading user details...</div>
     }
 
     if (!userData) {
-        return <div>No user details available.</div>;
+        return <div>No user details available.</div>
     }
 
     return (
-        <div className="user-details-container">
+        <div className="container-lg user-details-container">
             {userData.photo_url && (
                 <div className="user-image-container">
                     <img
@@ -74,4 +74,4 @@ function TournamentManagerDetails() {
     )
 }
 
-export default TournamentManagerDetails;
+export default TournamentManagerDetails

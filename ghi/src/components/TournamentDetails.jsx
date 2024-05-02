@@ -90,7 +90,8 @@ function TournamentDetails() {
     }
 
     return (
-        <div className="card mb-3 mt-3 shadow card-translucent-grey">
+        // <div className="card mb-3 mt-3 shadow card-translucent-grey">
+        <div className="container-lg">
             <img
                 src={tournament.picture_url}
                 className="card-img-top"

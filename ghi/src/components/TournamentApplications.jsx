@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import ApplicationStatusDropdown from './TournamentApplicationUpdate'
 
 function TournamentApplicationList() {
     const [applications, setApplications] = useState([])
-    const [users , setUser] = useState([])
+    const [users, setUser] = useState([])
     const location = useLocation()
     const tournamentId = new URLSearchParams(location.search).get('id')
 
@@ -30,7 +30,7 @@ function TournamentApplicationList() {
                 const requests = []
                 const requestsApp = []
 
-                for (let user of data){
+                for (let user of data) {
                     const detailUrl = `http://localhost:8000/api/auth/users/${user.user_id}`
                     requests.push(fetch(detailUrl))
                 }
@@ -46,45 +46,50 @@ function TournamentApplicationList() {
         }
     }
 
-
     useEffect(() => {
-        fetchApplications();
+        fetchApplications()
         fetchUser()
     }, [tournamentId])
 
-return (
-    <div>
-        <h2>Applicant</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Username</th>
-                    <th>Phone Number</th>
-                </tr>
-            </thead>
-            <tbody>
-                {applications
-                    .filter((application) => application.status !== 'denied')
-                    .map((application) => {
-                        const user = users.find(
-                            (u) => u.id === application.user_id
+    return (
+        <div className="container-lg">
+            <h2>Applications</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th className="table-head">Username</th>
+                        <th className="table-head">Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {applications
+                        .filter(
+                            (application) => application.status !== 'denied'
                         )
-                        return (
-                            <tr key={application.id}>
-                                <td>{user?.username || 'N/A'}</td>
-                                <td>{user?.phone_number || 'N/A'}</td>
-                                <td>
-                                    <ApplicationStatusDropdown
-                                        applicationId={application.id}
-                                    />
-                                </td>
-                            </tr>
-                        )
-                    })}
-            </tbody>
-        </table>
-    </div>
-)
+                        .map((application) => {
+                            const user = users.find(
+                                (u) => u.id === application.user_id
+                            )
+                            return (
+                                <tr className="table-row" key={application.id}>
+                                    <td className="table-data">
+                                        {user?.username || 'N/A'}
+                                    </td>
+                                    <td className="table-data">
+                                        {user?.phone_number || 'N/A'}
+                                    </td>
+                                    <td className="table-data">
+                                        <ApplicationStatusDropdown
+                                            applicationId={application.id}
+                                        />
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                </tbody>
+            </table>
+        </div>
+    )
 }
 
 export default TournamentApplicationList
