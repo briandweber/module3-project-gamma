@@ -1,150 +1,176 @@
-# Module3 Project Gamma
+# **Gamester Application**
 
-## Getting started
+![alt text](image.png)
 
-You have a project repository, now what? The next section
-lists all of the deliverables that are due at the end of the
-week. Below is some guidance for getting started on the
-tasks for this week!
+## **Team**
 
-## Install Extensions
 
--   Prettier: <https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode>
--   Black Formatter: <https://marketplace.visualstudio.com/items?itemName=ms-python.black-formatter>
+**Person 1 - Brian Weber**
 
-## Deliverables
+**Person 2 - Chase Robles**
 
--   [ ] Wire-frame diagrams
--   [ ] API documentation
--   [ ] Project is deployed to Caprover (BE, DB) & GitLab-pages (FE)
--   [ ] GitLab issue board is setup and in use (or project management tool of choice)
--   [ ] Journals
+**Person 3 - Elliott Porter**
 
-## Project layout
+**Person 4 - Monika Pyarali**
 
-The layout of the project is just like all of the projects
-you did with `docker-compose` in module #2. You will create
-a directory in the root of the repository for each service
-that you add to your project just like those previous
-projects were setup.
 
-### Directories
+## **Overview**
 
-Several directories have been added to your project. The
-directories `docs` and `journals` are places for you and
-your team-mates to, respectively, put any documentation
-about your project that you create and to put your
-project-journal entries. See the _README.md_ file in each
-directory for more info.
 
-The other directories, `ghi` and `api`, are services, that
-you can start building off of.
+Welcome to Gamester, the one-stop solution for crafting unforgettable gaming experiences with precision and simplicity. Gamester is a platform designed to meet the needs of both tournament managers and participants alike. With Gamester's adaptive design, competitors and tournament managers experience optimized functionality, ensuring a smooth and enjoyable gaming experience for all.
 
-Inside of `ghi` is a minimal React app that has an "under construction" page.
-This app is written using the [Vite](https://vitejs.dev/) bundler. The example
-code is also using [jsdoc](https://jsdoc.app/) to provide type hints for
-JavaScript. You are not required to use JSDoc yourself, and you will be removing
-these examples and providing your own code for `App.jsx`
 
-Inside of `api` is a minimal FastAPI application.
-"Where are all the files?" you might ask? Well, the
-`main.py` file is the whole thing, and go take look inside
-of it... There's not even much in there..., hmm? That is
-FastAPI, we'll learn more about it in the coming days. Can
-you figure out what this little web-application does even
-though you haven't learned about FastAPI yet?
+From setting up tournaments to managing registrations, Gamester provides tournament managers with the tools and support needed to navigate the complexities of event coordination with ease. Whether you're a seasoned gamer or a newcomer to the scene, applying to join tournaments has never been easier. With just a few clicks, users can browse available tournaments, view details, and submit their applications hassle-free. Say goodbye to cumbersome registration processes and hello to the ease and efficiency of Gamester.
 
-Also in `api` is a directory for your migrations.
-If you choose to use PostgreSQL, then you'll want to use
-migrations to control your database. Unlike Django, where
-migrations were automatically created for you, you'll write
-yours by hand using DDL. Don't worry about not knowing what
-DDL means; we have you covered. There's a sample migration
-in there that creates two tables so you can see what they
-look like.
 
-The Dockerfile and Dockerfile.dev run your migrations
-for you automatically.
+Let's embark on this gaming journey together, where every tournament becomes an epic adventure!
 
-### Other files
 
-The following project files have been created as a minimal
-starting point. Please follow the guidance for each one for
-a most successful project.
+## **Concept model diagram for Gamester application**
 
--   `docker-compose.yaml`: there isn't much in here, just a
-    **really** simple UI and FastAPI service. Add services
-    (like a database) to this file as you did with previous
-    projects in module #2.
--   `.gitlab-ci.yml`: This is your "ci/cd" file where you will
-    configure automated unit tests, code quality checks, and
-    the building and deployment of your production system.
-    Currently, all it does is deploy an "under construction"
-    page to your production UI on GitLab and a sample backend
-    to CapRover. We will learn much more about this file.
--   `.gitignore`: This is a file that prevents unwanted files
-    from getting added to your repository, files like
-    `pyc` files, `__pycache__`, etc. We've set it up so that
-    it has a good default configuration for Python projects.
--   `.env.sample`: This file is a template to copy when
-    creating environment variables for your team. Create a
-    copy called `.env` and put your own passwords in here
-    without fear of it being committed to git (see `.env`
-    listed in `.gitignore`). You can also put team related
-    environment variables in here, things like api and signing
-    keys that shouldn't be committed; these should be
-    duplicated in your deployed environments.
+(Insert image of updated wireframes here)
 
-### Installing python dependencies locally
 
-In order for VSCode's built in code completion and intelligence to
-work correctly, it needs the dependencies from the requirements.txt file
-installed. We do this inside docker, but not in the workspace.
 
-So we need to create a virtual environment and pip install the requirements.
 
-From inside the `api` folder:
+## **Design Features**
 
-```bash
-python -m venv .venv
-```
+![alt text](Gamester-login.png)
 
-Then activate the virtual environment
+The Gamester application features conditional rendering, tailoring functionality based on user types: 
 
-```bash
-source .venv/bin/activate
-```
 
-And finally install the dependencies
+**Competitor**
 
-```bash
-pip install -r requirements.txt
-```
 
-Then make sure the venv is selected in VSCode by checking the lower right of the
-VSCode status bar
+For competitors, the interface prioritizes ease of use, facilitating effortless browsing of tournaments and streamlined application submission.
 
-### Setup GitLab repo/project
 
--   make sure this project is in a group. If it isn't, stop
-    now and move it to a GitLab group
--   remove the fork relationship: In GitLab go to:
+**Tournament Manager**
 
-    Settings -> General -> Advanced -> Remove fork relationship
 
--   add these GitLab CI/CD variables:
-    -   PUBLIC_URL : this is your gitlab pages URL
-    -   VITE_APP_API_HOST: enter "blank" for now
+Tournament managers access comprehensive tools for tournament setup and participant management. The interface emphasizes intuitive navigation, providing seamless control over every aspect of event organization. 
 
-#### Your GitLab pages URL
 
-You can't find this in GitLab until after you've done a deploy
-but you can figure it out yourself from your GitLab project URL:
 
-If this is your project URL:
 
-https://gitlab.com/GROUP_NAME/PROJECT_NAME
+### **Competitor functionality**
 
-then your GitLab pages URL will be:
 
-https://GROUP_NAME.gitlab.io/PROJECT_NAME
+When logged in as a competitor, users have the ability to:
+
+
+1. View a list of all upcoming tournaments 
+
+
+![alt text](Gamester-competitor.png)
+
+
+2. View the details of each tournament, including the event description, roster size, entry fee, prizes and sponsors 
+
+![alt text](Gamester-tournaments.png)
+
+
+
+3. Apply to a tournament with the click of a button
+
+![alt text](Gamester-details.png)
+
+
+4. Once an application is submitted, navigate to the My Tournaments page for competitors to view to status of their application 
+
+
+![alt text](Gamester-application.png)
+
+
+5. Navigate to see the details of their profile page through the nav bar link 
+
+
+![alt text](Gamester-mytournaments.png)
+
+
+6. Make updates to their profile page, including updating phone number, address information and photo 
+
+![alt text](Gamester-profile.png)
+
+
+
+
+### **Tournament Manager**
+
+
+When logged in as a tournament manager, users have the ability to:
+
+
+1. View a list of all tournaments created by the current user 
+
+![alt text](Gamester-manager.png)
+
+
+2. View a list of pending applications from competitors for the tournaments managed by the current user 
+
+
+![alt text](Gamester-applications.png)
+
+
+3. View the details of each tournament, including the event description, roster size, entry fee, prizes and sponsors 
+
+
+4. Within the details view for the tournament, managers are able to delete and edit information about the selected tournament 
+
+
+
+5. Navigate to see the details of their profile page through the nav bar link 
+
+
+![alt text](Gamester-profile2.png)
+
+
+6. Make updates to their profile page, including updating phone number, address information and photo 
+
+
+### **Technologies used**
+
+
+- Frontend: React.js, HTML, CSS, Bootstrap, Node.js
+- Backend: FastAPI
+- Database: PostgreSQL
+- Deployment: Docker, Docker Compose
+- Version Control: Git, GitLab
+
+
+### **Installation**
+
+
+1) Fork and clone the repository: https://gitlab.com/gamester/module3-project-gamma
+2) Run Docker:
+   - `docker volume create database-volume`
+   - `docker-compose build `
+   - `docker compose up`
+3) Check that all Docker containers are running
+ - To troubleshoot containers, try navigating to the container name and checking the logs. You can also run commands from the exec tab on the container.
+4) The application should now be running locally on:
+   - http://localhost:5173:  Gamester application front-end
+   - http://localhost:8000: FastAPI backend
+
+
+If you encounter any issues with installation, please do let us know!
+
+
+### **Usage**
+- You may use the application once it is installed. Registering a user is as easy as navigating to the signup page through the “Sign Up” link below “No Account Yet?” on the user homepage. The functionality of this application is dependent on user type, so please be sure to register as a tournament manager or competitor accordingly! 
+
+
+### **Contributing**
+- This is an open-source database that accepts contributions from all developers! Please follow the steps below if you would like to contribute:
+1) Fork the repository
+2) Create a new branch: `git checkout -b feature/your-feature-name`
+3) Commit changes: `git commit -m "Your message here"`
+4) Push to the branch: `git push origin feature/your-feature-name`
+5) Create a new Merge request and our team will review your changes for integration! 
+
+
+
+## **CRUD (Create, Read, Update, Delete) Routes**
+
+(Insert updated CRUD routes here)
