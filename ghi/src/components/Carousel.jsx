@@ -21,7 +21,7 @@ export default function Carousel() {
                             alt="Gamester Image"
                         />
                     </div>
-                    <div className="carousel-item">
+                    <div className="carousel-item active">
                         <img
                             src={carousel2}
                             className="d-block w-100 gamester-carousel-image"
