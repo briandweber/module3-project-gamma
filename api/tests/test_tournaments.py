@@ -8,19 +8,21 @@ client = TestClient(app)
 
 class EmptyTournamentQueries:
     def get_all(self):
-        return [{
-            "id": 2,
-            "user_id": 1,
-            "event_name": "asdad",
-            "roster_size": 10,
-            "event_start": "2024-04-24",
-            "duration": 10,
-            "event_description": "asd",
-            "picture_url": "asd",
-            "entry_fee": 10,
-            "prize": 10,
-            "sponsors": "asd"
-            }]
+        return [
+            {
+                "id": 2,
+                "user_id": 1,
+                "event_name": "asdad",
+                "roster_size": 10,
+                "event_start": "2024-04-24",
+                "duration": 10,
+                "event_description": "asd",
+                "picture_url": "asd",
+                "entry_fee": 10,
+                "prize": 10,
+                "sponsors": "asd",
+            }
+        ]
 
 
 def test_get_all_tournaments():
