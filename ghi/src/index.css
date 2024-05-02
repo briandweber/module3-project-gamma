@@ -184,11 +184,12 @@ code {
 }
 
 .gamester-carousel-image {
-    height: 100%;
-    width: 50%;
+    width: 90vw;
+    height: 50vh;
+    object-fit: cover;
 }
 
-.carousel-container {
+/* .carousel-container {
     max-width: 100%;
     max-height: 20%;
-}
+} */
