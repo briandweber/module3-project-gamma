@@ -29,17 +29,13 @@ if (!API_HOST) {
 function App() {
     const { user } = useAuthService()
     return (
-        <div className="page-wrapper">
-            <div className="homepage-background">
-                <BrowserRouter>
-                    <NavBar />
-                    <div className="container-lg">
+        <>
+            <div className="page-wrapper">
+                <div className="homepage-background">
+                    <BrowserRouter>
+                        <NavBar />
+
                         <div>
-                            {user && (
-                                <Link to="signout" className="btn btn-primary">
-                                    Sign Out
-                                </Link>
-                            )}
                             <Routes>
                                 <Route path="/" element={<LandingPage />} />
                                 <Route
@@ -91,11 +87,12 @@ function App() {
                                 />
                             </Routes>
                         </div>
-                    </div>
-                </BrowserRouter>
+                    </BrowserRouter>
+                </div>
             </div>
+
             <Footer />
-        </div>
+        </>
     )
 }
 

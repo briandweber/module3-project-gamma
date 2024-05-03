@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import useAuthService from '../hooks/useAuthService';
-
+import React, { useState, useEffect } from 'react'
+import useAuthService from '../hooks/useAuthService'
 
 const TournamentCreateForm = () => {
-    const { user, isLoggedIn, isLoading } = useAuthService();
+    const { user, isLoggedIn, isLoading } = useAuthService()
     const [formData, setFormData] = useState({
         user_id: '',
         event_name: '',
@@ -14,103 +13,206 @@ const TournamentCreateForm = () => {
         picture_url: '',
         entry_fee: '',
         prize: '',
-        sponsors: ''
-    });
+        sponsors: '',
+    })
 
     useEffect(() => {
-        if (!isLoading && isLoggedIn && user && user.user_type === 'tournament_manager') {
-            setFormData(prevData => ({ ...prevData, user_id: user.id }));
-        } else if (!isLoading && (!isLoggedIn || (user && user.user_type !== 'tournament_manager'))) {
-            alert("You must be a tournament manager to create tournaments.");
+        if (
+            !isLoading &&
+            isLoggedIn &&
+            user &&
+            user.user_type === 'tournament_manager'
+        ) {
+            setFormData((prevData) => ({ ...prevData, user_id: user.id }))
+        } else if (
+            !isLoading &&
+            (!isLoggedIn || (user && user.user_type !== 'tournament_manager'))
+        ) {
+            alert('You must be a tournament manager to create tournaments.')
         }
-    }, [isLoggedIn, user, isLoading]);
+    }, [isLoggedIn, user, isLoading])
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
+        const { name, value } = e.target
+        setFormData((prev) => ({
             ...prev,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!user || user.user_type !== 'tournament_manager') {
-            alert("You are not authorized to perform this action.");
-            return;
-        }
-        try {
-            const response = await fetch('http://localhost:8000/api/tournaments', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            const data = await response.json();
-            if (response.ok) {
-                alert('Tournament created successfully!');
-            } else {
-                throw new Error(data.message || 'Failed to create tournament');
-            }
-        } catch (error) {
-            console.error('Submission error:', error);
-            alert(error.message);
-        }
-    };
-
-    if (isLoading) {
-        return <div>Loading...</div>;
+            [name]: value,
+        }))
     }
 
-    return (
-        isLoggedIn && user && user.user_type === 'tournament_manager' ? (
-            <div style={{ padding: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    <h2>Create Tournament</h2>
-                    <label>
-                        Event Name:
-                        <input type="text" name="event_name" value={formData.event_name} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Roster Size:
-                        <input type="number" name="roster_size" value={formData.roster_size} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Event Start Date:
-                        <input type="date" name="event_start" value={formData.event_start} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Duration (Days):
-                        <input type="number" name="duration" value={formData.duration} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Event Description:
-                        <textarea name="event_description" value={formData.event_description} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Picture URL:
-                        <input type="text" name="picture_url" value={formData.picture_url} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Entry Fee:
-                        <input type="number" name="entry_fee" value={formData.entry_fee} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Prize:
-                        <input type="number" name="prize" value={formData.prize} onChange={handleChange} required />
-                    </label>
-                    <label>
-                        Sponsors:
-                        <input type="text" name="sponsors" value={formData.sponsors} onChange={handleChange} />
-                    </label>
-                    <button type="submit">Create Tournament</button>
-                </form>
-            </div>
-        ) : (
-            <p>You do not have permission to create tournaments.</p>
-        )
-    );
-};
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if (!user || user.user_type !== 'tournament_manager') {
+            alert('You are not authorized to perform this action.')
+            return
+        }
+        try {
+            const response = await fetch(
+                'http://localhost:8000/api/tournaments',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                }
+            )
+            const data = await response.json()
+            if (response.ok) {
+                alert('Tournament created successfully!')
+            } else {
+                throw new Error(data.message || 'Failed to create tournament')
+            }
+        } catch (error) {
+            console.error('Submission error:', error)
+            alert(error.message)
+        }
+    }
 
-export default TournamentCreateForm;
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
+    return isLoggedIn && user && user.user_type === 'tournament_manager' ? (
+        <div
+            className="container-lg"
+            style={{
+                padding: '20px',
+                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            }}
+        >
+            <form
+                className="row"
+                onSubmit={handleSubmit}
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '10px',
+                }}
+            >
+                <h2>Create Tournament</h2>
+                <label>
+                    Event Name:
+                    <div className="col-md-6">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="event_name"
+                            value={formData.event_name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    Roster Size:
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="number"
+                            name="roster_size"
+                            value={formData.roster_size}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    Event Start Date:
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="date"
+                            name="event_start"
+                            value={formData.event_start}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    Duration (Days):
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="number"
+                            name="duration"
+                            value={formData.duration}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    Event Description:
+                    <div className="col-md-5">
+                        <textarea
+                            className="form-control"
+                            name="event_description"
+                            value={formData.event_description}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    Picture URL:
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="picture_url"
+                            value={formData.picture_url}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </label>
+                <label>
+                    Entry Fee:
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="number"
+                            name="entry_fee"
+                            value={formData.entry_fee}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    Prize:
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="number"
+                            name="prize"
+                            value={formData.prize}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    Sponsors:
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="sponsors"
+                            value={formData.sponsors}
+                            onChange={handleChange}
+                        />
+                    </div>
+                </label>
+                <button className="btn btn-success" type="submit">
+                    Create Tournament
+                </button>
+            </form>
+        </div>
+    ) : (
+        <p>You do not have permission to create tournaments.</p>
+    )
+}
+
+export default TournamentCreateForm

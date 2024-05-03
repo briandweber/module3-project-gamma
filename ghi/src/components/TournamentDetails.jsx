@@ -86,11 +86,12 @@ function TournamentDetails() {
     }, [id])
 
     if (!tournament) {
-        return <div>Oops! This tournament doesn't exist!</div>
+        return <div>Oops! This tournament does not exist!</div>
     }
 
     return (
-        <div className="card mb-3 mt-3 shadow card-translucent-grey">
+        // <div className="card mb-3 mt-3 shadow card-translucent-grey">
+        <div className="container-lg">
             <img
                 src={tournament.picture_url}
                 className="card-img-top"

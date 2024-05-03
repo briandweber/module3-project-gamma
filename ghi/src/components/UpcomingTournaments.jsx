@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function TournamentsColumn(props) {
@@ -14,6 +14,7 @@ function TournamentsColumn(props) {
                             src={tournament.picture_url}
                             className="card-img-top"
                             alt="Picture of Tournament"
+                            style={{ width: '200px', height: '200px' }}
                         />
                         <div className="card-body">
                             <h2 className="card-title mb-2">
@@ -38,7 +39,7 @@ function TournamentsColumn(props) {
     )
 }
 
-function UpcomingTournaments(props) {
+function UpcomingTournaments() {
     const [tournamentColumns, setTournamentColumns] = useState([[], [], []])
 
     async function getTournaments() {

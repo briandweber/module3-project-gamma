@@ -9,7 +9,7 @@ export default function Carousel() {
                 <div className="carousel-inner">
                     <div className="carousel-item active">
                         <img
-                            className="d-block gamester-carousel-image"
+                            className="d-block w-100 gamester-carousel-image"
                             src={carousel3}
                             alt="Gamester Image"
                         />
@@ -21,7 +21,7 @@ export default function Carousel() {
                             alt="Gamester Image"
                         />
                     </div>
-                    <div className="carousel-item active">
+                    <div className="carousel-item">
                         <img
                             src={carousel2}
                             className="d-block w-100 gamester-carousel-image"
