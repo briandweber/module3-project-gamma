@@ -72,68 +72,72 @@ export default function ProfileEdit() {
     }
 
     return (
-        <div className="container-lg">
-            <h2>Tournament Details Edit</h2>
-            <form className="row" onSubmit={handleSubmit}>
-                <div className="col-md-6">
-                    <label htmlFor="first_name">First Name:</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="first_name"
-                        name="first_name"
-                        value={formData.first_name}
-                        onChange={handleFormChange}
-                    />
+        <div className="page-wrapper">
+            <div className="homepage-background">
+                <div className="container-lg">
+                    <h2>Edit Profile</h2>
+                    <form className="row" onSubmit={handleSubmit}>
+                        <div className="col-md-6">
+                            <label htmlFor="first_name">First Name:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                id="first_name"
+                                name="first_name"
+                                value={formData.first_name}
+                                onChange={handleFormChange}
+                            />
+                        </div>
+                        <div className="col-md-6 form-group">
+                            <label htmlFor="last_name">Last Name:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                id="last_name"
+                                name="last_name"
+                                value={formData.last_name}
+                                onChange={handleFormChange}
+                            />
+                        </div>
+                        <div className="col-md-6 form-group">
+                            <label htmlFor="photo_url">Photo Url:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                id="photo_url"
+                                name="photo_url"
+                                value={formData.photo_url}
+                                onChange={handleFormChange}
+                            />
+                        </div>
+                        <div className="col-md-6 form-group">
+                            <label htmlFor="phone_number">Phone Number:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                id="phone_number"
+                                name="phone_number"
+                                value={formData.phone_number}
+                                onChange={handleFormChange}
+                            />
+                        </div>
+                        <div className="col-md-6 form-group">
+                            <label htmlFor="address">Address:</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                id="address"
+                                name="address"
+                                value={formData.address}
+                                onChange={handleFormChange}
+                            />
+                        </div>
+                        <button className="btn btn-danger mb-3" type="submit">
+                            Save
+                        </button>
+                    </form>
                 </div>
-                <div className="col-md-6 form-group">
-                    <label htmlFor="last_name">Last Name:</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="last_name"
-                        name="last_name"
-                        value={formData.last_name}
-                        onChange={handleFormChange}
-                    />
-                </div>
-                <div className="col-md-6 form-group">
-                    <label htmlFor="photo_url">Photo Url:</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="photo_url"
-                        name="photo_url"
-                        value={formData.photo_url}
-                        onChange={handleFormChange}
-                    />
-                </div>
-                <div className="col-md-6 form-group">
-                    <label htmlFor="phone_number">Phone Number:</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="phone_number"
-                        name="phone_number"
-                        value={formData.phone_number}
-                        onChange={handleFormChange}
-                    />
-                </div>
-                <div className="col-md-6 form-group">
-                    <label htmlFor="address">Address:</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="address"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleFormChange}
-                    />
-                </div>
-                <button className="btn btn-danger mb-3" type="submit">
-                    Save
-                </button>
-            </form>
+            </div>
         </div>
     )
 }
