@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function TournamentsColumn(props) {
     return (
@@ -18,8 +18,7 @@ function TournamentsColumn(props) {
                         />
                         <div className="card-body">
                             <h2 className="card-title mb-2">
-                                Tournament #{tournament.id}:{' '}
-                                {tournament.event_name}
+                                Tournament #{tournament.id}: {tournament.event_name}
                             </h2>
                             <h4>Starts on: {tournament.event_start}</h4>
                             <h4>Duration: {tournament.duration}</h4>
@@ -33,40 +32,46 @@ function TournamentsColumn(props) {
                             </Link>
                         </div>
                     </div>
-                )
+                );
             })}
         </div>
-    )
+    );
 }
 
 function UpcomingTournaments(props) {
-    const [tournamentColumns, setTournamentColumns] = useState([[], [], []])
+    const [tournamentColumns, setTournamentColumns] = useState([[], [], []]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     async function getTournaments() {
-        const url = `http://localhost:8000/api/tournaments`
+        const url = `http://localhost:8000/api/tournaments`;
 
         try {
-            const response = await fetch(url)
+            const response = await fetch(url);
             if (response.ok) {
-                const data = await response.json()
-                const tournamentColumns = [[], [], []]
+                let data = await response.json();
 
+
+                if (searchTerm) {
+                    data = data.filter(t => t.event_name.toLowerCase().includes(searchTerm.toLowerCase()));
+                }
+
+                const tournamentColumns = [[], [], []];
                 data.forEach((tournament, index) => {
-                    tournamentColumns[index % 3].push(tournament)
-                })
+                    tournamentColumns[index % 3].push(tournament);
+                });
 
-                setTournamentColumns(tournamentColumns)
+                setTournamentColumns(tournamentColumns);
             } else {
-                console.error('Failed to fetch tournaments')
+                console.error('Failed to fetch tournaments');
             }
         } catch (error) {
-            console.error('Error fetching tournaments:', error)
+            console.error('Error fetching tournaments:', error);
         }
     }
 
     useEffect(() => {
-        getTournaments()
-    }, [])
+        getTournaments();
+    }, [searchTerm]);
 
     return (
         <>
@@ -74,6 +79,13 @@ function UpcomingTournaments(props) {
                 <h1 className="display-5 fw-bold">Upcoming Tournaments</h1>
                 <div className="col-lg-6 mx-auto">
                     <p className="lead mb-4">Get playing!</p>
+                    <input
+                        type="text"
+                        placeholder="Search by tournament name..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        style={{ marginBottom: '20px', width: '50%' }}
+                    />
                 </div>
             </div>
             <div className="container">
@@ -85,12 +97,12 @@ function UpcomingTournaments(props) {
                                 list={tournamentList}
                                 getTournaments={getTournaments}
                             />
-                        )
+                        );
                     })}
                 </div>
             </div>
         </>
-    )
+    );
 }
 
-export default UpcomingTournaments
+export default UpcomingTournaments;
