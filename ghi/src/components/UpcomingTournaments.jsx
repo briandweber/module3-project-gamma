@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function TournamentsColumn(props) {
@@ -39,7 +39,7 @@ function TournamentsColumn(props) {
     )
 }
 
-function UpcomingTournaments(props) {
+function UpcomingTournaments() {
     const [tournamentColumns, setTournamentColumns] = useState([[], [], []])
 
     async function getTournaments() {

@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import useAuthService from '../hooks/useAuthService'
 
 function TournamentManagerDetails() {
     const { user } = useAuthService()
     const [userData, setUserData] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    const navigate = useNavigate()
 
     const getData = async () => {
         if (!user || !user.id) {
@@ -42,33 +41,37 @@ function TournamentManagerDetails() {
     }
 
     return (
-        <div className="container-lg user-details-container">
-            {userData.photo_url && (
-                <div className="user-image-container">
-                    <img
-                        src={userData.photo_url}
-                        alt={`${userData.first_name} ${userData.last_name}`}
-                        style={{
-                            width: '100px',
-                            height: '100px',
-                            borderRadius: '50%',
-                        }}
-                    />
-                </div>
-            )}
-            <div className="user-info-container">
-                <h2>
-                    {userData.first_name} {userData.last_name} (Manager)
-                </h2>
-                <p>Username: {userData.username}</p>
-                <p>Phone: {userData.phone_number}</p>
-                <p>Address: {userData.address}</p>
-                {/* Button is also commented out:
+        <div className="page-wrapper">
+            <div className="homepage-background">
+                <div className="container-lg user-details-container">
+                    {userData.photo_url && (
+                        <div className="user-image-container">
+                            <img
+                                src={userData.photo_url}
+                                alt={`${userData.first_name} ${userData.last_name}`}
+                                style={{
+                                    width: '100px',
+                                    height: '100px',
+                                    borderRadius: '50%',
+                                }}
+                            />
+                        </div>
+                    )}
+                    <div className="user-info-container">
+                        <h2>
+                            {userData.first_name} {userData.last_name} (Manager)
+                        </h2>
+                        <p>Username: {userData.username}</p>
+                        <p>Phone: {userData.phone_number}</p>
+                        <p>Address: {userData.address}</p>
+                        {/* Button is also commented out:
                 <button onClick={handleNavigate} className="manage-tournaments-button">Manage My Tournaments</button>
                 */}
-                <Link to="/profile/edit" className="btn btn-primary">
-                    Edit Profile
-                </Link>
+                        <Link to="/profile/edit" className="btn btn-primary">
+                            Edit Profile
+                        </Link>
+                    </div>
+                </div>
             </div>
         </div>
     )
