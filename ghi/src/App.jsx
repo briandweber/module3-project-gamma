@@ -37,69 +37,55 @@ function App() {
             <div className="homepage-background">
                 <BrowserRouter>
                     <NavBar />
-                    <div className="container-lg">
-                        <div className="image-container"></div>
-                        <div className="name-container">
-                            <h1>Gamester</h1>
-                        </div>
-                        <div>
-                            {user && (
-                                <Link to="signout" className="btn btn-primary">
-                                    Sign Out
-                                </Link>
-                            )}
-                            <Routes>
-                                <Route path="/" element={<LandingPage />} />
-                                <Route
-                                    path="applications"
-                                    element={<TournamentApplicationList />}
-                                />
-                                <Route
-                                    path="applications/edit"
-                                    element={<ApplicationStatusDropdown />}
-                                />
-                                <Route
-                                    path="competitordetails"
-                                    element={<CompetitorDetails />}
-                                />
-                                <Route
-                                    path="profile/edit"
-                                    element={<ProfileEdit />}
-                                />
-                                <Route
-                                    path="mycompetitortournaments"
-                                    element={<MyCompetitorTournaments />}
-                                />
-                                <Route path="signin" element={<SignInForm />} />
-                                <Route path="signout" element={<SignOut />} />
-                                <Route path="signup" element={<SignUpForm />} />
-                                <Route
-                                    path="tournaments/:id"
-                                    element={<TournamentDetails />}
-                                />
-                                <Route
-                                    path="tournaments"
-                                    element={<TournamentList />}
-                                />
-                                <Route
-                                    path="tournaments/:id/edit"
-                                    element={<TournamentDetailsEdit />}
-                                />
-                                <Route
-                                    path="tournamentmanagerdetails"
-                                    element={<TournamentManagerDetails />}
-                                />
-                                <Route
-                                    path="upcomingtournaments"
-                                    element={<UpcomingTournaments />}
-                                />
-                                <Route
-                                    path="tournament/create"
-                                    element={<TournamentCreateForm />}
-                                />
-                            </Routes>
-                        </div>
-                    </div>
+                    {/* <div className="container-lg"> */}
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route
+                            path="applications"
+                            element={<TournamentApplicationList />}
+                        />
+                        <Route
+                            path="applications/edit"
+                            element={<ApplicationStatusDropdown />}
+                        />
+                        <Route
+                            path="competitordetails"
+                            element={<CompetitorDetails />}
+                        />
+                        <Route path="profile/edit" element={<ProfileEdit />} />
+                        <Route
+                            path="mycompetitortournaments"
+                            element={<MyCompetitorTournaments />}
+                        />
+                        <Route path="signin" element={<SignInForm />} />
+                        <Route path="signout" element={<SignOut />} />
+                        <Route path="signup" element={<SignUpForm />} />
+                        <Route
+                            path="tournaments/:id"
+                            element={<TournamentDetails />}
+                        />
+                        <Route
+                            path="tournaments"
+                            element={<TournamentList />}
+                        />
+                        <Route
+                            path="tournaments/:id/edit"
+                            element={<TournamentDetailsEdit />}
+                        />
+                        <Route
+                            path="tournamentmanagerdetails"
+                            element={<TournamentManagerDetails />}
+                        />
+                        <Route
+                            path="upcomingtournaments"
+                            element={<UpcomingTournaments />}
+                        />
+                        <Route
+                            path="tournament/create"
+                            element={<TournamentCreateForm />}
+                        />
+                    </Routes>
+                    {/* </div> */}
                 </BrowserRouter>
             </div>
             <Footer />

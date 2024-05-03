@@ -35,6 +35,7 @@ body {
     padding-bottom: 5vh;
     width: 80vw;
     margin: auto;
+    margin-top: 10%;
 }
 
 code {
@@ -182,6 +183,25 @@ code {
 .page-wrapper {
     position: relative;
     min-height: 100vh;
+}
+
+.table-head {
+    text-align: center;
+    padding: 15px;
+}
+
+.table-row {
+    height: 30px;
+}
+
+.table-data {
+    text-align: center;
+    padding: 15px;
+}
+
+.row {
+    display: flex;
+    justify-content: cneter;
 }
 
 .card-img-top {

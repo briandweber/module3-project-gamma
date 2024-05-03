@@ -41,6 +41,10 @@ export default function MyCompetitorTournaments() {
             console.log(e)
         }
     }
+    console.log('tournaments')
+    console.log(tournaments)
+    console.log('applications')
+    console.log(applications)
     useEffect(() => {
         getData(), getTournamentsData()
     }, [])
@@ -48,17 +52,17 @@ export default function MyCompetitorTournaments() {
         return <div>user does not exist!</div>
     }
     return (
-        <div>
+        <div className="container-lg">
             <h2>My Tournaments</h2>
-            <table className="table table-striped table-hover">
+            <table>
                 <thead>
                     <tr>
-                        <th>Event Name</th>
-                        <th>Event Start Time</th>
-                        <th>Roster Size Limit</th>
-                        <th>Entry Fee</th>
-                        <th>Prize</th>
-                        <th>Status</th>
+                        <th className="table-head">Event Name</th>
+                        <th className="table-head">Event Start Time</th>
+                        <th className="table-head">Roster Size Limit</th>
+                        <th className="table-head">Entry Fee</th>
+                        <th className="table-head">Prize</th>
+                        <th className="table-head">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,13 +71,23 @@ export default function MyCompetitorTournaments() {
                             (u) => u.id === application.tournament_id
                         )
                         return (
-                            <tr key={application.id}>
-                                <td>{user?.event_name || 'N/A'}</td>
-                                <td>{user?.event_start || 'N/A'}</td>
-                                <td>{user?.roster_size}</td>
-                                <td>{user?.entry_fee}</td>
-                                <td>{user?.prize}</td>
-                                <td>{application.status || 'N/A'}</td>
+                            <tr className="table-row" key={application.id}>
+                                <td className="table-data">
+                                    {user?.event_name || 'N/A'}
+                                </td>
+                                <td className="table-data">
+                                    {user?.event_start || 'N/A'}
+                                </td>
+                                <td className="table-data">
+                                    {user?.roster_size}
+                                </td>
+                                <td className="table-data">
+                                    {user?.entry_fee}
+                                </td>
+                                <td className="table-data">{user?.prize}</td>
+                                <td className="table-data">
+                                    {application.status || 'N/A'}
+                                </td>
                             </tr>
                         )
                     })}
