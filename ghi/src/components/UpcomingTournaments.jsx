@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 function TournamentsColumn(props) {
     return (
@@ -120,8 +120,8 @@ function SidebarFilters({ onFilterChange, onClearFilters }) {
     );
 }
 
-function UpcomingTournaments(props) {
-    const [tournamentColumns, setTournamentColumns] = useState([[], [], []]);
+function UpcomingTournaments() {
+    const [tournamentColumns, setTournamentColumns] = useState([[], [], []])
 
     const getTournaments = async (filters) => {
         const url = `http://localhost:8000/api/tournaments`;
