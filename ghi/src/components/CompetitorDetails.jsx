@@ -46,37 +46,44 @@ function CompetitorDetails() {
     }
 
     return (
-        <div className="container-lg">
-            <div className="user-details-container">
-                {userData.photo_url && (
-                    <div className="user-image-container">
-                        <img
-                            src={userData.photo_url}
-                            alt={`${userData.first_name} ${userData.last_name}`}
-                            style={{
-                                width: '100px',
-                                height: '100px',
-                                borderRadius: '50%',
-                            }}
-                        />
+        <div className="page-wrapper">
+            <div className="homepage-background">
+                <div className="container-lg">
+                    <div className="user-details-container">
+                        {userData.photo_url && (
+                            <div className="user-image-container">
+                                <img
+                                    src={userData.photo_url}
+                                    alt={`${userData.first_name} ${userData.last_name}`}
+                                    style={{
+                                        width: '100px',
+                                        height: '100px',
+                                        borderRadius: '50%',
+                                    }}
+                                />
+                            </div>
+                        )}
+                        <div className="user-info-container">
+                            <h2>
+                                {userData.first_name} {userData.last_name}
+                            </h2>
+                            <p>Username: {userData.username}</p>
+                            <p>Phone: {userData.phone_number}</p>
+                            <p>Address: {userData.address}</p>
+                            <Link
+                                to="/profile/edit"
+                                className="btn mb-3 btn-primary"
+                            >
+                                Edit Profile
+                            </Link>
+                            <button
+                                onClick={handleNavigate}
+                                className="btn btn-primary mb-3"
+                            >
+                                My Tournaments
+                            </button>
+                        </div>
                     </div>
-                )}
-                <div className="user-info-container">
-                    <h2>
-                        {userData.first_name} {userData.last_name}
-                    </h2>
-                    <p>Username: {userData.username}</p>
-                    <p>Phone: {userData.phone_number}</p>
-                    <p>Address: {userData.address}</p>
-                    <Link to="/profile/edit" className="btn mb-3 btn-primary">
-                        Edit Profile
-                    </Link>
-                    <button
-                        onClick={handleNavigate}
-                        className="btn btn-primary mb-3"
-                    >
-                        My Tournaments
-                    </button>
                 </div>
             </div>
         </div>

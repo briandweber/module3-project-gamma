@@ -28,7 +28,6 @@ function TournamentApplicationList() {
             if (response.ok) {
                 const data = await response.json()
                 const requests = []
-                const requestsApp = []
 
                 for (let user of data) {
                     const detailUrl = `http://localhost:8000/api/auth/users/${user.user_id}`
@@ -52,42 +51,48 @@ function TournamentApplicationList() {
     }, [tournamentId])
 
     return (
-        <div className="container-lg">
-            <h2>Applications</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th className="table-head">Username</th>
-                        <th className="table-head">Phone Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {applications
-                        .filter(
-                            (application) => application.status !== 'denied'
-                        )
-                        .map((application) => {
-                            const user = users.find(
-                                (u) => u.id === application.user_id
+        <div className="page-wrapper">
+            <div className="homepage-background"></div>
+            <div className="container-lg">
+                <h2>Applications</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th className="table-head">Username</th>
+                            <th className="table-head">Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {applications
+                            .filter(
+                                (application) => application.status !== 'denied'
                             )
-                            return (
-                                <tr className="table-row" key={application.id}>
-                                    <td className="table-data">
-                                        {user?.username || 'N/A'}
-                                    </td>
-                                    <td className="table-data">
-                                        {user?.phone_number || 'N/A'}
-                                    </td>
-                                    <td className="table-data">
-                                        <ApplicationStatusDropdown
-                                            applicationId={application.id}
-                                        />
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                </tbody>
-            </table>
+                            .map((application) => {
+                                const user = users.find(
+                                    (u) => u.id === application.user_id
+                                )
+                                return (
+                                    <tr
+                                        className="table-row"
+                                        key={application.id}
+                                    >
+                                        <td className="table-data">
+                                            {user?.username || 'N/A'}
+                                        </td>
+                                        <td className="table-data">
+                                            {user?.phone_number || 'N/A'}
+                                        </td>
+                                        <td className="table-data">
+                                            <ApplicationStatusDropdown
+                                                applicationId={application.id}
+                                            />
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

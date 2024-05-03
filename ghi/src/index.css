@@ -60,7 +60,7 @@ code {
 .image-container {
     height: 40vh;
     width: 40vw;
-    background-image: url(images/gamesterImage.png);
+    /* background-image: url(images/gamesterImage.png); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -183,6 +183,18 @@ code {
 .page-wrapper {
     position: relative;
     min-height: 100vh;
+}
+
+.gamester-carousel-image {
+    width: 80vw;
+    height: 50vh;
+    object-fit: cover;
+}
+
+.carousel-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .table-head {

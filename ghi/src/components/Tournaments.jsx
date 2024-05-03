@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import useAuthService from '../hooks/useAuthService'
 import { Navigate, Link } from 'react-router-dom'
 
@@ -60,55 +60,61 @@ function TournamentList() {
     }
 
     return (
-        <div className="container-lg">
-            <h2>Tournament List</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th className="table-head">Event Name</th>
-                        <th className="table-head">Event Start</th>
-                        <th className="table-head">Applications</th>
-                        <th className="table-head">Details</th>
-                        <th className="table-head">Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tournaments.map((tournament) => (
-                        <tr className="table-row" key={tournament.id}>
-                            <td className="table-data">
-                                {tournament.event_name}
-                            </td>
-                            <td className="table-data">
-                                {tournament.event_start}
-                            </td>
-                            <td className="table-data">
-                                <Link
-                                    to={`http://localhost:5173/applications/?id=${tournament.id}`}
-                                    className="btn btn-danger mb-3"
-                                >
-                                    Applications
-                                </Link>
-                            </td>
-                            <td className="table-data">
-                                <Link
-                                    to={`http://localhost:5173/tournaments/${tournament.id}`}
-                                    className="btn btn-danger mb-3"
-                                >
-                                    Details
-                                </Link>
-                            </td>
-                            <td className="table-data">
-                                <button
-                                    className="btn btn-danger mb-3"
-                                    onClick={() => onDeleteClick(tournament.id)}
-                                >
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className="page-wrapper">
+            <div className="homepage-background">
+                <div className="container-lg">
+                    <h2>Tournament List</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th className="table-head">Event Name</th>
+                                <th className="table-head">Event Start</th>
+                                <th className="table-head">Applications</th>
+                                <th className="table-head">Details</th>
+                                <th className="table-head">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {tournaments.map((tournament) => (
+                                <tr className="table-row" key={tournament.id}>
+                                    <td className="table-data">
+                                        {tournament.event_name}
+                                    </td>
+                                    <td className="table-data">
+                                        {tournament.event_start}
+                                    </td>
+                                    <td className="table-data">
+                                        <Link
+                                            to={`http://localhost:5173/applications/?id=${tournament.id}`}
+                                            className="btn btn-danger mb-3"
+                                        >
+                                            Applications
+                                        </Link>
+                                    </td>
+                                    <td className="table-data">
+                                        <Link
+                                            to={`http://localhost:5173/tournaments/${tournament.id}`}
+                                            className="btn btn-danger mb-3"
+                                        >
+                                            Details
+                                        </Link>
+                                    </td>
+                                    <td className="table-data">
+                                        <button
+                                            className="btn btn-danger mb-3"
+                                            onClick={() =>
+                                                onDeleteClick(tournament.id)
+                                            }
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     )
 }

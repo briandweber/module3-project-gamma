@@ -1,6 +1,7 @@
 // @ts-check
 import { useState } from 'react'
 import { Navigate, Link } from 'react-router-dom'
+import Carousel from './Carousel'
 
 import useAuthService from '../hooks/useAuthService'
 
@@ -40,6 +41,10 @@ export default function SignUpForm() {
         <>
             <div className="page-wrapper">
                 <div className="homepage-background">
+                    <div className="carousel-container container-fluid">
+                        <Carousel />
+                    </div>
+
                     <form className="row" onSubmit={handleFormSubmit}>
                         {error && <div className="error">{error.message}</div>}
                         <div className="col-md-6 sign-up">
