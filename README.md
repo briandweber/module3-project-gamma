@@ -1,6 +1,6 @@
 # **Gamester Application**
 
-![alt text](images/image.png)
+![alt text](/ghi/src/images/image.png)
 
 ## **Team**
 
@@ -26,7 +26,7 @@ Let's embark on this gaming journey together, where every tournament becomes an 
 
 ## **Design Features**
 
-![alt text](images/Gamester-login.png)
+![alt text](/ghi/src/images/Gamester-login.png)
 
 The Gamester application features conditional rendering, tailoring functionality based on user types:
 
@@ -44,27 +44,27 @@ When logged in as a competitor, users have the ability to:
 
 1. View a list of all upcoming tournaments
 
-![alt text](/images/Gamester-competitor.png)
+![alt text](/ghi/src/images/Gamester-competitor.png)
 
 2. View the details of each tournament, including the event description, roster size, entry fee, prizes and sponsors
 
-![alt text](/images/Gamester-tournaments.png)
+![alt text](/ghi/src/images/Gamester-tournaments.png)
 
 3. Apply to a tournament with the click of a button
 
-![alt text](/images/Gamester-details.png)
+![alt text](/ghi/src/images/Gamester-details.png)
 
 4. Once an application is submitted, navigate to the My Tournaments page for competitors to view to status of their application
 
-![alt text](/images/Gamester-application.png)
+![alt text](/ghi/src/images/Gamester-application.png)
 
 5. Navigate to see the details of their profile page through the nav bar link
 
-![alt text](/images/Gamester-mytournaments.png)
+![alt text](/ghi/src/images/Gamester-mytournaments.png)
 
 6. Make updates to their profile page, including updating phone number, address information and photo
 
-![alt text](/images/Gamester-profile.png)
+![alt text](/ghi/src/images/Gamester-profile.png)
 
 ### **Tournament Manager**
 
@@ -72,11 +72,11 @@ When logged in as a tournament manager, users have the ability to:
 
 1. View a list of all tournaments created by the current user
 
-![alt text](/images/Gamester-manager.png)
+![alt text](/ghi/src/images/Gamester-manager.png)
 
 2. View a list of pending applications from competitors for the tournaments managed by the current user
 
-![alt text](/images/Gamester-applications.png)
+![alt text](/ghi/src/images/Gamester-applications.png)
 
 3. View the details of each tournament, including the event description, roster size, entry fee, prizes and sponsors
 
@@ -84,7 +84,7 @@ When logged in as a tournament manager, users have the ability to:
 
 5. Navigate to see the details of their profile page through the nav bar link
 
-![alt text](/images/Gamester-profile2.png)
+![alt text](/ghi/src/images/Gamester-profile2.png)
 
 6. Make updates to their profile page, including updating phone number, address information and photo
 
