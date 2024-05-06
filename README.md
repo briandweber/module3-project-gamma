@@ -1,6 +1,6 @@
 # **Gamester Application**
 
-![alt text](/images/image.png)
+![alt text](images/image.png)
 
 ## **Team**
 
@@ -26,7 +26,7 @@ Let's embark on this gaming journey together, where every tournament becomes an 
 
 ## **Design Features**
 
-![alt text](/images/Gamester-login.png)
+![alt text](images/Gamester-login.png)
 
 The Gamester application features conditional rendering, tailoring functionality based on user types:
 
