@@ -19,6 +19,10 @@ import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import './App.css'
 import './index.css'
+import VenueList from './components/VenueHomePage'
+import VenueCreateForm from './components/VenueCreateForm'
+import VenueDetails from './components/VenueDetails'
+import VenueDetailsEdit from './components/VenueDetailsEdit'
 
 const API_HOST = import.meta.env.VITE_API_HOST
 
@@ -84,6 +88,19 @@ function App() {
                                 <Route
                                     path="tournament/create"
                                     element={<TournamentCreateForm />}
+                                />
+                                <Route path="venues" element={<VenueList />} />
+                                <Route
+                                    path="venue/create"
+                                    element={<VenueCreateForm />}
+                                />
+                                <Route
+                                    path="venue/:id"
+                                    element={<VenueDetails />}
+                                />
+                                <Route
+                                    path="venue/:id/edit"
+                                    element={<VenueDetailsEdit />}
                                 />
                             </Routes>
                         </div>

@@ -127,6 +127,9 @@ export default function SignUpForm() {
                                 <option value="tournament_manager">
                                     Tournament Manager
                                 </option>
+                                <option value="venue_manager">
+                                    Venue Manager
+                                </option>
                             </select>
                         </div>
                         <div className="sign-up">
