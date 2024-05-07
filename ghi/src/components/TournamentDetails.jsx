@@ -34,36 +34,60 @@ function TournamentDetails() {
     }
 
     const handleApply = async () => {
-        if (hasApplied) {
-            alert("Oops! You've already applied for this tournament")
-            return
-        }
+        const applicationsUrl = `http://localhost:8000/api/applications`
+        let matchingApplication = false
 
-        const url = `http://localhost:8000/api/applications`
-        const fetchConfig = {
-            method: 'post',
-            body: JSON.stringify({
-                tournament_id: tournament.id,
-                user_id: user.id,
-                status: 'pending',
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
         try {
-            const response = await fetch(url, fetchConfig)
-
+            const response = await fetch(applicationsUrl)
             if (response.ok) {
-                setHasApplied(true)
+                const applications_dict = await response.json()
+                const applications = applications_dict.applications
+                for (const key in applications) {
+                    if (
+                        applications[key].user_id === user.id &&
+                        applications[key].tournament_id === tournament.id
+                    ) {
+                        matchingApplication = true
+                        break
+                    }
+                }
             } else {
-                console.error(
-                    'Failed to submit application:',
-                    response.statusText
-                )
+                console.error('Failed to fetch applications')
             }
         } catch (error) {
-            console.error('Error with application:', error)
+            console.error('Error fetching applications:', error)
+        }
+
+        if (matchingApplication) {
+            alert("Oops! You've already applied for this tournament")
+            return
+        } else {
+            const url = `http://localhost:8000/api/applications`
+            const fetchConfig = {
+                method: 'post',
+                body: JSON.stringify({
+                    tournament_id: tournament.id,
+                    user_id: user.id,
+                    status: 'pending',
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }
+            try {
+                const response = await fetch(url, fetchConfig)
+
+                if (response.ok) {
+                    setHasApplied(true)
+                } else {
+                    console.error(
+                        'Failed to submit application:',
+                        response.statusText
+                    )
+                }
+            } catch (error) {
+                console.error('Error with application:', error)
+            }
         }
     }
 
