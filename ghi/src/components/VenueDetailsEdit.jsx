@@ -5,28 +5,26 @@ import { useParams, Link } from 'react-router-dom'
 import '../styles.css'
 import useAuthService from '../hooks/useAuthService'
 
-export default function TournamentDetailsEdit() {
-    const [tournaments, setTournaments] = useState('')
+export default function VenueDetailsEdit() {
+    const [venues, setVenues] = useState('')
     const [formData, setFormData] = useState({
-        event_name: '',
-        roster_size: '',
-        event_start: '',
-        duration: '',
-        event_description: '',
-        picture_url: '',
-        entry_fee: '',
-        prize: '',
-        sponsors: '',
+        venue_name: '',
+        state: '',
+        address: '',
+        photo_url: '',
+        capacity: '',
+        special_accommodations: '',
+        venue_cost: '',
     })
 
     const { id } = useParams()
 
     const fetchData = async () => {
-        const url = `http://localhost:8000/api/tournaments/${id}`
+        const url = `http://localhost:8000/api/venues/${id}`
         const response = await fetch(url)
         if (response.ok) {
             const data = await response.json()
-            setTournaments(data)
+            setVenues(data)
             setFormData(data)
         }
     }
@@ -35,7 +33,7 @@ export default function TournamentDetailsEdit() {
     }, [])
     const handleSubmit = async (event) => {
         event.preventDefault()
-        const url = `http://localhost:8000/api/tournaments/${id}`
+        const url = `http://localhost:8000/api/venues/${id}`
         console.log(formData)
         const fetchConfig = {
             method: 'PUT',
@@ -67,107 +65,84 @@ export default function TournamentDetailsEdit() {
 
     return (
         <div className="container-lg">
-            <h2>Edit Tournament Details</h2>
+            <h2>Edit Venue Details</h2>
             <form className="row" onSubmit={handleSubmit}>
                 <div className="col-md-6">
-                    <label htmlFor="event_name">Event Name:</label>
+                    <label htmlFor="venue_name">Venue Name:</label>
                     <input
                         className="form-control"
                         type="text"
-                        id="event_name"
-                        name="event_name"
-                        value={formData.event_name}
+                        id="venue_name"
+                        name="venue_name"
+                        value={formData.venue_name}
                         onChange={handleFormChange}
                     />
                 </div>
                 <div className="col-md-6 form-group">
-                    <label htmlFor="roster_size">Roster Size:</label>
+                    <label htmlFor="state">State:</label>
                     <input
                         className="form-control"
                         type="text"
-                        id="roster_size"
-                        name="roster_size"
-                        value={formData.roster_size}
+                        id="state"
+                        name="state"
+                        value={formData.state}
                         onChange={handleFormChange}
                     />
                 </div>
                 <div className="col-md-6 form-group">
-                    <label htmlFor="event_start">Event Start:</label>
+                    <label htmlFor="address">Address:</label>
                     <input
                         className="form-control"
                         type="text"
-                        id="event_start"
-                        name="event_start"
-                        value={formData.event_start}
+                        id="address"
+                        name="address"
+                        value={formData.address}
                         onChange={handleFormChange}
                     />
                 </div>
                 <div className="col-md-6 form-group">
-                    <label htmlFor="duration">Duration(Hours):</label>
+                    <label htmlFor="photo_url">Photo Url:</label>
                     <input
                         className="form-control"
                         type="text"
-                        id="duration"
-                        name="duration"
-                        value={formData.duration}
+                        id="photo_url"
+                        name="photo_url"
+                        value={formData.photo_url}
                         onChange={handleFormChange}
-                        placeholder={formData.duration}
                     />
                 </div>
                 <div className="col-md-6 form-group">
-                    <label htmlFor="event_description">
-                        Event Description:
+                    <label htmlFor="capacity">
+                        Capacity:
                     </label>
                     <input
                         className="form-control"
                         type="text"
-                        id="event_description"
-                        name="event_description"
-                        value={formData.event_description}
+                        id="capacity"
+                        name="capacity"
+                        value={formData.capacity}
                         onChange={handleFormChange}
                     />
                 </div>
                 <div className="col-md-6 form-group">
-                    <label htmlFor="picture_url">Picture Url:</label>
+                    <label htmlFor="special_accommodations">Special Accommodations:</label>
                     <input
                         className="form-control"
                         type="text"
-                        id="picture_url"
-                        name="picture_url"
-                        value={formData.picture_url}
+                        id="special_accommodations"
+                        name="special_accommodations"
+                        value={formData.special_accommodations}
                         onChange={handleFormChange}
                     />
                 </div>
                 <div className="col-md-6 form-group">
-                    <label htmlFor="entry_fee">Entry Fee:</label>
+                    <label htmlFor="venue_cost">Venue Cost:</label>
                     <input
                         className="form-control"
                         type="text"
-                        id="entry_fee"
-                        name="entry_fee"
-                        value={formData.entry_fee}
-                        onChange={handleFormChange}
-                    />
-                </div>
-                <div className="col-md-6 form-group">
-                    <label htmlFor="prize">Prize:</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="prize"
-                        name="prize"
-                        value={formData.prize}
-                        onChange={handleFormChange}
-                    />
-                </div>
-                <div className="col-md-6 form-group">
-                    <label htmlFor="sponsors">Sponsors:</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        id="sponsors"
-                        name="sponsors"
-                        value={formData.sponsors}
+                        id="venue_cost"
+                        name="venue_cost"
+                        value={formData.venue_cost}
                         onChange={handleFormChange}
                     />
                 </div>

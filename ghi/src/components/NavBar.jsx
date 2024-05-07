@@ -42,6 +42,24 @@ const NavBar = () => {
                     </li>
                 </>
             )
+        } else if (userTypeLower === 'venue_manager') {
+            return (
+                <>
+                    <li>
+                        <Link
+                            className="nav-link"
+                            to="/"
+                        >
+                            My Venues
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className="nav-link" to="/venue/create">
+                            List New Venue
+                        </Link>
+                    </li>
+                </>
+            )
         }
     }
 

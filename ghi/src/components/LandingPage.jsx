@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import UpcomingTournaments from './UpcomingTournaments'
 import TournamentList from './Tournaments'
+import VenueList from './VenueHomePage'
 import Carousel from './Carousel'
 
 import useAuthService from '../hooks/useAuthService'
@@ -44,6 +45,11 @@ export default function LandingPage() {
                         <div className="form-container">
                             {user && user.user_type == 'tournament_manager' && (
                                 <TournamentList />
+                            )}
+                        </div>
+                        <div className="form-container">
+                            {user && user.user_type == 'venue_manager' && (
+                                <VenueList />
                             )}
                         </div>
                     </div>
