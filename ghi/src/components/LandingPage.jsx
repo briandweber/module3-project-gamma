@@ -47,6 +47,11 @@ export default function LandingPage() {
                                 <TournamentList />
                             )}
                         </div>
+                        <div className="form-container">
+                            {user && user.user_type == 'venue_manager' && (
+                                <VenueList />
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
