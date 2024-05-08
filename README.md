@@ -1,6 +1,6 @@
 # **Gamester Application**
 
-![alt text](/ghi/src/images/image.png)
+![Gamester Logo](/ghi/src/images/image.png)
 
 ## **Team**
 
@@ -28,9 +28,9 @@ Let's embark on this gaming journey together, where every tournament becomes an 
 
 ### **Wireframe**
 
-![alt text](/ghi/src/images/wireframe.png)
+![Wireframe](/ghi/src/images/wireframe.png)
 
-![alt text](/ghi/src/images/Gamester-login.png)
+![Landing Page](/ghi/src/images/Gamester-landing-page.png)
 
 The Gamester application features conditional rendering, tailoring functionality based on user types:
 
@@ -133,4 +133,609 @@ If you encounter any issues with installation, please do let us know!
 
 ## **CRUD (Create, Read, Update, Delete) Routes**
 
-(Insert updated CRUD routes here)
+Access the API endpoints via the browser or an API client. The development team used OpenAPI's Swagger UI for endpoint testing. You can access it at the following link:
+
+[Swagger UI](http://localhost:8000/docs#/)
+
+### AUTHENTICATION
+
+#### To access the authentication endpoints for a user, hit the following endpoints:
+
+| Action            | Method | URL                                          |
+| ----------------- | ------ | -------------------------------------------- |
+| Sign Up User      | POST   | http://localhost:8000/api/auth/signup        |
+| Sign In User      | POST   | http://localhost:8000/api/auth/signin        |
+| Authenticate User | GET    | http://localhost:8000/api/auth/authenticate  |
+| Sign Out User     | DELETE | http://localhost:8000/api/auth/signout       |
+| Update User       | PUT    | http://localhost:8000/api/auth/users/user_id |
+| Get User Details  | GET    | http://localhost:8000/api/auth/users/user_id |
+| Delete User       | DELETE | http://localhost:8000/api/auth/users/user_id |
+
+#### To sign up a user, add the following JSON to the request body:
+
+```
+{
+  "username": "string",
+  "password": "string",
+  "user_type": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "photo_url": "string",
+  "phone_number": "string",
+  "address": "string"
+}
+```
+
+#### Hitting the endpoint will result in the following response body:
+
+```
+{
+  "id": 0,
+  "username": "string",
+  "user_type": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "photo_url": "string",
+  "phone_number": "string",
+  "address": "string"
+}
+```
+
+#### Request body to sign in:
+
+```
+{
+  "username": "string",
+  "password": "string"
+}
+```
+
+#### Response body to sign in:
+
+```
+{
+  "id": 0,
+  "username": "string",
+  "user_type": "string"
+}
+```
+
+#### Request body to authenticate a user:
+
+`fast_api_token`
+
+#### Response body to authenticate a user:
+
+```
+{
+  "id": 0,
+  "username": "string",
+  "user_type": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "photo_url": "string",
+  "phone_number": "string",
+  "address": "string"
+}
+```
+
+#### Request body to sign out:
+
+```
+user_id
+```
+
+#### Response body to sign out:
+
+```
+"string"
+```
+
+#### Request body to update user details:
+
+```
+user_id
+```
+
+#### Response body to update user details:
+
+```
+{
+  "username": "string",
+  "password": "string",
+  "user_type": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "photo_url": "string",
+  "phone_number": "string",
+  "address": "string"
+}
+```
+
+#### Request body to get user details:
+
+```
+user_id
+```
+
+#### Response body to get user details:
+
+```
+{
+  "id": 0,
+  "username": "string",
+  "password": "string",
+  "user_type": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "photo_url": "string",
+  "phone_number": "string",
+  "address": "string"
+}
+```
+
+#### Request body to delete a user:
+
+```
+user_id
+```
+
+#### Response body to delete a user:
+
+```
+"true"
+```
+
+### VENUE
+
+#### To create, read, update, and delete venues, hit the following endpoints:
+
+| Action             | Method | URL                                       |
+| ------------------ | ------ | ----------------------------------------- |
+| Get all venues     | GET    | http://localhost:8000/api/venues          |
+| Create a venue     | POST   | http://localhost:8000/api/venues          |
+| Get venue details  | GET    | http://localhost:8000/api/venues/item_id  |
+| Get venues by user | GET    | http://localhost:8000/api/venues/user_id  |
+| Delete a venue     | DELETE | http://localhost:8000/api/venues/venue_id |
+| Update a venue     | PUT    | http://localhost:8000/api/venues/venue_id |
+
+#### To get a list of all venues, hitting the endpoint will result in the following JSON response body:
+
+```
+[
+  {
+    "id": 0,
+    "user_id": 0,
+    "venue_name": "string",
+    "state": "string",
+    "street_address": "string",
+    "city": "string",
+    "zip": 0,
+    "photo_url": "string",
+    "capacity": 0,
+    "special_accommodations": "string",
+    "venue_cost": 0
+  }
+]
+```
+
+#### Request body to create a venue:
+
+```
+{
+  "user_id": 0,
+  "venue_name": "string",
+  "state": "string",
+  "street_address": "string",
+  "city": "string",
+  "zip": 0,
+  "photo_url": "string",
+  "capacity": 0,
+  "special_accommodations": "string",
+  "venue_cost": 0
+}
+```
+
+#### Response body to create a venue:
+
+```
+{
+  "id": 0,
+  "user_id": 0,
+  "venue_name": "string",
+  "state": "string",
+  "street_address": "string",
+  "city": "string",
+  "zip": 0,
+  "photo_url": "string",
+  "capacity": 0,
+  "special_accommodations": "string",
+  "venue_cost": 0
+}
+```
+
+#### Request body to get venue details:
+
+```
+item_id
+```
+
+#### Response body to get venue details:
+
+```
+{
+  "id": 0,
+  "user_id": 0,
+  "venue_name": "string",
+  "state": "string",
+  "street_address": "string",
+  "city": "string",
+  "zip": 0,
+  "photo_url": "string",
+  "capacity": 0,
+  "special_accommodations": "string",
+  "venue_cost": 0
+}
+```
+
+#### Request body to get all venues by user:
+
+```
+user_id
+```
+
+#### Response body to get all venues by user:
+
+```
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "venue_name": "some venue name",
+    "state": "NE",
+    "street_address": "435 N Hubbard Ave",
+    "city": "Minden",
+    "zip": 68959,
+    "photo_url": "photo.png",
+    "capacity": 5,
+    "special_accommodations": "none",
+    "venue_cost": 500
+  }
+]
+```
+
+#### Request body to delete a venue:
+
+```
+venue_id
+```
+
+#### Response body to delete a venue:
+
+```
+string
+```
+
+#### Request body to update a venue:
+
+```
+venue_id
+```
+
+#### Response body to update a venue:
+
+```
+{
+  "venue_name": "string",
+  "street_address": "string",
+  "city": "string",
+  "zip": 0,
+  "state": "string",
+  "photo_url": "string",
+  "capacity": 0,
+  "special_accommodations": "string",
+  "venue_cost": 0
+}
+```
+
+### TOURNAMENTS
+
+#### To create, read, update, and delete tournaments, hit the following endpoints:
+
+| Action                    | Method | URL                                                 |
+| ------------------------- | ------ | --------------------------------------------------- |
+| Get all tournaments       | GET    | http://localhost:8000/api/tournaments/              |
+| Create a tournament       | POST   | http://localhost:8000/api/tournaments/              |
+| Get tournament details    | GET    | http://localhost:8000/api/tournaments/item_id       |
+| Get tournaments by user   | GET    | http://localhost:8000/api/tournaments/user/user_id  |
+| Delete a tournament       | DELETE | http://localhost:8000/api/tournaments/tournament_id |
+| Update tournament details | PUT    | http://localhost:8000/api/tournaments/tournament_id |
+
+#### To get a list of all tournaments, hitting the endpoint will result in the following JSON response body:
+
+```
+[
+  {
+    "id": 0,
+    "user_id": 0,
+    "location": "string",
+    "event_name": "string",
+    "roster_size": 0,
+    "event_start": "2024-05-08",
+    "duration": 0,
+    "event_description": "string",
+    "picture_url": "string",
+    "entry_fee": 0,
+    "prize": 0,
+    "sponsors": "string"
+  }
+]
+```
+
+#### Request body to create a tournament:
+
+```
+{
+  "user_id": 0,
+  "location": "string",
+  "event_name": "string",
+  "roster_size": 0,
+  "event_start": "2024-05-08",
+  "duration": 0,
+  "event_description": "string",
+  "picture_url": "string",
+  "entry_fee": 0,
+  "prize": 0,
+  "sponsors": "string"
+}
+```
+
+#### Response body to create a tournament:
+
+```
+{
+  "id": 0,
+  "user_id": 0,
+  "location": "string",
+  "event_name": "string",
+  "roster_size": 0,
+  "event_start": "2024-05-08",
+  "duration": 0,
+  "event_description": "string",
+  "picture_url": "string",
+  "entry_fee": 0,
+  "prize": 0,
+  "sponsors": "string"
+}
+```
+
+#### Request body to get the details of a tournament:
+
+```
+item_id
+```
+
+#### Response body to get the details of a tournament:
+
+```
+{
+  "id": 0,
+  "user_id": 0,
+  "location": "string",
+  "event_name": "string",
+  "roster_size": 0,
+  "event_start": "2024-05-08",
+  "duration": 0,
+  "event_description": "string",
+  "picture_url": "string",
+  "entry_fee": 0,
+  "prize": 0,
+  "sponsors": "string"
+}
+```
+
+#### Request body to get all tournaments managed by a user:
+
+```
+user_id
+```
+
+#### Response body to get all tournaments managed by a user:
+
+```
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "location": "string",
+    "event_name": "string",
+    "roster_size": 0,
+    "event_start": "2024-05-08",
+    "duration": 0,
+    "event_description": "string",
+    "picture_url": "string",
+    "entry_fee": 0,
+    "prize": 0,
+    "sponsors": "string"
+  }
+]
+```
+
+#### Request body to delete a tournament:
+
+```
+tournament_id
+```
+
+#### Response body to delete a tournament:
+
+```
+"string"
+```
+
+#### Request body to update the details of a tournament:
+
+```
+{
+  "location": "string",
+  "event_name": "string",
+  "roster_size": 0,
+  "event_start": "2024-05-08",
+  "duration": 0,
+  "event_description": "string",
+  "picture_url": "string",
+  "entry_fee": 0,
+  "prize": 0,
+  "sponsors": "string"
+}
+```
+
+#### Response body to update the details of a tournament:
+
+```
+{
+  "id": 0,
+  "user_id": 0,
+  "location": "string",
+  "event_name": "string",
+  "roster_size": 0,
+  "event_start": "2024-05-08",
+  "duration": 0,
+  "event_description": "string",
+  "picture_url": "string",
+  "entry_fee": 0,
+  "prize": 0,
+  "sponsors": "string"
+}
+```
+
+### APPLICATIONS
+
+#### To create, read, update, and delete applications, hit the following endpoints:
+
+| Action                                | Method | URL                                                     |
+| ------------------------------------- | ------ | ------------------------------------------------------- |
+| Get all applications                  | GET    | http://localhost:8000/api/applications/                 |
+| Create an application                 | POST   | http://localhost:8000/api/applications/                 |
+| Get application details               | GET    | http://localhost:8000/api/applications/id               |
+| Update an application                 | PUT    | http://localhost:8000/api/applications/id               |
+| Delete an application                 | DELETE | http://localhost:8000/api/applications/id               |
+| Get all applications by tournament ID | GET    | http://localhost:8000/api/applications/by_tournament/id |
+| Get all application by user ID        | GET    | http://localhost:8000/api/applications/by_user/id       |
+
+#### To get a list of all applications, hitting the endpoint will result in the following JSON response body:
+
+```
+{
+  "applications": []
+}
+```
+
+#### Request body to create an application:
+
+```
+{
+  "tournament_id": 0,
+  "user_id": 0,
+  "status": "string"
+}
+```
+
+#### Response body to create an application:
+
+```
+{
+  "id": 0,
+  "tournament_id": 0,
+  "user_id": 0,
+  "status": "string"
+}
+```
+
+#### Request body to get the details of an application:
+
+```
+id
+```
+
+#### Response body to get the details of an application:
+
+```
+{
+  "id": 0,
+  "tournament_id": 0,
+  "user_id": 0,
+  "status": "string"
+}
+```
+
+#### Request body to update the details of an application:
+
+```
+{
+  "tournament_id": 0,
+  "user_id": 0,
+  "status": "string"
+}
+```
+
+#### Response body to update the details of an application:
+
+```
+{
+  "id": 0,
+  "tournament_id": 0,
+  "user_id": 0,
+  "status": "string"
+}
+```
+
+#### Request body to delete an application:
+
+```
+id
+```
+
+#### Response body to delete an application:
+
+```
+"string"
+```
+
+#### Request body to get a list of applications for a tournament:
+
+```
+tournament_id
+```
+
+#### Response body to get a list of applications for a tournament:
+
+```
+[
+  {
+    "id": 0,
+    "tournament_id": 0,
+    "user_id": 0,
+    "status": "string"
+  }
+]
+```
+
+#### Request body to get a list of applications for a user:
+
+```
+user_id
+```
+
+#### Response body to get a list of applications for a user:
+
+```
+[
+  {
+    "id": 0,
+    "tournament_id": 0,
+    "user_id": 0,
+    "status": "string"
+  }
+]
+```
