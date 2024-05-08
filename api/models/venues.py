@@ -9,7 +9,9 @@ class VenueRequest(BaseModel):
     user_id: int
     venue_name: str
     state: str
-    address: str
+    street_address: str
+    city: str
+    zip: int
     photo_url: str
     capacity: int
     special_accommodations: str
@@ -21,7 +23,9 @@ class VenueResponse(BaseModel):
     user_id: int
     venue_name: str
     state: str
-    address: str
+    street_address: str
+    city: str
+    zip: int
     photo_url: str
     capacity: int
     special_accommodations: str
@@ -30,7 +34,9 @@ class VenueResponse(BaseModel):
 
 class VenueUpdate(BaseModel):
     venue_name: str
-    address: str
+    street_address: str
+    city: str
+    zip: int
     state: str
     photo_url: str
     capacity: int

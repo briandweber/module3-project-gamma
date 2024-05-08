@@ -102,7 +102,9 @@ function VenueDetails() {
                     <div className="card-body text-center">
                         <h1 className="card-subtitle"> {venue.venue_name}</h1>
                         <h4> State: {venue.state}</h4>
-                        <h4> Address: {venue.address}</h4>
+                        <h4> Address: {venue.street_address}</h4>
+                        <h4> City: {venue.city}</h4>
+                        <h4> Zip: {venue.zip}</h4>
                         <h5 className="card-title">
                             Capacity: {venue.capacity}
                         </h5>

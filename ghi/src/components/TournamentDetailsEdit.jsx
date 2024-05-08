@@ -9,6 +9,7 @@ export default function TournamentDetailsEdit() {
     const [tournaments, setTournaments] = useState('')
     const [formData, setFormData] = useState({
         event_name: '',
+        location: '',
         roster_size: '',
         event_start: '',
         duration: '',
@@ -54,6 +55,34 @@ export default function TournamentDetailsEdit() {
             console.error('Error updating data:', error)
         }
     }
+
+        const [venues, setVenues] = useState([])
+
+        const fetchVenue = async () => {
+            const url = `http://localhost:8000/api/venues`
+            try {
+                const response = await fetch(url)
+                if (response.ok) {
+                    const data = await response.json()
+                    const requests = []
+                    for (let venue of data) {
+                        const detailUrl = `http://localhost:8000/api/venues/${venue.id}`
+                        requests.push(fetch(detailUrl))
+                    }
+                    const responses = await Promise.all(requests)
+                    const details = []
+                    for (const venueResponse of responses) {
+                        details.push(await venueResponse.json())
+                    }
+                    setVenues(details)
+                }
+            } catch (e) {
+                console.error(e)
+            }
+        }
+        useEffect(() => {
+            fetchVenue()
+        }, [id])
 
     const handleFormChange = (e) => {
         const value = e.target.value
@@ -113,6 +142,35 @@ export default function TournamentDetailsEdit() {
                         onChange={handleFormChange}
                         placeholder={formData.duration}
                     />
+                </div>
+                <div className="col-md-6 form-group">
+                    <label>
+                        Location Select
+                        <select
+                            className="form-control"
+                            name="location"
+                            value={formData.location}
+                            onChange={handleFormChange}
+                            required
+                        >
+                            <option value="">Select a venue</option>
+                            {venues.map((venue) => (
+                                <option
+                                    key={venue.id}
+                                    value={
+                                        venue.venue_name +
+                                        ', ' +
+                                        venue.street_address +
+                                        ', ' +
+                                        venue.state
+                                    }
+                                >
+                                    {venue.venue_name}: {venue.street_address},
+                                    {venue.state}
+                                </option>
+                            ))}
+                        </select>
+                    </label>
                 </div>
                 <div className="col-md-6 form-group">
                     <label htmlFor="event_description">

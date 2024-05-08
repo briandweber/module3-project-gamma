@@ -10,7 +10,9 @@ export default function VenueDetailsEdit() {
     const [formData, setFormData] = useState({
         venue_name: '',
         state: '',
-        address: '',
+        street_address: '',
+        city: '',
+        zip: '',
         photo_url: '',
         capacity: '',
         special_accommodations: '',
@@ -90,13 +92,35 @@ export default function VenueDetailsEdit() {
                     />
                 </div>
                 <div className="col-md-6 form-group">
-                    <label htmlFor="address">Address:</label>
+                    <label htmlFor="street_address">Address:</label>
                     <input
                         className="form-control"
                         type="text"
-                        id="address"
-                        name="address"
-                        value={formData.address}
+                        id="street_address"
+                        name="street_address"
+                        value={formData.street_address}
+                        onChange={handleFormChange}
+                    />
+                </div>
+                <div className="col-md-6 form-group">
+                    <label htmlFor="city">City:</label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        id="city"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleFormChange}
+                    />
+                </div>
+                <div className="col-md-6 form-group">
+                    <label htmlFor="zip">Zip:</label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        id="zip"
+                        name="zip"
+                        value={formData.zip}
                         onChange={handleFormChange}
                     />
                 </div>

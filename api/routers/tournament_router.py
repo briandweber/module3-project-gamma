@@ -81,6 +81,7 @@ def update_tournament(
         raise HTTPException(status_code=404, detail="Tournament not found")
     existing_tournament.id = tournament_id
     existing_tournament.user_id = existing_tournament.user_id
+    existing_tournament.location = updated_tournament.location
     existing_tournament.event_name = updated_tournament.event_name
     existing_tournament.event_start = updated_tournament.event_start
     existing_tournament.roster_size = updated_tournament.roster_size

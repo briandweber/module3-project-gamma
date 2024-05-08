@@ -27,8 +27,10 @@ class TournamentRepository:
                         """
                         SELECT
 
-                        id, user_id, event_name, roster_size , event_start,
-                        duration, event_description, picture_url, entry_fee,
+                        id, user_id, location, event_name,
+                        roster_size , event_start,
+                        duration, event_description,
+                        picture_url, entry_fee,
                         prize, sponsors
 
                         FROM tournaments
@@ -42,15 +44,16 @@ class TournamentRepository:
                 tournament = TournamentResponse(
                     id=record[0],
                     user_id=record[1],
-                    event_name=record[2],
-                    roster_size=record[3],
-                    event_start=record[4],
-                    duration=record[5],
-                    event_description=record[6],
-                    picture_url=record[7],
-                    entry_fee=record[8],
-                    prize=record[9],
-                    sponsors=record[10],
+                    location=record[2],
+                    event_name=record[3],
+                    roster_size=record[4],
+                    event_start=record[5],
+                    duration=record[6],
+                    event_description=record[7],
+                    picture_url=record[8],
+                    entry_fee=record[9],
+                    prize=record[10],
+                    sponsors=record[11],
                 )
                 tournaments.append(tournament)
 
@@ -73,6 +76,7 @@ class TournamentRepository:
                     INSERT INTO tournaments
                         (
                             user_id,
+                            location,
                             event_name,
                             roster_size,
                             event_start,
@@ -84,11 +88,12 @@ class TournamentRepository:
                             sponsors
                                         )
                     VALUES
-                        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
                     [
                         tournament.user_id,
+                        tournament.location,
                         tournament.event_name,
                         tournament.roster_size,
                         tournament.event_start,
@@ -114,7 +119,8 @@ class TournamentRepository:
                     db.execute(
                         """
                         SELECT
-                        id, user_id, event_name,
+                        id, user_id, location,
+                        event_name,
                         roster_size, event_start,
                         duration, event_description,
                         picture_url, entry_fee,
@@ -130,15 +136,16 @@ class TournamentRepository:
                 tournament = TournamentResponse(
                     id=record[0],
                     user_id=record[1],
-                    event_name=record[2],
-                    roster_size=record[3],
-                    event_start=record[4],
-                    duration=record[5],
-                    event_description=record[6],
-                    picture_url=record[7],
-                    entry_fee=record[8],
-                    prize=record[9],
-                    sponsors=record[10],
+                    location=record[2],
+                    event_name=record[3],
+                    roster_size=record[4],
+                    event_start=record[5],
+                    duration=record[6],
+                    event_description=record[7],
+                    picture_url=record[8],
+                    entry_fee=record[9],
+                    prize=record[10],
+                    sponsors=record[11],
                 )
                 return tournament
             else:
@@ -160,7 +167,8 @@ class TournamentRepository:
                     db.execute(
                         """
                         SELECT
-                        id, user_id, event_name,
+                        id, user_id, location,
+                        event_name,
                         roster_size, event_start,
                         duration, event_description,
                         picture_url, entry_fee,
@@ -177,15 +185,16 @@ class TournamentRepository:
                 tournament = TournamentResponse(
                     id=record[0],
                     user_id=record[1],
-                    event_name=record[2],
-                    roster_size=record[3],
-                    event_start=record[4],
-                    duration=record[5],
-                    event_description=record[6],
-                    picture_url=record[7],
-                    entry_fee=record[8],
-                    prize=record[9],
-                    sponsors=record[10],
+                    location=record[2],
+                    event_name=record[3],
+                    roster_size=record[4],
+                    event_start=record[5],
+                    duration=record[6],
+                    event_description=record[7],
+                    picture_url=record[8],
+                    entry_fee=record[9],
+                    prize=record[10],
+                    sponsors=record[11],
                 )
                 tournaments.append(tournament)
 
@@ -225,6 +234,7 @@ class TournamentRepository:
                         """
                         UPDATE tournaments
                         SET
+                            location = %s,
                             event_name = %s,
                             roster_size = %s,
                             event_start = %s,
@@ -237,6 +247,7 @@ class TournamentRepository:
                         WHERE id = %s
                         """,
                         (
+                            tournament.location,
                             tournament.event_name,
                             tournament.roster_size,
                             tournament.event_start,

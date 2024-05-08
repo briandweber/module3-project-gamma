@@ -68,6 +68,7 @@ function TournamentList() {
                         <thead>
                             <tr>
                                 <th className="table-head">Event Name</th>
+                                <th className="table-head">Location</th>
                                 <th className="table-head">Event Start</th>
                                 <th className="table-head">Applications</th>
                                 <th className="table-head">Details</th>
@@ -79,6 +80,9 @@ function TournamentList() {
                                 <tr className="table-row" key={tournament.id}>
                                     <td className="table-data">
                                         {tournament.event_name}
+                                    </td>
+                                    <td className="table-data">
+                                        {tournament.location}
                                     </td>
                                     <td className="table-data">
                                         {tournament.event_start}

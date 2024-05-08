@@ -27,7 +27,8 @@ class VenueRepository:
                         """
                         SELECT
 
-                        id, user_id, venue_name, state , address,
+                        id, user_id, venue_name, state ,
+                        street_address, city, zip,
                         photo_url, capacity, special_accommodations, venue_cost
 
                         FROM venues
@@ -43,11 +44,13 @@ class VenueRepository:
                     user_id=record[1],
                     venue_name=record[2],
                     state=record[3],
-                    address=record[4],
-                    photo_url=record[5],
-                    capacity=record[6],
-                    special_accommodations=record[7],
-                    venue_cost=record[8],
+                    street_address=record[4],
+                    city=record[5],
+                    zip=record[6],
+                    photo_url=record[7],
+                    capacity=record[8],
+                    special_accommodations=record[9],
+                    venue_cost=record[10],
                 )
                 venues.append(venue)
 
@@ -72,21 +75,25 @@ class VenueRepository:
                             user_id,
                             venue_name,
                             state,
-                            address,
+                            street_address,
+                            city,
+                            zip,
                             photo_url,
                             capacity,
                             special_accommodations,
                             venue_cost
                                         )
                     VALUES
-                        (%s, %s, %s, %s, %s, %s, %s, %s)
+                        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
                     [
                         venue.user_id,
                         venue.venue_name,
                         venue.state,
-                        venue.address,
+                        venue.street_address,
+                        venue.city,
+                        venue.zip,
                         venue.photo_url,
                         venue.capacity,
                         venue.special_accommodations,
@@ -109,7 +116,8 @@ class VenueRepository:
                         """
                         SELECT
                         id, user_id, venue_name,
-                        state, address,
+                        state, street_address,
+                        city, zip,
                         photo_url, capacity,
                         special_accommodations, venue_cost
                         FROM venues
@@ -125,11 +133,13 @@ class VenueRepository:
                     user_id=record[1],
                     venue_name=record[2],
                     state=record[3],
-                    address=record[4],
-                    photo_url=record[5],
-                    capacity=record[6],
-                    special_accommodations=record[7],
-                    venue_cost=record[8],
+                    street_address=record[4],
+                    city=record[5],
+                    zip=record[6],
+                    photo_url=record[7],
+                    capacity=record[8],
+                    special_accommodations=record[9],
+                    venue_cost=record[10],
                 )
                 return venue
             else:
@@ -152,7 +162,8 @@ class VenueRepository:
                         """
                         SELECT
                         id, user_id, venue_name,
-                        state, address,
+                        state, street_address,
+                        city, zip,
                         photo_url, capacity,
                         special_accommodations, venue_cost
                         FROM venues
@@ -169,11 +180,13 @@ class VenueRepository:
                     user_id=record[1],
                     venue_name=record[2],
                     state=record[3],
-                    address=record[4],
-                    photo_url=record[5],
-                    capacity=record[6],
-                    special_accommodations=record[7],
-                    venue_cost=record[8],
+                    street_address=record[4],
+                    city=record[5],
+                    zip=record[6],
+                    photo_url=record[7],
+                    capacity=record[8],
+                    special_accommodations=record[9],
+                    venue_cost=record[10],
                 )
                 venues.append(venue)
 
@@ -215,7 +228,9 @@ class VenueRepository:
                         SET
                             venue_name = %s,
                             state = %s,
-                            address = %s,
+                            street_address = %s,
+                            city = %s,
+                            zip = %s,
                             photo_url = %s,
                             capacity = %s,
                             special_accommodations = %s,
@@ -225,7 +240,9 @@ class VenueRepository:
                         (
                             venue.venue_name,
                             venue.state,
-                            venue.address,
+                            venue.street_address,
+                            venue.city,
+                            venue.zip,
                             venue.photo_url,
                             venue.capacity,
                             venue.special_accommodations,

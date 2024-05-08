@@ -5,6 +5,7 @@ const TournamentCreateForm = () => {
     const { user, isLoggedIn, isLoading } = useAuthService()
     const [formData, setFormData] = useState({
         user_id: '',
+        location: '',
         event_name: '',
         roster_size: '',
         event_start: '',
@@ -36,7 +37,7 @@ const TournamentCreateForm = () => {
     const id = user.id
 
     const fetchData = async () => {
-        const url = `http://localhost:8000/api/venues/user/${id}`
+        const url = `http://localhost:8000/api/venues`
         try {
             const response = await fetch(url)
             if (response.ok) {
@@ -170,6 +171,36 @@ const TournamentCreateForm = () => {
                             onChange={handleChange}
                             required
                         />
+                    </div>
+                </label>
+                <label>
+                    Location Select
+                    <div className="col-md-5">
+                        <select
+                            className="form-control"
+                            type="text"
+                            name="location"
+                            value={formData.location}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="">Select a venue</option>
+                            {venues.map((venue) => (
+                                <option
+                                    key={venue.id}
+                                    value={
+                                        venue.venue_name +
+                                        ', ' +
+                                        venue.street_address +
+                                        ', ' +
+                                        venue.state
+                                    }
+                                >
+                                    {venue.venue_name}: {venue.street_address},
+                                    {venue.state}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </label>
                 <label>

@@ -8,6 +8,7 @@ from pydantic import BaseModel
 
 class TournamentRequest(BaseModel):
     user_id: int
+    location: str
     event_name: str
     roster_size: int
     event_start: date
@@ -22,6 +23,7 @@ class TournamentRequest(BaseModel):
 class TournamentResponse(BaseModel):
     id: int
     user_id: int
+    location: str
     event_name: str
     roster_size: int
     event_start: date
@@ -34,6 +36,7 @@ class TournamentResponse(BaseModel):
 
 
 class TournamentUpdate(BaseModel):
+    location: str
     event_name: str
     roster_size: int
     event_start: date

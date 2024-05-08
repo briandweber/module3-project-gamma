@@ -83,7 +83,9 @@ def update_venue(
     existing_venue.user_id = existing_venue.user_id
     existing_venue.venue_name = updated_venue.venue_name
     existing_venue.state = updated_venue.state
-    existing_venue.address = updated_venue.address
+    existing_venue.street_address = updated_venue.street_address
+    existing_venue.city = updated_venue.city
+    existing_venue.zip = updated_venue.zip
     existing_venue.photo_url = updated_venue.photo_url
     existing_venue.capacity = updated_venue.capacity
     existing_venue.special_accommodations = (

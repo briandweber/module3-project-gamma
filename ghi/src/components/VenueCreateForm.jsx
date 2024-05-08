@@ -7,7 +7,9 @@ const VenueCreateForm = () => {
         user_id: '',
         venue_name: '',
         state: '',
-        address: '',
+        street_address: '',
+        city: '',
+        zip: '',
         photo_url: '',
         capacity: '',
         special_accommodations: '',
@@ -121,8 +123,34 @@ const VenueCreateForm = () => {
                         <input
                             className="form-control"
                             type="text"
-                            name="address"
-                            value={formData.address}
+                            name="street_address"
+                            value={formData.street_address}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    City:
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="city"
+                            value={formData.city}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                </label>
+                <label>
+                    Zip:
+                    <div className="col-md-5">
+                        <input
+                            className="form-control"
+                            type="number"
+                            name="zip"
+                            value={formData.zip}
                             onChange={handleChange}
                             required
                         />
@@ -146,7 +174,7 @@ const VenueCreateForm = () => {
                     <div className="col-md-5">
                         <input
                             className="form-control"
-                            type='number'
+                            type="number"
                             name="capacity"
                             value={formData.capacity}
                             onChange={handleChange}

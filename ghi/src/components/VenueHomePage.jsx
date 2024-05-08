@@ -81,7 +81,7 @@ function VenueList() {
                                         {venue.venue_name}
                                     </td>
                                     <td className="table-data">
-                                        {venue.address}
+                                        {venue.street_address}
                                     </td>
                                     {/* <td className="table-data">
                                         <Link

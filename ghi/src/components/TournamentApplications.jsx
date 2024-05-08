@@ -60,13 +60,11 @@ function TournamentApplicationList() {
                         <tr>
                             <th className="table-head">Username</th>
                             <th className="table-head">Phone Number</th>
+                            <th className="table-head">Status</th>
                         </tr>
                     </thead>
                     <tbody>
                         {applications
-                            .filter(
-                                (application) => application.status !== 'denied'
-                            )
                             .map((application) => {
                                 const user = users.find(
                                     (u) => u.id === application.user_id
@@ -81,6 +79,9 @@ function TournamentApplicationList() {
                                         </td>
                                         <td className="table-data">
                                             {user?.phone_number || 'N/A'}
+                                        </td>
+                                        <td className="table-data">
+                                            {application.status || 'N/A'}
                                         </td>
                                         <td className="table-data">
                                             <ApplicationStatusDropdown

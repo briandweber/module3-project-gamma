@@ -41,10 +41,7 @@ export default function MyCompetitorTournaments() {
             console.log(e)
         }
     }
-    console.log('tournaments')
-    console.log(tournaments)
-    console.log('applications')
-    console.log(applications)
+
     useEffect(() => {
         getData(), getTournamentsData()
     }, [])
