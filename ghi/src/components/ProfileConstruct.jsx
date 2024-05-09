@@ -1,8 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
 import SignInForm from './SignInForm';
 import SignUpForm from './SignUpForm';
-import CompetitorDetails from './CompetitorDetails'
 import useAuthService from '../hooks/useAuthService';
 import UserDetails from './CompetitorDetails';
 import TournamentManagerDetails from './TournamentManagerDetails';
@@ -35,13 +32,13 @@ function ProfileConstruct() {
 
     return (
         <div className="homepage-background">
-            <NavBar />  {/* Include NavBar at the top */}
+            <NavBar />
             <div className="container-lg">
                 <div className="form-container">
                     {getUserDetailsComponent()}
                 </div>
             </div>
-            <Footer />  {/* Include Footer at the bottom */}
+            <Footer />
         </div>
     );
 }

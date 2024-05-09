@@ -1,9 +1,7 @@
 // @ts-check
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import '../styles.css'
-import useAuthService from '../hooks/useAuthService'
+import { useParams, useNavigate } from 'react-router-dom'
+
 
 export default function TournamentDetailsEdit() {
     const [tournaments, setTournaments] = useState('')

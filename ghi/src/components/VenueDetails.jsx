@@ -7,10 +7,6 @@ function VenueDetails() {
     const { user } = useAuthService()
     const navigate = useNavigate()
     const [venue, setVenue] = useState(null)
-    const [hasApplied, setHasApplied] = useState(false)
-    const messageClasses = !hasApplied
-        ? 'alert alert-success d-none mb-0'
-        : 'alert alert-success mb-0'
 
     const { id } = useParams()
 
@@ -21,7 +17,6 @@ function VenueDetails() {
         }
         try {
             const response = await fetch(url, fetchConfig)
-
             if (response.ok) {
                 navigate("/venues")
             } else {
@@ -29,40 +24,6 @@ function VenueDetails() {
             }
         } catch (error) {
             console.error('Error deleting venue:', error)
-        }
-    }
-
-    const handleApply = async () => {
-        if (hasApplied) {
-            alert("Oops! You've already applied for this venue")
-            return
-        }
-
-        const url = `http://localhost:8000/api/applications`
-        const fetchConfig = {
-            method: 'post',
-            body: JSON.stringify({
-                venue_id: venue.id,
-                user_id: user.id,
-                status: 'pending',
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        }
-        try {
-            const response = await fetch(url, fetchConfig)
-
-            if (response.ok) {
-                setHasApplied(true)
-            } else {
-                console.error(
-                    'Failed to submit application:',
-                    response.statusText
-                )
-            }
-        } catch (error) {
-            console.error('Error with application:', error)
         }
     }
 
@@ -87,7 +48,7 @@ function VenueDetails() {
     if (!venue) {
         return <div>Oops! This venue does not exist!</div>
     }
-    console.log(venue)
+
     return (
         <div className="page-wrapper">
             <div className="homepage-background">
@@ -144,33 +105,6 @@ function VenueDetails() {
                                     Edit
                                 </Link>
                             )}
-                        </div>
-                        <div className="text-center">
-                            <div
-                                className={messageClasses}
-                                id="success-message"
-                            >
-                                <h2 className="mb-1">
-                                    {' '}
-                                    Application successful!{' '}
-                                </h2>
-                                <h5 className="mb-1">
-                                    {' '}
-                                    Check My Venues for status{' '}
-                                </h5>
-                                <div className="text-center">
-                                    <Link
-                                        to={`/`}
-                                        className="btn btn-danger mb-3"
-                                    >
-                                        My Venue
-                                    </Link>
-                                </div>
-                                <h2 className="mb-4">
-                                    {' '}
-                                    Best of luck, Gamester!{' '}
-                                </h2>
-                            </div>
                         </div>
                     </div>
                 </div>

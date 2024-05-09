@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import useAuthService from '../hooks/useAuthService'
-import { Navigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function VenueList() {
     const { user } = useAuthService()
@@ -33,10 +33,6 @@ function VenueList() {
         fetchData()
     }, [id])
 
-    // const onApplicationsClick = (venueId) => {
-    //     const applicationsUrl = `http://localhost:5173/applications/venue?id=${venueId}`
-    //     return <Navigate to={applicationsUrl} />
-    // }
 
     const onDeleteClick = async (venueId) => {
         try {
@@ -69,7 +65,6 @@ function VenueList() {
                             <tr>
                                 <th className="table-head">Venue Name</th>
                                 <th className="table-head">Address</th>
-                                {/* <th className="table-head">Applications</th> */}
                                 <th className="table-head">Details</th>
                                 <th className="table-head">Delete</th>
                             </tr>
@@ -83,14 +78,6 @@ function VenueList() {
                                     <td className="table-data">
                                         {venue.street_address}
                                     </td>
-                                    {/* <td className="table-data">
-                                        <Link
-                                            to={`http://localhost:5173/applications/?id=${venue.id}`}
-                                            className="btn btn-danger mb-3"
-                                        >
-                                            Applications
-                                        </Link>
-                                    </td> */}
                                     <td className="table-data">
                                         <Link
                                             to={`http://localhost:5173/venue/${venue.id}`}

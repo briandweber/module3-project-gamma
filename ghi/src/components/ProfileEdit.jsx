@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useParams, Link } from 'react-router-dom'
-import '../styles.css'
 import useAuthService from '../hooks/useAuthService'
 
 export default function ProfileEdit() {

@@ -138,7 +138,7 @@ function TournamentDetails() {
                         <h4>Location: {tournament.location}</h4>
                         <h4> Roster Size: {tournament.roster_size}</h4>
                         <h4> Event Starts on: {tournament.event_start}</h4>
-                        <h4> Duration: {tournament.duration} minutes</h4>
+                        <h4> Duration (Days): {tournament.duration}</h4>
                         <h5 className="card-title">
                             {tournament.event_description}
                         </h5>

@@ -1,10 +1,8 @@
 // @ts-check
 import { useState, useEffect } from 'react'
-import { useLocation} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useParams, Link} from 'react-router-dom'
-import '../styles.css'
-import useAuthService from '../hooks/useAuthService'
+
 
 
 export default function VenueDetailsEdit() {
@@ -39,7 +37,6 @@ export default function VenueDetailsEdit() {
     const handleSubmit = async (event) => {
         event.preventDefault()
         const url = `http://localhost:8000/api/venues/${id}`
-        console.log(formData)
         const fetchConfig = {
             method: 'PUT',
             body: JSON.stringify(formData),
@@ -50,7 +47,6 @@ export default function VenueDetailsEdit() {
         try {
             const response = await fetch(url, fetchConfig)
             if (response.ok) {
-
             } else {
                 console.error('Error updating data:', response.status)
             }
