@@ -17,7 +17,7 @@ services:
     api:
         environment:
             CORS_HOST: http://localhost:5173
-            DATABASE_URL: postgresql://user:passwrod@db/db_name
+            DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
             SIGNING_KEY: ${SIGNING_KEY}
         build:
             context: api
