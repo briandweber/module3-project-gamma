@@ -30,6 +30,10 @@ Let's embark on this gaming journey together, where every tournament becomes an 
 
 ![Wireframe](/ghi/src/images/wireframe.png)
 
+Click here to download the excalidraw.
+
+[Excalidraw](/ghi/src/images/gamester-wireframe.excalidraw)
+
 ![Landing Page](/ghi/src/images/Gamester-landing-page.png)
 
 The Gamester application features conditional rendering, tailoring functionality based on user types:
