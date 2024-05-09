@@ -15,8 +15,8 @@ tests:
         - pip install flake8
         - flake8 api
         # Run unit tests
-        # - cd api
-        # - pip install -r requirements.txt
+        - cd api
+        - pip install -r requirements.txt
         # - python -m pytest
 # # Build API Image:
 # # This job builds the API docker image and pushes it to the GitLab docker registry
