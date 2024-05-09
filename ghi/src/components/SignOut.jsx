@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import useAuthService from '../hooks/useAuthService'
 
 export default function SignOut() {
-    const { signout } = useAuthService()
+    const { signout, user, error } = useAuthService()
     const navigate = useNavigate()
     useEffect(() => {
         async function handleSignOut() {
@@ -12,5 +12,10 @@ export default function SignOut() {
         }
         handleSignOut()
     }, [navigate, signout])
+    if (user) {
+        {
+            error && <div className="error">{error.message}</div>
+        }
+    }
     return null
 }
