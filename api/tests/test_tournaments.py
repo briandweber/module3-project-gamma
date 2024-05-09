@@ -12,6 +12,7 @@ class EmptyTournamentQueries:
             {
                 "id": 2,
                 "user_id": 1,
+                "location": "sdfas, sadfa, asdfa",
                 "event_name": "asdad",
                 "roster_size": 10,
                 "event_start": "2024-04-24",
@@ -36,6 +37,7 @@ def test_get_all_tournaments():
         {
             "id": 2,
             "user_id": 1,
+            "location": "sdfas, sadfa, asdfa",
             "event_name": "asdad",
             "roster_size": 10,
             "event_start": "2024-04-24",

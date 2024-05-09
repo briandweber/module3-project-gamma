@@ -10,6 +10,7 @@ class MockTournamentRepository:
         return {
             "id": 1,
             "user_id": 1,
+            "location": "sdfas, sadfa, asdfa",
             "event_name": "New Tournament",
             "roster_size": 5,
             "event_start": "2024-01-01",
@@ -18,7 +19,7 @@ class MockTournamentRepository:
             "picture_url": "http://example.com/image.jpg",
             "entry_fee": 20.0,
             "prize": 500.0,
-            "sponsors": "Sample Sponsors"
+            "sponsors": "Sample Sponsors",
         }
 
 
@@ -26,6 +27,7 @@ def test_create_tournament():
     app.dependency_overrides[TournamentRepository] = MockTournamentRepository
     tournament_data = {
         "user_id": 1,
+        "location": "sdfas, sadfa, asdfa",
         "event_name": "New Tournament",
         "roster_size": 5,
         "event_start": "2024-01-01",
@@ -34,7 +36,7 @@ def test_create_tournament():
         "picture_url": "http://example.com/image.jpg",
         "entry_fee": 20.0,
         "prize": 500.0,
-        "sponsors": "Sample Sponsors"
+        "sponsors": "Sample Sponsors",
     }
 
     response = client.post("/api/tournaments", json=tournament_data)
@@ -43,6 +45,7 @@ def test_create_tournament():
     assert response.json() == {
         "id": 1,
         "user_id": 1,
+        "location": "sdfas, sadfa, asdfa",
         "event_name": "New Tournament",
         "roster_size": 5,
         "event_start": "2024-01-01",
@@ -51,7 +54,7 @@ def test_create_tournament():
         "picture_url": "http://example.com/image.jpg",
         "entry_fee": 20.0,
         "prize": 500.0,
-        "sponsors": "Sample Sponsors"
+        "sponsors": "Sample Sponsors",
     }
 
     app.dependency_overrides.clear()

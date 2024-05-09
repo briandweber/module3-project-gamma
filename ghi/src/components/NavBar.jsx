@@ -64,14 +64,13 @@ const NavBar = () => {
     }
 
     const profileLink = () => {
-        if (!user) return null
+        if (user.user_type === 'venue_manager') return null
 
         const userTypeLower = user.user_type.toLowerCase()
         const profilePath =
             userTypeLower === 'tournament_manager'
                 ? '/tournamentmanagerdetails'
                 : '/competitordetails'
-        console.log('ProfilePath:', profilePath)
         return (
             <li>
                 <Link className="nav-link" to={profilePath}>

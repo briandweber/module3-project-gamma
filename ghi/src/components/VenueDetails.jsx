@@ -87,15 +87,14 @@ function VenueDetails() {
     if (!venue) {
         return <div>Oops! This venue does not exist!</div>
     }
-
+    console.log(venue)
     return (
         <div className="page-wrapper">
             <div className="homepage-background">
                 <div className="container-lg">
                     <img
-                        src={venue.picture_url}
+                        src={venue.photo_url}
                         className="card-img-top"
-                        alt="venue"
                     />
                     <div className="card-body text-center">
                         <h1 className="card-subtitle"> {venue.venue_name}</h1>
@@ -144,16 +143,6 @@ function VenueDetails() {
                                 >
                                     Edit
                                 </Link>
-                            )}
-                        </div>
-                        <div className="text-center">
-                            {user.user_type === 'competitor' && (
-                                <button
-                                    onClick={() => handleApply(venue.id)}
-                                    className="btn btn-danger mb-3"
-                                >
-                                    Apply
-                                </button>
                             )}
                         </div>
                         <div className="text-center">
