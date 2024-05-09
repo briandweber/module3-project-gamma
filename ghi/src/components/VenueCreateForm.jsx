@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useAuthService from '../hooks/useAuthService'
 
 const VenueCreateForm = () => {
     const { user, isLoggedIn, isLoading } = useAuthService()
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         user_id: '',
         venue_name: '',
@@ -67,6 +69,7 @@ const VenueCreateForm = () => {
             console.error('Submission error:', error)
             alert(error.message)
         }
+        navigate('/venues')
     }
 
     if (isLoading) {

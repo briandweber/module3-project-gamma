@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import useAuthService from '../hooks/useAuthService'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 function VenueDetails() {
     const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     const { user } = useAuthService()
+    const navigate = useNavigate()
     const [venue, setVenue] = useState(null)
     const [hasApplied, setHasApplied] = useState(false)
     const messageClasses = !hasApplied
@@ -22,7 +23,7 @@ function VenueDetails() {
             const response = await fetch(url, fetchConfig)
 
             if (response.ok) {
-                window.location.reload()
+                navigate("/venues")
             } else {
                 console.error('Failed to delete venue:', response.statusText)
             }

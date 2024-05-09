@@ -1,12 +1,15 @@
 // @ts-check
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { useParams, Link } from 'react-router-dom'
+import { useLocation} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useParams, Link} from 'react-router-dom'
 import '../styles.css'
 import useAuthService from '../hooks/useAuthService'
 
+
 export default function VenueDetailsEdit() {
     const [venues, setVenues] = useState('')
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         venue_name: '',
         state: '',
@@ -47,12 +50,14 @@ export default function VenueDetailsEdit() {
         try {
             const response = await fetch(url, fetchConfig)
             if (response.ok) {
+
             } else {
                 console.error('Error updating data:', response.status)
             }
         } catch (error) {
             console.error('Error updating data:', error)
         }
+        navigate(`/venue/${id}`)
     }
 
     const handleFormChange = (e) => {

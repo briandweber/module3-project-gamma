@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useAuthService from '../hooks/useAuthService'
 
 const TournamentCreateForm = () => {
     const { user, isLoggedIn, isLoading } = useAuthService()
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         user_id: '',
         location: '',
@@ -89,6 +91,7 @@ const TournamentCreateForm = () => {
             )
             const data = await response.json()
             if (response.ok) {
+                navigate("/tournaments")
                 alert('Tournament created successfully!')
             } else {
                 throw new Error(data.message || 'Failed to create tournament')

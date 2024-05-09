@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import useAuthService from '../hooks/useAuthService'
 import { useParams, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function TournamentDetails() {
     const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     const { user } = useAuthService()
+    const navigate = useNavigate()
     const [tournament, setTournament] = useState(null)
     const [hasApplied, setHasApplied] = useState(false)
     const messageClasses = !hasApplied
@@ -22,7 +24,7 @@ function TournamentDetails() {
             const response = await fetch(url, fetchConfig)
 
             if (response.ok) {
-                window.location.reload()
+                navigate("/tournaments")
             } else {
                 console.error(
                     'Failed to delete tournament:',

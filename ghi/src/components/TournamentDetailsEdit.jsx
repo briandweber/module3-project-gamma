@@ -1,12 +1,13 @@
 // @ts-check
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import '../styles.css'
 import useAuthService from '../hooks/useAuthService'
 
 export default function TournamentDetailsEdit() {
     const [tournaments, setTournaments] = useState('')
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
         event_name: '',
         location: '',
@@ -48,6 +49,7 @@ export default function TournamentDetailsEdit() {
         try {
             const response = await fetch(url, fetchConfig)
             if (response.ok) {
+                navigate(`/tournaments/${id}`)
             } else {
                 console.error('Error updating data:', response.status)
             }
