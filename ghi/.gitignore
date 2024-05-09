@@ -1,4 +1,7 @@
 # Logs
+.env
+ghi/.env
+docker-compose.yaml
 logs
 *.log
 npm-debug.log*

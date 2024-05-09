@@ -1,11 +1,7 @@
 from fastapi import APIRouter, Depends, Response, HTTPException
 from typing import List
 from queries.venue_queries import VenueRepository
-from models.venues import (
-    VenueResponse,
-    VenueRequest,
-    VenueUpdate
-)
+from models.venues import VenueResponse, VenueRequest, VenueUpdate
 
 
 router = APIRouter(tags=["Venue"], prefix="/api")
@@ -70,9 +66,7 @@ def delete_venue(venue_id: int):
 
 
 @router.put("/venues/{venue_id}", response_model=VenueResponse)
-def update_venue(
-    venue_id: int, updated_venue: VenueUpdate
-):
+def update_venue(venue_id: int, updated_venue: VenueUpdate):
     """
     Update a venue by its ID.
     """

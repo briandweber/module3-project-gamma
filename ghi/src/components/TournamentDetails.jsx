@@ -3,6 +3,7 @@ import useAuthService from '../hooks/useAuthService'
 import { useParams, Link } from 'react-router-dom'
 
 function TournamentDetails() {
+    const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     const { user } = useAuthService()
     const [tournament, setTournament] = useState(null)
     const [hasApplied, setHasApplied] = useState(false)
@@ -113,8 +114,12 @@ function TournamentDetails() {
         return <div>Oops! This tournament does not exist!</div>
     }
 
+    const subListLocation = tournament.location.split(', ')
+    const address = subListLocation[1]
+    const city = subListLocation[2]
+    const state = subListLocation[3]
+
     return (
-        // <div className="card mb-3 mt-3 shadow card-translucent-grey">
         <div className="page-wrapper">
             <div className="homepage-background">
                 <div className="container-lg">
@@ -147,6 +152,17 @@ function TournamentDetails() {
                         <h5 className="card-title">
                             Sponsors: {tournament.sponsors}
                         </h5>
+                        <div>
+                            <iframe
+                                className="map"
+                                width="600"
+                                height="450"
+                                loading="lazy"
+                                allowFullScreen
+                                referrerPolicy="no-referrer-when-downgrade"
+                                src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${address}+${city}+${state}`}
+                            ></iframe>
+                        </div>
                         <div className="text-center">
                             {user.user_type === 'tournament_manager' && (
                                 <button

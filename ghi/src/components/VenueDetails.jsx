@@ -3,6 +3,7 @@ import useAuthService from '../hooks/useAuthService'
 import { useParams, Link } from 'react-router-dom'
 
 function VenueDetails() {
+    const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
     const { user } = useAuthService()
     const [venue, setVenue] = useState(null)
     const [hasApplied, setHasApplied] = useState(false)
@@ -23,10 +24,7 @@ function VenueDetails() {
             if (response.ok) {
                 window.location.reload()
             } else {
-                console.error(
-                    'Failed to delete venue:',
-                    response.statusText
-                )
+                console.error('Failed to delete venue:', response.statusText)
             }
         } catch (error) {
             console.error('Error deleting venue:', error)
@@ -90,7 +88,6 @@ function VenueDetails() {
     }
 
     return (
-        // <div className="card mb-3 mt-3 shadow card-translucent-grey">
         <div className="page-wrapper">
             <div className="homepage-background">
                 <div className="container-lg">
@@ -115,15 +112,28 @@ function VenueDetails() {
                         <h5 className="card-title">
                             Venue Cost (Per Hour): ${venue.venue_cost}
                         </h5>
+                        <div>
+                            <iframe
+                                className="map"
+                                width="600"
+                                height="450"
+                                loading="lazy"
+                                allowFullScreen
+                                referrerPolicy="no-referrer-when-downgrade"
+                                src={`https://www.google.com/maps/embed/v1/place?key=${API_KEY}&q=${venue.street_address}+${venue.city}+${venue.state}`}
+                            ></iframe>
+                        </div>
                         <div className="text-center">
-                            {user.user_type === 'venue_manager' && (
-                                <button
-                                    onClick={() => handleDelete(venue.id)}
-                                    className="btn btn-danger mb-3"
-                                >
-                                    Delete
-                                </button>
-                            )}
+                            {user &&
+                                user.user_type &&
+                                user.user_type === 'venue_manager' && (
+                                    <button
+                                        onClick={() => handleDelete(venue.id)}
+                                        className="btn btn-danger mb-3"
+                                    >
+                                        Delete
+                                    </button>
+                                )}
                         </div>
                         <div className="text-center">
                             {user.user_type === 'venue_manager' && (

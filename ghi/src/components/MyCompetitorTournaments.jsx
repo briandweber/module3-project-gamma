@@ -49,47 +49,58 @@ export default function MyCompetitorTournaments() {
         return <div>user does not exist!</div>
     }
     return (
-        <div className="container-lg">
-            <h2>My Tournaments</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th className="table-head">Event Name</th>
-                        <th className="table-head">Event Start Time</th>
-                        <th className="table-head">Roster Size Limit</th>
-                        <th className="table-head">Entry Fee</th>
-                        <th className="table-head">Prize</th>
-                        <th className="table-head">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {applications.map((application) => {
-                        const user = tournaments.find(
-                            (u) => u.id === application.tournament_id
-                        )
-                        return (
-                            <tr className="table-row" key={application.id}>
-                                <td className="table-data">
-                                    {user?.event_name || 'N/A'}
-                                </td>
-                                <td className="table-data">
-                                    {user?.event_start || 'N/A'}
-                                </td>
-                                <td className="table-data">
-                                    {user?.roster_size}
-                                </td>
-                                <td className="table-data">
-                                    {user?.entry_fee}
-                                </td>
-                                <td className="table-data">{user?.prize}</td>
-                                <td className="table-data">
-                                    {application.status || 'N/A'}
-                                </td>
+        <div className="page-wrapper">
+            <div className="homepage-background">
+                <div className="container-lg">
+                    <h2>My Tournaments</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th className="table-head">Event Name</th>
+                                <th className="table-head">Event Start Time</th>
+                                <th className="table-head">
+                                    Roster Size Limit
+                                </th>
+                                <th className="table-head">Entry Fee</th>
+                                <th className="table-head">Prize</th>
+                                <th className="table-head">Status</th>
                             </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            {applications.map((application) => {
+                                const user = tournaments.find(
+                                    (u) => u.id === application.tournament_id
+                                )
+                                return (
+                                    <tr
+                                        className="table-row"
+                                        key={application.id}
+                                    >
+                                        <td className="table-data">
+                                            {user?.event_name || 'N/A'}
+                                        </td>
+                                        <td className="table-data">
+                                            {user?.event_start || 'N/A'}
+                                        </td>
+                                        <td className="table-data">
+                                            {user?.roster_size}
+                                        </td>
+                                        <td className="table-data">
+                                            {user?.entry_fee}
+                                        </td>
+                                        <td className="table-data">
+                                            {user?.prize}
+                                        </td>
+                                        <td className="table-data">
+                                            {application.status || 'N/A'}
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     )
 }

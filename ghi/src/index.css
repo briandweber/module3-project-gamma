@@ -54,7 +54,7 @@ code {
 .btn {
     width: 150px;
     background-color: #4c2ecf;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 .image-container {
@@ -217,10 +217,13 @@ code {
 }
 
 .card-img-top {
-    width: 45%;
-    height: 45%;
+    width: 50%;
+    height: 50%;
+    display: block;
     object-fit: cover;
     padding-top: 3vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
@@ -231,7 +234,7 @@ code {
 
 .sidebar-filters {
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: rgba(128, 128, 128, 0.5);
     border-radius: 10px;
 }
@@ -244,13 +247,18 @@ code {
     font-weight: bold;
 }
 
-.filter input[type="text"],
-.filter input[type="number"],
-.filter input[type="date"] {
+.filter input[type='text'],
+.filter input[type='number'],
+.filter input[type='date'] {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
     background-color: #f8f9fa;
     color: #495057;
+}
+
+.map {
+    border: 2px solid blue;
+    margin: 20px;
 }

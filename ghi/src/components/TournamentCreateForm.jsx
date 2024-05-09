@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import useAuthService from '../hooks/useAuthService'
 
 const TournamentCreateForm = () => {
@@ -192,6 +192,8 @@ const TournamentCreateForm = () => {
                                         venue.venue_name +
                                         ', ' +
                                         venue.street_address +
+                                        ', ' +
+                                        venue.city +
                                         ', ' +
                                         venue.state
                                     }
